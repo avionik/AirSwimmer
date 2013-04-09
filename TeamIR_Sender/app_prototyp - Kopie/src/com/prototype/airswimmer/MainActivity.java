@@ -1,6 +1,6 @@
 package com.prototype.airswimmer;
 
-import com.example.airswimmer.R;
+import android.R;
 import android.media.AudioTrack;
 import android.os.Bundle;
 import android.app.Activity;
