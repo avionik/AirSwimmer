@@ -1,1 +1,0 @@
-Bitte in diesen Ordner alle Informationen und Dateien für die Android App speichern
