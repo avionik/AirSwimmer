@@ -1,0 +1,33 @@
+
+# Please make this file available to others
+# by sending it to <lirc@bartelmus.de>
+#
+# this config file was automatically generated
+# using lirc-0.9.0(SerialDevice) on Thu Apr 11 17:16:15 2013
+#
+# contributed by 
+#
+# brand:                       \\rz-home\ff9315\Desktop\fb_fish_conf
+# model no. of remote control: 
+# devices being controlled by this remote:
+#
+
+begin remote
+
+  name  \\rz-home\ff9315\Desktop\fb_fish_conf
+  bits           24
+  flags SPACE_ENC|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  one           265   743
+  zero          265   256
+  ptrail        276
+  gap          209882
+  toggle_bit_mask 0x0
+
+      begin codes
+          dive                     0xC9B187 0xC9B10F
+      end codes
+
+end remote

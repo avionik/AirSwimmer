@@ -1,1 +1,0 @@
-Bitte in diesen Ordner alle Informationen zur Infrarot Kummunikation speichern
