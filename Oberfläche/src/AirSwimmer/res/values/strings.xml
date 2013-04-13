@@ -12,5 +12,6 @@
     <string name="Wischen">Wischen</string>
     <string name="Kippen"> Kippen </string>
     <string name="title_activity_activity__tasten">Activity_Tasten</string>
+    <string name="title_activity_activity__kippen">Activity_Kippen</string>
 
 </resources>

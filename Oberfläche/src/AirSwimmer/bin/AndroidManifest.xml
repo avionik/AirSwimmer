@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="FrontPage"
+            android:name="de.example.airswimmer.FrontPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +31,11 @@
             android:name="de.example.airswimmer.Activity_Tasten"
             android:label="@string/title_activity_activity__tasten" >
         </activity>
+        <activity
+            android:name="de.example.airswimmer.Activity_Kippen"
+            android:label="@string/title_activity_activity__kippen" >
+        </activity>
+        <activity android:name="MoveShark"></activity>
     </application>
 
 </manifest>

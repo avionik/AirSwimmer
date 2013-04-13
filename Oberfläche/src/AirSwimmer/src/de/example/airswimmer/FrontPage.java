@@ -29,8 +29,10 @@ public class FrontPage extends Activity{
 	// What will happen when you click on a button
 	public void onButtonClick(View view){
 		switch(view.getId()){
-		case R.id.Button_Tasten:
-		startActivity(new Intent(this, Activity_Tasten.class));
+			case R.id.Button_Tasten:
+				startActivity(new Intent(this, Activity_Tasten.class));
+			case R.id.Button_Kippen:
+				startActivity(new Intent(this, Activity_Kippen.class));
 		
 		}
 	}
