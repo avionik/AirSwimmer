@@ -8,5 +8,9 @@
     <string name="button_down">Down</string>
     <string name="button_right">Right</string>
     <string name="button_left">Left</string>
+    <string name="Tasten"> Tasten </string>
+    <string name="Wischen">Wischen</string>
+    <string name="Kippen"> Kippen </string>
+    <string name="title_activity_activity__tasten">Activity_Tasten</string>
 
 </resources>
