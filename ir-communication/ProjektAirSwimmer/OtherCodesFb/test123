@@ -1,0 +1,42 @@
+
+# Please make this file available to others
+# by sending it to <lirc@bartelmus.de>
+#
+# this config file was automatically generated
+# using lirc-0.9.0(SerialDevice) on Thu Apr 11 17:05:11 2013
+#
+# contributed by 
+#
+# brand:                       \\rz-home\ff9315\Eigene
+# model no. of remote control: 
+# devices being controlled by this remote:
+#
+
+begin remote
+
+  name  \\rz-home\ff9315\Eigene
+  bits            8
+  flags SPACE_ENC|NO_HEAD_REP|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  header       8432  4170
+  one           552  1564
+  zero          552   531
+  ptrail        565
+  pre_data_bits   8
+  pre_data       0xF1
+  gap          46047
+  min_repeat      1
+  toggle_bit_mask 0x0
+
+      begin codes
+          volminus                 0xA1
+          volplus                  0x21
+          sourceup                 0x29
+          sourcedown               0xA9
+      end codes
+
+end remote
+
+
