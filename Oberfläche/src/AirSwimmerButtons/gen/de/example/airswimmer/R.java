@@ -41,10 +41,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int action_settings=0x7f090004;
-        public static final int imageButtonLinks=0x7f090003;
-        public static final int imageButtonOben=0x7f090000;
-        public static final int imageButtonRechts=0x7f090001;
-        public static final int imageButtonUnten=0x7f090002;
+        public static final int change_mode=0x7f090007;
+        public static final int imageButtonDown=0x7f090002;
+        public static final int imageButtonLeft=0x7f090003;
+        public static final int imageButtonRight=0x7f090001;
+        public static final int imageButtonUp=0x7f090000;
+        public static final int mode_remote=0x7f090008;
+        public static final int mode_shake=0x7f090009;
+        public static final int mode_slide=0x7f09000a;
+        public static final int sky=0x7f090006;
+        public static final int water=0x7f090005;
     }
     public static final class layout {
         public static final int activity_start=0x7f030000;
@@ -54,13 +60,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int start=0x7f080001;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
+        public static final int action_settings=0x7f060005;
         public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
-        public static final int imageButtonLinks=0x7f060006;
-        public static final int imageButtonOben=0x7f060003;
-        public static final int imageButtonRechts=0x7f060004;
-        public static final int imageButtonUnten=0x7f060005;
+        public static final int button_down=0x7f060002;
+        public static final int button_left=0x7f060004;
+        public static final int button_right=0x7f060003;
+        /**  buttons 
+         */
+        public static final int button_up=0x7f060001;
+        public static final int change_background=0x7f06000a;
+        /**  submenu of select_mode 
+         */
+        public static final int mode_remote=0x7f060007;
+        public static final int mode_shake=0x7f060009;
+        public static final int mode_slide=0x7f060008;
+        /**  start.xml menu 
+         */
+        public static final int select_mode=0x7f060006;
+        public static final int sky_picture=0x7f06000c;
+        /**  submenu of change-background 
+         */
+        public static final int water_picture=0x7f06000b;
     }
     public static final class style {
         /** 

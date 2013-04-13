@@ -10,37 +10,37 @@
     tools:context=".StartActivity" >
     
     <ImageButton
-        android:id="@+id/imageButtonOben"
+        android:id="@+id/imageButtonUp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/imageButtonRechts"
+        android:layout_above="@+id/imageButtonRight"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:src="@drawable/ic_oben" />
 
     <ImageButton
-        android:id="@+id/imageButtonRechts"
+        android:id="@+id/imageButtonRight"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageButtonOben"
+        android:layout_toRightOf="@+id/imageButtonUp"
         android:src="@drawable/ic_rechts" />
 
     <ImageButton
-        android:id="@+id/imageButtonUnten"
+        android:id="@+id/imageButtonDown"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/imageButtonRechts"
+        android:layout_below="@+id/imageButtonRight"
         android:layout_marginTop="16dp"
-        android:layout_toLeftOf="@+id/imageButtonRechts"
+        android:layout_toLeftOf="@+id/imageButtonRight"
         android:src="@drawable/ic_unten" />
 
     <ImageButton
-        android:id="@+id/imageButtonLinks"
+        android:id="@+id/imageButtonLeft"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/imageButtonOben"
-        android:layout_toLeftOf="@+id/imageButtonUnten"
+        android:layout_below="@+id/imageButtonUp"
+        android:layout_toLeftOf="@+id/imageButtonDown"
         android:src="@drawable/ic_links" />
 
 </RelativeLayout>
