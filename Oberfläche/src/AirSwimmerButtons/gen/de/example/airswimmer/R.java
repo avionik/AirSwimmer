@@ -32,25 +32,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_links=0x7f020001;
-        public static final int ic_oben=0x7f020002;
-        public static final int ic_rechts=0x7f020003;
-        public static final int ic_unten=0x7f020004;
-        public static final int ic_wolke=0x7f020005;
+        public static final int ic_down=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_left=0x7f020002;
+        public static final int ic_links=0x7f020003;
+        public static final int ic_oben=0x7f020004;
+        public static final int ic_rechts=0x7f020005;
+        public static final int ic_right=0x7f020006;
+        public static final int ic_sky=0x7f020007;
+        public static final int ic_unten=0x7f020008;
+        public static final int ic_up=0x7f020009;
+        public static final int ic_water=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f090004;
-        public static final int change_mode=0x7f090007;
-        public static final int imageButtonDown=0x7f090002;
-        public static final int imageButtonLeft=0x7f090003;
-        public static final int imageButtonRight=0x7f090001;
-        public static final int imageButtonUp=0x7f090000;
-        public static final int mode_remote=0x7f090008;
-        public static final int mode_shake=0x7f090009;
-        public static final int mode_slide=0x7f09000a;
-        public static final int sky=0x7f090006;
-        public static final int water=0x7f090005;
+        public static final int action_settings=0x7f090005;
+        public static final int change_mode=0x7f090009;
+        public static final int imageButtonDown=0x7f090003;
+        public static final int imageButtonLeft=0x7f090004;
+        public static final int imageButtonRight=0x7f090002;
+        public static final int imageButtonUp=0x7f090001;
+        public static final int layout=0x7f090000;
+        public static final int mode_remote=0x7f09000b;
+        public static final int mode_shake=0x7f09000c;
+        public static final int mode_slide=0x7f09000d;
+        public static final int sky=0x7f090008;
+        public static final int submenu_changeBackground=0x7f090006;
+        public static final int submenu_changeMode=0x7f09000a;
+        public static final int water=0x7f090007;
     }
     public static final class layout {
         public static final int activity_start=0x7f030000;
