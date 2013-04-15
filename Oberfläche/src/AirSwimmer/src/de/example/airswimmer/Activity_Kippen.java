@@ -112,9 +112,12 @@ public class Activity_Kippen extends BaseActivity implements SensorEventListener
 	                Canvas canvas = ourHolder.lockCanvas(); 
 	                canvas.drawColor(Color.WHITE);
 	                canvas.drawBitmap(scaled, 0,0, new Paint()); // set Background
+	                
 	                float startX = 50;
 	                float startY = 50;
-	                canvas.drawBitmap(shark, startX +sensorX*10, startY+sensorY*10, null);
+	                float x = (float) ((100.0/360.0*sensorX)*width/4);
+	                float y = (float) ((100.0/360.0*sensorY)*height/4);
+	                canvas.drawBitmap(shark, startX +x, startY+y, null);
 	                ourHolder.unlockCanvasAndPost(canvas);
 	            }
 	        }
