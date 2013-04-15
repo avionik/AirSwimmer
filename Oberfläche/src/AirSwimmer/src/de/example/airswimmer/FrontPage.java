@@ -31,8 +31,10 @@ public class FrontPage extends Activity{
 		switch(view.getId()){
 			case R.id.Button_Tasten:
 				startActivity(new Intent(this, Activity_Tasten.class));
+				break;
 			case R.id.Button_Kippen:
 				startActivity(new Intent(this, Activity_Kippen.class));
+				break;
 		
 		}
 	}
