@@ -1,0 +1,69 @@
+package de.example.airswimmer;
+
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.RelativeLayout;
+
+public class BaseActivity extends Activity {
+	
+	/**
+	 * Creates Menu from start.xml and make current mode unvisible in menu. Only called once.
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.start, menu);
+		//get name of current activity
+		String currentActivityPath = this.getClass().getName();
+		String currentActivityName = currentActivityPath.substring(currentActivityPath.lastIndexOf(".")+1);
+		//find id to class name
+		int id=0;
+		if(currentActivityName.equals("StartActivity")){
+			id = R.id.mode_remote;
+		}
+		//if id was found set current screen unvisible so only different modes are visible
+		if(id!=0){
+			menu.findItem(id).setVisible(false);
+		}
+		return true;
+	}
+
+	
+	/**
+	 * Reaction to choice in menu
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//reaction to selected menupoint in submenu for changing background picture
+		if (item.getGroupId() == R.id.submenu_changeBackground) {
+			RelativeLayout background = (RelativeLayout) findViewById(R.id.layout);
+			Resources source = getResources();
+			switch (item.getItemId()) {
+				case R.id.sky:// Picture sky is chosen as background
+					background.setBackgroundDrawable(source.getDrawable(R.drawable.ic_sky));
+					return true;
+				case R.id.water:
+					background.setBackgroundDrawable(source.getDrawable(R.drawable.ic_water));
+					return true;
+				default: 
+					return false;
+			}
+			//reaction to selected menupoint in submenu for changing control mode
+		} else if (item.getGroupId() == R.id.submenu_changeMode) {
+			switch (item.getItemId()) {
+				case R.id.mode_remote:
+					return true;
+				case R.id.mode_shake:
+					return true;
+				case R.id.mode_slide:
+					return true;
+				default:
+					return false;
+			}
+		}
+			return false;
+	}
+
+}
