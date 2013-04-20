@@ -26,12 +26,23 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getActionMasked()){
                 case MotionEvent.ACTION_MOVE:                   //when view moves
-                    int x = (int) event.getX() - offset_x;
-                    int y = (int) event.getY() - offset_y;
+                    int xAxis = (int) event.getX() - offset_x;  //calculate position of fish in xAxis
+                    int yAxis = (int) event.getY() - offset_y;  //calculate position of fish in yAxis
+                    
+                    move(xAxis, yAxis);                         //method for movement of the fish is called
+                    
+                    int width = getWindowManager().getDefaultDisplay().getWidth() - 200;        //get screen size ('-' so the fish stays the same size)
+                    int height = getWindowManager().getDefaultDisplay().getHeight() - 275;
+
+                    if (xAxis > width)                          //if fish is dragged too far to the left/right
+                        xAxis = width;
+                    
+                    if (yAxis > height)                         //if fish is dragged too far up/down
+                        yAxis = height;
                     
                     RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
                     //when picture moves, the view gets created again
-                    lp.setMargins(x, y, 0, 0);
+                    lp.setMargins(xAxis, yAxis, 0, 0);
                     selected_item.setLayoutParams(lp);
                     break;
                     
@@ -45,12 +56,12 @@ public class MainActivity extends Activity {
         img.setOnTouchListener(new View.OnTouchListener() {     //onTouchListener for fish
             
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getActionMasked()){
                 case MotionEvent.ACTION_DOWN:                   //if someone touches the fish
                     offset_x = (int) event.getX();              //calculate new offset
                     offset_y = (int) event.getY();
-                    selected_item = v;                          //view is selected
+                    selected_item = view;                       //view is selected
                     break;
                     
                     default:                                    //fish is not touched
@@ -61,6 +72,13 @@ public class MainActivity extends Activity {
         });
     }
 
+    
+    //method for movement of the fish
+    public void move(int xAxis, int yAxis){
+        //TODO: implement movement
+    }
+    
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
