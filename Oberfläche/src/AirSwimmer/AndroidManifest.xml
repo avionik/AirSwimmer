@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.example.airswimmer.Activity_Tasten"
+            android:name="de.example.airswimmer.Activity_Buttons"
             android:label="@string/title_activity_activity__tasten" >
         </activity>
         <activity
-            android:name="de.example.airswimmer.Activity_Kippen"
+            android:name="de.example.airswimmer.Activity_Tilt"
             android:label="@string/title_activity_activity__kippen" android:screenOrientation="landscape">
         </activity>
         <activity android:name="MoveShark" android:screenOrientation="landscape"></activity>

@@ -61,10 +61,10 @@ public class BaseActivity extends Activity {
 		} else if (item.getGroupId() == R.id.submenu_changeMode) {
 			switch (item.getItemId()) {
 				case R.id.mode_keys:
-					startActivity(new Intent(this, Activity_Tasten.class));
+					startActivity(new Intent(this, Activity_Buttons.class));
 					return true;
 				case R.id.mode_sweep:
-					startActivity(new Intent(this, Activity_Kippen.class));
+					startActivity(new Intent(this, Activity_Tilt.class));
 					return true;
 				case R.id.mode_slide:
 					return true;
