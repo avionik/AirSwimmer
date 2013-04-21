@@ -1,7 +1,7 @@
 package de.example.airswimmer;
 
 import de.example.airswimmer.R;
-import de.example.airswimmer.Activity_Tasten;
+import de.example.airswimmer.Activity_Buttons;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,11 +29,11 @@ public class FrontPage extends Activity{
 	// What will happen when you click on a button
 	public void onButtonClick(View view){
 		switch(view.getId()){
-			case R.id.Button_Tasten:
-				startActivity(new Intent(this, Activity_Tasten.class));
+			case R.id.Button_Button:
+				startActivity(new Intent(this, Activity_Buttons.class));
 				break;
-			case R.id.Button_Kippen:
-				startActivity(new Intent(this, Activity_Kippen.class));
+			case R.id.Button_Tilt:
+				startActivity(new Intent(this, Activity_Tilt.class));
 				break;
 		
 		}

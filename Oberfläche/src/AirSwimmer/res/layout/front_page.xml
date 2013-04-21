@@ -24,7 +24,7 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/Button_Tasten"
+            android:id="@+id/Button_Button"
             style="@style/AppTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
              />
 
         <Button
-            android:id="@+id/Button_Wischen"
+            android:id="@+id/Button_Wipe"
             style="@style/AppTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:background="@color/Marineblau" />
 
         <Button
-            android:id="@+id/Button_Kippen"
+            android:id="@+id/Button_Tilt"
             style="@style/AppTheme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

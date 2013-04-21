@@ -33,19 +33,15 @@ public final class R {
         public static final int ic_down=0x7f020002;
         public static final int ic_launcher=0x7f020003;
         public static final int ic_left=0x7f020004;
-        public static final int ic_links=0x7f020005;
-        public static final int ic_oben=0x7f020006;
-        public static final int ic_rechts=0x7f020007;
-        public static final int ic_right=0x7f020008;
-        public static final int ic_sky=0x7f020009;
-        public static final int ic_unten=0x7f02000a;
-        public static final int ic_up=0x7f02000b;
-        public static final int ic_water=0x7f02000c;
+        public static final int ic_right=0x7f020005;
+        public static final int ic_sky=0x7f020006;
+        public static final int ic_up=0x7f020007;
+        public static final int ic_water=0x7f020008;
     }
     public static final class id {
-        public static final int Button_Kippen=0x7f090009;
-        public static final int Button_Tasten=0x7f090007;
-        public static final int Button_Wischen=0x7f090008;
+        public static final int Button_Button=0x7f090007;
+        public static final int Button_Tilt=0x7f090009;
+        public static final int Button_Wipe=0x7f090008;
         public static final int RelativeLayout1=0x7f090005;
         public static final int action_settings=0x7f09000b;
         public static final int change_mode=0x7f09000f;
@@ -65,13 +61,13 @@ public final class R {
         public static final int water=0x7f09000d;
     }
     public static final class layout {
-        public static final int activity_layout_kippen=0x7f030000;
-        public static final int activity_layout_tasten=0x7f030001;
+        public static final int activity_layout_buttons=0x7f030000;
+        public static final int activity_layout_tilt=0x7f030001;
         public static final int front_page=0x7f030002;
     }
     public static final class menu {
-        public static final int activity__kippen=0x7f080000;
-        public static final int activity__tasten=0x7f080001;
+        public static final int activity__buttons=0x7f080000;
+        public static final int activity__tilt=0x7f080001;
         public static final int start=0x7f080002;
     }
     public static final class string {
