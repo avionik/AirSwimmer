@@ -29,12 +29,16 @@ public class FrontPage extends Activity{
 	// What will happen when you click on a button
 	public void onButtonClick(View view){
 		switch(view.getId()){
-			case R.id.Button_Button:
+			case R.id.Button_Buttons:
 				startActivity(new Intent(this, Activity_Buttons.class));
 				break;
 			case R.id.Button_Tilt:
 				startActivity(new Intent(this, Activity_Tilt.class));
 				break;
+			case R.id.Button_Wipe:
+				startActivity(new Intent(this, Activity_Wipe.class));
+			default:;
+					
 		
 		}
 	}

@@ -6,42 +6,52 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:id="@+id/layout"
-    android:background="@drawable/ic_sky"
+    android:background="#0000CC"
     tools:context=".StartActivity" >
-    
-    <ImageButton
-        android:id="@+id/imageButtonUp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/imageButtonUp"
+
+    <!-- Button gets created
+    android:id is the name of the button, with that name it can be called
+    anrdoid:layout_marginLeft is the position where the button should be (in pixel)-->
+    <Button
+        android:id="@+id/button_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_left"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/ic_up" />
+        android:layout_marginBottom="31dp"
+        android:src="@drawable/up"
+        android:text="@string/button_up" />
 
-    <ImageButton
-        android:id="@+id/imageButtonRight"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <Button
+        android:id="@+id/button_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_left"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/down"
+        android:text="@string/button_down" />
+
+        <!-- android:layout_toLeftOf="@+id/button_down" shows that the button is positioned at the left hand side of the button 
+        "button_down" and is 10 pixel away from the right side -->
+    <Button
+        android:id="@+id/button_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageButtonUp"
-        android:src="@drawable/ic_right" />
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/button_down"
+        android:src="@drawable/left"
+        android:text="@string/button_left" />
 
-    <ImageButton
-        android:id="@+id/imageButtonDown"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/imageButtonRight"
-        android:layout_marginTop="16dp"
-        android:layout_toLeftOf="@+id/imageButtonRight"
-        android:src="@drawable/ic_down" />
-
-    <ImageButton
-        android:id="@+id/imageButtonLeft"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/imageButtonUp"
-        android:layout_toLeftOf="@+id/imageButtonDown"
-        android:src="@drawable/ic_left" />
+    <Button
+        android:id="@+id/button_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/button_down"
+        android:src="@drawable/right"
+        android:text="@string/button_right" />
 
 </RelativeLayout>
