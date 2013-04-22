@@ -33,9 +33,10 @@
         </activity>
         <activity
             android:name="de.example.airswimmer.Activity_Tilt"
-            android:label="@string/title_activity_activity__kippen" android:screenOrientation="landscape">
+            android:label="@string/title_activity_activity__kippen" >
         </activity>
-        <activity android:name="MoveShark" android:screenOrientation="landscape"></activity>
+        <activity android:name="MoveShark"></activity>
+        <activity android:name="de.example.airswimmer.Activity_Wipe"></activity>
     </application>
 
 </manifest>

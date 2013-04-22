@@ -1,5 +1,6 @@
 package de.example.airswimmer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,11 +13,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class MoveShark extends BaseActivity implements SensorEventListener {
+public class MoveShark extends Activity implements SensorEventListener {
 
 	Bitmap shark;
 	SensorManager sm;
@@ -38,6 +38,7 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		sensorY = event.values[0];
 		sensorX = event.values[1];
 		
@@ -46,13 +47,11 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	 public class DrawShark extends SurfaceView implements Runnable{
 
 	        SurfaceHolder ourHolder;
-	        int background;
 	        Thread ourThread = null;
 	        boolean isRunning = true;
 	        
-	        public DrawShark(Context context,int background) {
+	        public DrawShark(Context context) {
 	            super(context);
-	            this.background=background;
 	            ourHolder = getHolder();
 	        }
 
@@ -76,11 +75,6 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	            ourThread.start();
 	        }
 	        
-	        public void changeBackground(int background){
-	        	this.background=background;
-	        }
-	        
-	        
 	        @Override
 	        public void run() {
 	            while (isRunning){
@@ -92,7 +86,7 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	                int width = display.getWidth();
 	                int height = display.getHeight();
 	                
-	                mBitmap = BitmapFactory.decodeResource(getResources(), background); //new Bitmap to make the background image
+	                mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_sky); //new Bitmap to make the background image
 	                int h = width;
 	                int w = height;
 	                
@@ -103,7 +97,10 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	                canvas.drawBitmap(scaled, 0,0, new Paint()); // set Background
 	                float startX = 50;
 	                float startY = 50;
-	                canvas.drawBitmap(shark, startX +sensorX*10, startY+sensorY*10, null);
+	                float x = (float) ((100.0/360.0*sensorX)*width/4);
+	                float y = (float) ((100.0/360.0*sensorY)*height/4);
+	                
+	                canvas.drawBitmap(shark, startX +x, startY+y, null);
 	                ourHolder.unlockCanvasAndPost(canvas);
 	            }
 	        }
@@ -120,31 +117,9 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	        }
 	        shark = BitmapFactory.decodeResource(getResources(), R.drawable.ic_air_swimmers_shark);
 	        x = y = sensorX = sensorY = 0;
-	        ourView = new DrawShark(this,R.drawable.ic_sky);
+	        ourView = new DrawShark(this);
 	        ourView.resume();
 	        setContentView(ourView);
-	    }
-	    
-	    @Override
-	    public boolean onOptionsItemSelected(MenuItem item) {
-	    	if (item.getGroupId() == R.id.submenu_changeBackground) {
-	    		int id=0;
-	    		switch (item.getItemId()) {
-	    		 // set Background
-				case R.id.sky:// Picture sky is chosen as background
-					id=R.drawable.ic_sky;
-			       break;
-				case R.id.water:
-					id=R.drawable.ic_water;
-					break;
-				default: 
-					return false;
-			}		
-					ourView.changeBackground(id);
-			        return true;
-	    	}else{
-	    		return super.onOptionsItemSelected(item);
-	    	}
 	    }
 
 	    //@Override
