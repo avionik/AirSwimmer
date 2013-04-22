@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.example.airswimmer"
+    package="de.airswimmer.gui"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.example.airswimmer.FrontPage"
+            android:name="de.airswimmer.gui.FrontPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,15 +28,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.example.airswimmer.Activity_Buttons"
-            android:label="@string/title_activity_activity__tasten" >
+            android:name="de.airswimmer.gui.Activity_Buttons"
+            android:label="@string/title_activity_activity__buttons" >
         </activity>
         <activity
-            android:name="de.example.airswimmer.Activity_Tilt"
-            android:label="@string/title_activity_activity__kippen" >
+            android:name="de.airswimmer.gui.Activity_Tilt"
+            android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
         </activity>
-        <activity android:name="MoveShark"></activity>
-        <activity android:name="de.example.airswimmer.Activity_Wipe"></activity>
+        <activity android:name="de.airswimmer.gui.Activity_Wipe"
+            	  android:label="@string/title_activity_activity__wipe">
+        </activity>
     </application>
 
 </manifest>

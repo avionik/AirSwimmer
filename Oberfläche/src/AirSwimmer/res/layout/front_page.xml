@@ -32,7 +32,7 @@
             android:onClick="onButtonClick"        
           
             android:layout_marginTop="20dp"
-            android:text="@string/Tasten"
+            android:text="@string/mode_buttons"
             android:textColor="@color/Weiss"
             android:background="@color/Marineblau"
              />
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/Wischen"
+            android:text="@string/mode_wipe"
             android:textColor="@color/Weiss"
             android:background="@color/Marineblau"
             
@@ -58,7 +58,7 @@
             android:onClick="onButtonClick" 
             
             android:layout_marginTop="20dp"
-            android:text="@string/Kippen"
+            android:text="@string/mode_tilt"
             android:textColor="@color/Weiss"
             android:background="@color/Marineblau" />
     </LinearLayout>

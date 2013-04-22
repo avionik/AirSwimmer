@@ -3,15 +3,22 @@
 
     <string name="app_name">AirSwimmer</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="button_up">Up</string>
     <string name="button_down">Down</string>
     <string name="button_right">Right</string>
     <string name="button_left">Left</string>
-    <string name="Tasten"> Tasten </string>
-    <string name="Wischen">Wischen</string>
-    <string name="Kippen"> Kippen </string>
-    <string name="title_activity_activity__tasten">Activity_Tasten</string>
-    <string name="title_activity_activity__kippen">Activity_Kippen</string>
+	<!-- submenu of select_mode -->
+ 	<string name="mode_buttons">Tasten</string> 
+ 	<string name="mode_tilt">Kippen</string> 
+ 	<string name="mode_wipe">Wischen</string> 
+ 	<!-- start.xml menu -->
+ 	<string name="select_mode">Modus auswählen</string>
+ 	<!-- submenu of change-background -->
+ 	<string name="water_picture">Wasser</string> 
+ 	<string name="sky_picture">Himmel</string>
+ 	<string name="change_background">Hintergrund ändern</string>
+    <string name="title_activity_activity__buttons">Activity_Buttons</string>
+    <string name="title_activity_activity__tilt">Activity_Tilt</string>
+    <string name="title_activity_activity__wipe">Activity_Wipe</string>
 
 </resources>
