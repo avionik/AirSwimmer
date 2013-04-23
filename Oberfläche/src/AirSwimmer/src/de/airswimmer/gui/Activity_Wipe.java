@@ -26,13 +26,15 @@ public class Activity_Wipe extends BaseActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getActionMasked()){
                 case MotionEvent.ACTION_MOVE:                   //when view moves
-                    int xAxis = (int) event.getX() - offset_x;  //calculate position of fish in xAxis
-                    int yAxis = (int) event.getY() - offset_y;  //calculate position of fish in yAxis
+                    int xAxis = (int) ((int) event.getX() - (offset_x * 1.5));  //calculate position of fish in xAxis
+                    int yAxis = (int) ((int) event.getY() - (offset_y * 1.5));  //calculate position of fish in yAxis
                     
                     move(xAxis, yAxis);                         //method for movement of the fish is called
                     
-                    int width = getWindowManager().getDefaultDisplay().getWidth() - 200;        //get screen size ('-' so the fish stays the same size)
-                    int height = getWindowManager().getDefaultDisplay().getHeight() - 275;
+                    @SuppressWarnings("deprecation")
+                    int width = getWindowManager().getDefaultDisplay().getWidth() - 300;        //get screen size ('-' so the fish stays the same size)
+                    @SuppressWarnings("deprecation")
+                    int height = getWindowManager().getDefaultDisplay().getHeight() - 375;
 
                     if (xAxis > width)                          //if fish is dragged too far to the left/right
                         xAxis = width;
