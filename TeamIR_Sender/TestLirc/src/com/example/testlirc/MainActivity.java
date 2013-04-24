@@ -13,19 +13,20 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
 	byte buffer[];
 	Lirc lirc = new Lirc();
+	@SuppressWarnings("deprecation")
 	int bufSize = AudioTrack.getMinBufferSize(48000,
 			AudioFormat.CHANNEL_CONFIGURATION_STEREO,
 			AudioFormat.ENCODING_PCM_8BIT);
 	AudioTrack ir;
 	AudioManager audio;
-	private static final String path = "/storage/sdcard0/testLirc.txt";
-
+	private static final String path = "/storage/sdcard0/AirSwimmerLirc.txt";
+	//private static final String path = "/storage/sdcard0/Lircleft.txt";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -93,9 +94,10 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void dive() {
 
-		buffer = lirc.getIrBuffer("test", "DIVE");
+		buffer = lirc.getIrBuffer("AirSwimmer2013", "DIVE");
 
 		if (buffer == null) {
 			System.err.println("error, buffer empty");
@@ -117,6 +119,7 @@ public class MainActivity extends Activity {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void climb() {
 		
 		buffer = lirc.getIrBuffer("test", "CLIMB");
@@ -140,6 +143,7 @@ public class MainActivity extends Activity {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void right() {
 		
 		buffer = lirc.getIrBuffer("test", "TAILRIGHT");
@@ -158,11 +162,11 @@ public class MainActivity extends Activity {
 		ir.write(buffer, 0, buffer.length);
 
 		ir.setStereoVolume(1, 1);
-
 		ir.play();
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void left() {
 		
 		buffer = lirc.getIrBuffer("test", "TAILLEFT");
