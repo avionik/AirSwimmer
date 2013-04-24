@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="de.airswimmer.gui.FrontPage"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,14 +29,14 @@
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Buttons"
-            android:label="@string/title_activity_activity__buttons" >
+            android:label="@string/title_activity_activity__buttons" android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Tilt"
             android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
         </activity>
         <activity android:name="de.airswimmer.gui.Activity_Wipe"
-            	  android:label="@string/title_activity_activity__wipe">
+            	  android:label="@string/title_activity_activity__wipe" android:screenOrientation="landscape">
         </activity>
     </application>
 
