@@ -132,7 +132,7 @@ public class MoveShark extends BaseActivity implements SensorEventListener {
 	            Sensor s = sm.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
 	            sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
 	        }
-	        shark = BitmapFactory.decodeResource(getResources(), R.drawable.ic_air_swimmers_shark);
+	        shark = BitmapFactory.decodeResource(getResources(), R.drawable.bellishark_1_medium);
 	        x = y = sensorX = sensorY = 0;
 	        ourView = new DrawShark(this);
 	        ourView.resume();
