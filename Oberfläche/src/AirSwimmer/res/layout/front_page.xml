@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Dark"
+    android:background="@color/app_colour"
     android:columnCount="1" >
 
     <LinearLayout
@@ -12,64 +12,43 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:orientation="vertical" >
-
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/Button_Buttons"
-            style="@style/AppTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            
-            android:onClick="onButtonClick"        
-          
-            android:layout_marginTop="20dp"
-            android:text="@string/mode_buttons"
-            android:textColor="@color/Weiss"
-            android:background="@color/Marineblau"
-             />
-
-        <Button
-            android:id="@+id/Button_Wipe"
-            style="@style/AppTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/mode_wipe"
-            android:textColor="@color/Weiss"
-            android:background="@color/Marineblau"
-            
-            android:onClick="onButtonClick"     />
-
-        <Button
-            android:id="@+id/Button_Tilt"
-            style="@style/AppTheme"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            
-            android:onClick="onButtonClick" 
-            
-            android:layout_marginTop="20dp"
-            android:text="@string/mode_tilt"
-            android:textColor="@color/Weiss"
-            android:background="@color/Marineblau" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <ImageButton
+        android:id="@+id/Button_Tilt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background ="#00000000"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/hai_button_tilt" />
+
+    <ImageButton
+        android:id="@+id/Button_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background ="#00000000"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:src="@drawable/airswimmer" />
+        android:src="@drawable/hai_button_button" />
+
+    <ImageButton
+        android:id="@+id/Button_Wipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background ="#00000000"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/hai_button_wipe" />
 
 </RelativeLayout>

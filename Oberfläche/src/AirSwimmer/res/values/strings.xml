@@ -20,5 +20,5 @@
     <string name="title_activity_activity__buttons">Activity_Buttons</string>
     <string name="title_activity_activity__tilt">Activity_Tilt</string>
     <string name="title_activity_activity__wipe">Activity_Wipe</string>
-
+	<color  name="app_colour">#000080</color>
 </resources>

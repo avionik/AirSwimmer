@@ -16,6 +16,7 @@ public final class R {
         public static final int Orange=0x7f040000;
         public static final int Tuerkis=0x7f040002;
         public static final int Weiss=0x7f040004;
+        public static final int app_colour=0x7f040005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -33,17 +34,20 @@ public final class R {
         public static final int down=0x7f020002;
         public static final int fish=0x7f020003;
         public static final int fish2=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int ic_sky=0x7f020006;
-        public static final int left=0x7f020007;
-        public static final int right=0x7f020008;
-        public static final int sea=0x7f020009;
-        public static final int up=0x7f02000a;
+        public static final int hai_button_button=0x7f020005;
+        public static final int hai_button_tilt=0x7f020006;
+        public static final int hai_button_wipe=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int ic_sky=0x7f020009;
+        public static final int left=0x7f02000a;
+        public static final int right=0x7f02000b;
+        public static final int sea=0x7f02000c;
+        public static final int up=0x7f02000d;
     }
     public static final class id {
-        public static final int Button_Buttons=0x7f090008;
-        public static final int Button_Tilt=0x7f09000a;
-        public static final int Button_Wipe=0x7f090009;
+        public static final int Button_Button=0x7f09000a;
+        public static final int Button_Tilt=0x7f090009;
+        public static final int Button_Wipe=0x7f09000b;
         public static final int RelativeLayout1=0x7f090006;
         public static final int action_settings=0x7f09000c;
         public static final int change_mode=0x7f090010;
@@ -51,10 +55,10 @@ public final class R {
         public static final int imageButtonLeft=0x7f090004;
         public static final int imageButtonRight=0x7f090002;
         public static final int imageButtonUp=0x7f090001;
-        public static final int imageView1=0x7f09000b;
         public static final int img=0x7f090005;
         public static final int layout=0x7f090000;
         public static final int linearLayout1=0x7f090007;
+        public static final int linearLayout2=0x7f090008;
         public static final int mode_buttons=0x7f090012;
         public static final int mode_tilt=0x7f090013;
         public static final int mode_wipe=0x7f090014;
