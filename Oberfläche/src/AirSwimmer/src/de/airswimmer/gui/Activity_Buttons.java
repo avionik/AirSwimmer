@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_layout_buttons);
-
+		    
 		button_up = (ImageButton) findViewById(R.id.imageButtonUp);
 		button_up.setOnClickListener(this);
 		button_right = (ImageButton) findViewById(R.id.imageButtonRight);
@@ -28,13 +29,20 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 		button_down.setOnClickListener(this);
 		button_left = (ImageButton) findViewById(R.id.imageButtonLeft);
 		button_left.setOnClickListener(this);
+		
+		button_down.performClick();
+		button_up.performClick();
+		button_right.performClick();
+		button_left.performClick();
 	}
 
 	@Override
 	public void onClick(View v) { // what happens when you click a button
+		    
+	    
 		if (v == button_up) { // if button_up was clicked
 			// TODO command up
-
+			button_up.getAnimation();
 			button_up.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) { // action while pressing the button down
