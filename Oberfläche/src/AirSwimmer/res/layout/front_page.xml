@@ -25,33 +25,58 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/Button_Tilt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background ="#00000000"
-        android:onClick="onButtonClick"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/hai_button_tilt" />
-
-    <ImageButton
         android:id="@+id/Button_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background ="#00000000"
-        android:onClick="onButtonClick"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/hai_button_button" />
+        android:background="#00000000"
+        android:onClick="onButtonClick"
+        android:src="@drawable/air_swimmers_shark" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button_Button"
+        android:layout_alignLeft="@+id/Button_Button"
+        android:text="@string/button_buttonb"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button_Wipe"
+        android:layout_alignLeft="@+id/Button_Wipe"
+        android:text="@string/button_wischen"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button_Tilt"
+        android:layout_alignLeft="@+id/Button_Tilt"
+        android:text="@string/button_kippen"
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/Button_Wipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background ="#00000000"
-        android:onClick="onButtonClick"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/Button_Button"
         android:layout_centerVertical="true"
-        android:src="@drawable/hai_button_wipe" />
+        android:background="#00000000"
+        android:onClick="onButtonClick"
+        android:src="@drawable/air_swimmers_shark" />
+
+    <ImageButton
+        android:id="@+id/Button_Tilt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Button_Wipe"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:onClick="onButtonClick"
+        android:src="@drawable/air_swimmers_shark" />
 
 </RelativeLayout>
