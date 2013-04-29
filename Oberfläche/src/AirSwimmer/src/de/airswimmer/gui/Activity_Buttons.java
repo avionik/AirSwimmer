@@ -1,5 +1,6 @@
 package de.airswimmer.gui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,10 +31,17 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 		button_left = (ImageButton) findViewById(R.id.imageButtonLeft);
 		button_left.setOnClickListener(this);
 		
+		//Perform the first click
 		button_down.performClick();
 		button_up.performClick();
 		button_right.performClick();
 		button_left.performClick();
+		
+		// Set Colors
+		button_down.setBackgroundColor(Color.TRANSPARENT);
+		button_up.setBackgroundColor(Color.TRANSPARENT);
+		button_left.setBackgroundColor(Color.TRANSPARENT);
+		button_right.setBackgroundColor(Color.TRANSPARENT);
 	}
 
 	@Override
@@ -45,12 +53,22 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 			button_up.getAnimation();
 			button_up.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
-					if (event.getAction() == MotionEvent.ACTION_DOWN) { // action while pressing the button down
-						Toast.makeText(v.getContext(), "up", Toast.LENGTH_SHORT)
-								.show(); // a text pops up for a short amount of
-											// time showing "up"
+					if (event.getAction() == MotionEvent.ACTION_DOWN) {
+						
+						// action while pressing the button down
+						button_up.setBackgroundColor(Color.BLUE);	
+						Toast.makeText(v.getContext(), "up", Toast.LENGTH_SHORT).show(); // a text pops up for a short amount of time showing "up"
+							
 						return true;
 					}
+					if(event.getAction() == MotionEvent.ACTION_UP){
+						
+						// action while pressing the button up
+						button_up.setBackgroundColor(Color.TRANSPARENT);
+						
+						return true;
+					}
+					
 					return false;
 				}
 			});
@@ -61,12 +79,22 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 			button_down.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
-						Toast.makeText(v.getContext(), "down",
-								Toast.LENGTH_SHORT).show();
+						
+						button_down.setBackgroundColor(Color.BLUE);							
+						Toast.makeText(v.getContext(), "down", Toast.LENGTH_SHORT).show();
+						
 						return true;
 					}
+					if(event.getAction() == MotionEvent.ACTION_UP){
+						
+						button_down.setBackgroundColor(Color.TRANSPARENT);
+						
+						return true;
+					}
+					
 					return false;
 				}
+				
 			});
 
 		} else if (v == button_right) {
@@ -75,8 +103,16 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 			button_right.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
-						Toast.makeText(v.getContext(), "right",
-								Toast.LENGTH_SHORT).show();
+						
+						button_right.setBackgroundColor(Color.BLUE);	
+						Toast.makeText(v.getContext(), "right",Toast.LENGTH_SHORT).show();
+						
+						return true;
+					}
+					if(event.getAction() == MotionEvent.ACTION_UP){
+						
+						button_right.setBackgroundColor(Color.TRANSPARENT);
+						
 						return true;
 					}
 					return false;
@@ -89,8 +125,16 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 			button_left.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
-						Toast.makeText(v.getContext(), "left",
-								Toast.LENGTH_SHORT).show();
+						
+						button_left.setBackgroundColor(Color.BLUE);	
+						Toast.makeText(v.getContext(), "left",Toast.LENGTH_SHORT).show();
+						
+						return true;
+					}
+					if(event.getAction() == MotionEvent.ACTION_UP){
+						
+						button_left.setBackgroundColor(Color.TRANSPARENT);
+						
 						return true;
 					}
 					return false;
