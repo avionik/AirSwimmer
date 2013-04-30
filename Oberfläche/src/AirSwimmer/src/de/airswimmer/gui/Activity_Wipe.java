@@ -26,7 +26,7 @@ public class Activity_Wipe extends BaseActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getActionMasked()){
                 case MotionEvent.ACTION_MOVE:                   //when view moves
-                    int xAxis = (int)  event.getRawX() - (offset_x / 8);  //calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
+                    int xAxis = (int) ((int)  event.getRawX() - (offset_x / 1.2));  //calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
                     int yAxis = (int) ((int)  event.getRawY() - (offset_y * 1.3));  //calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
                     
                     move(xAxis, yAxis);                         //method for movement of the fish is called

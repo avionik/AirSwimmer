@@ -108,8 +108,8 @@ public class Activity_Tilt extends BaseActivity implements SensorEventListener {
                 Canvas canvas = ourHolder.lockCanvas(); 
                 canvas.drawColor(Color.WHITE);
                 canvas.drawBitmap(scaled, 0,0, new Paint()); // set Background
-                float startX = 50;
-                float startY = 50;
+                float startX = 350;
+                float startY = 150;
                 float offsetX = (float) ((100.0/360.0*sensorX)*width/4);
                 float offsetY = (float) ((100.0/360.0*sensorY)*height/4);
         
