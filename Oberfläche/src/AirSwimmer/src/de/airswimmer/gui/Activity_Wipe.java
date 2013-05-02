@@ -24,29 +24,37 @@ public class Activity_Wipe extends BaseActivity {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                ImageView img = (ImageView) findViewById(R.id.img);
                 switch (event.getActionMasked()){
                 case MotionEvent.ACTION_MOVE:                   //when view moves
                     int xAxis = (int) ((int)  event.getRawX() - (offset_x / 1.2));  //calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
                     int yAxis = (int) ((int)  event.getRawY() - (offset_y * 1.3));  //calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
                     
-                    move(xAxis, yAxis);                         //method for movement of the fish is called
+                    int[] viewCoords = new int[2];
+                    img.getLocationOnScreen(viewCoords);
+                    int imageX = xAxis - viewCoords[0];         //viewCoords[0] is the X coordinate
+                    int imageY = yAxis - viewCoords[1];         //viewCoords[1] is the Y coordinate
                     
-                    @SuppressWarnings("deprecation")
-                    int width = getWindowManager().getDefaultDisplay().getWidth() - 325;        //get screen size ('-' so the fish stays the same size)
-                    @SuppressWarnings("deprecation")
-                    int height = getWindowManager().getDefaultDisplay().getHeight() - 295;
+                    if (imageX <= 100 && imageX > -100 && imageY <= 100 && imageY > -100){          //check, if movement is in the image
+                        move(xAxis, yAxis);                         //method for movement of the fish is called
+                        
+                        @SuppressWarnings("deprecation")
+                        int width = getWindowManager().getDefaultDisplay().getWidth() - 325;        //get screen size ('-' so the fish stays the same size)
+                        @SuppressWarnings("deprecation")
+                        int height = getWindowManager().getDefaultDisplay().getHeight() - 295;
 
-                    if (xAxis > width)                          //if fish is dragged too far to the left/right
-                        xAxis = width;
-                    
-                    if (yAxis > height)                         //if fish is dragged too far up/down
-                        yAxis = height;
-                    
-                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
-                    //when picture moves, the view gets created again
-                    lp.setMargins(xAxis, yAxis, 0, 0);
-                    selected_item.setLayoutParams(lp);
-                    break;
+                        if (xAxis > width)                          //if fish is dragged too far to the left/right
+                            xAxis = width;
+                        
+                        if (yAxis > height)                         //if fish is dragged too far up/down
+                            yAxis = height;
+                        
+                        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+                        //when picture moves, the view gets created again
+                        lp.setMargins(xAxis, yAxis, 0, 0);
+                        selected_item.setLayoutParams(lp);
+                        break;
+                    }
                     
                     default:                                    //when nothing moves
                         break;
