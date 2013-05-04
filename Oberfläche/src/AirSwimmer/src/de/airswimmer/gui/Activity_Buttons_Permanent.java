@@ -9,7 +9,7 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Activity_Buttons extends BaseActivity implements OnClickListener {
+public class Activity_Buttons_Permanent extends BaseActivity implements OnClickListener {
 
 	private ImageButton button_up;
 	private ImageButton button_down;
@@ -56,7 +56,7 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 						
 						// action while pressing the button down
 						button_up.setBackgroundColor(Color.BLUE);	
-						Toast.makeText(v.getContext(), "up", Toast.LENGTH_SHORT).show(); // a text pops up for a short amount of time showing "up"
+						Toast.makeText(v.getContext(), "up permanent", Toast.LENGTH_SHORT).show(); // a text pops up for a short amount of time showing "up"
 							
 						return true;
 					}
@@ -80,7 +80,7 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
 						
 						button_down.setBackgroundColor(Color.BLUE);							
-						Toast.makeText(v.getContext(), "down", Toast.LENGTH_SHORT).show();
+						Toast.makeText(v.getContext(), "down permanent", Toast.LENGTH_SHORT).show();
 						
 						return true;
 					}
@@ -104,7 +104,7 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
 						
 						button_right.setBackgroundColor(Color.BLUE);	
-						Toast.makeText(v.getContext(), "right",Toast.LENGTH_SHORT).show();
+						Toast.makeText(v.getContext(), "right permanent",Toast.LENGTH_SHORT).show();
 						
 						return true;
 					}
@@ -126,7 +126,7 @@ public class Activity_Buttons extends BaseActivity implements OnClickListener {
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {
 						
 						button_left.setBackgroundColor(Color.BLUE);	
-						Toast.makeText(v.getContext(), "left",Toast.LENGTH_SHORT).show();
+						Toast.makeText(v.getContext(), "left permanent",Toast.LENGTH_SHORT).show();
 						
 						return true;
 					}
