@@ -30,11 +30,11 @@ public class BaseActivity extends Activity {
 				.substring(currentActivityPath.lastIndexOf(".") + 1);
 		// find id to class name
 		int id = 0;
-		if (currentActivityName.equals("Activity_Buttons")){
+		if (currentActivityName.equals("BaseButtons")){
 			id = R.id.mode_buttons;
 		} else if (currentActivityName.equals("Activity_Tilt")) {
 			id = R.id.mode_tilt;
-		} else if (currentActivityName.equals("Activity_BaseWipe")) {
+		} else if (currentActivityName.equals("BaseWipe")) {
 			id = R.id.mode_wipe;
 		}
 		// if id was found set current screen invisible so only different modes
@@ -84,7 +84,7 @@ public class BaseActivity extends Activity {
 				startActivity(new Intent(this, Activity_Tilt.class));
 				return true;
 			case R.id.mode_wipe:
-				startActivity(new Intent(this, Activity_Wipe_OneMove.class));
+				startActivity(new Intent(this, Activity_Wipe.class));
 				return true;
 			default:
 				return false;
@@ -139,10 +139,10 @@ public class BaseActivity extends Activity {
 				switch (item.getItemId()) {
 				case R.id.permanent:
 					startActivity(new Intent(this,
-							Activity_Wipe_PermanentMove.class)); 
+							Activity_Wipe_Permanent.class)); 
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Wipe_OneMove.class));
+					startActivity(new Intent(this, Activity_Wipe.class));
 					return true;
 				default:
 					return false;

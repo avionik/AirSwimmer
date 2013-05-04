@@ -32,7 +32,7 @@ public class FrontPage extends Activity{
 				startActivity(new Intent(this, Activity_Tilt.class));
 				break;
 			case R.id.Button_Wipe:
-				startActivity(new Intent(this, Activity_Wipe_OneMove.class));
+				startActivity(new Intent(this, Activity_Wipe.class));
 			default:;
 					
 		
