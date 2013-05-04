@@ -10,7 +10,7 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_layot_buttons_permanent);
+		setContentView(R.layout.activity_layout_buttons_permanent);
 		super.onCreate(savedInstanceState);
 	}
 	
