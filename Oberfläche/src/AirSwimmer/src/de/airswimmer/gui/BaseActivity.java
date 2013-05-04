@@ -15,26 +15,26 @@ public class BaseActivity extends Activity {
 
 	/**
 	 * Creates Menu from start.xml and make current mode invisible in menu. Only
-	 * called once.
+	 * called once per activity.
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.start, menu);
 		// get name of current activity
-		String currentActivityPath = this.getClass().getName();
+		String currentActivityPath = this.getClass().getSuperclass().getName();
+		if(currentActivityPath.endsWith("BaseActivity")){
+			currentActivityPath=this.getClass().getName();
+		}
 		String currentActivityName = currentActivityPath
 				.substring(currentActivityPath.lastIndexOf(".") + 1);
 		// find id to class name
 		int id = 0;
-		if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__buttons))) {
+		if (currentActivityName.equals("Activity_Buttons")){
 			id = R.id.mode_buttons;
-		} else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__tilt))) {
+		} else if (currentActivityName.equals("Activity_Tilt")) {
 			id = R.id.mode_tilt;
-		} else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__wipe))) {
+		} else if (currentActivityName.equals("Activity_BaseWipe")) {
 			id = R.id.mode_wipe;
 		}
 		// if id was found set current screen invisible so only different modes
@@ -48,6 +48,7 @@ public class BaseActivity extends Activity {
 	/**
 	 * Reaction to choice in menu
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -83,7 +84,7 @@ public class BaseActivity extends Activity {
 				startActivity(new Intent(this, Activity_Tilt.class));
 				return true;
 			case R.id.mode_wipe:
-				startActivity(new Intent(this, Activity_Wipe.class));
+				startActivity(new Intent(this, Activity_Wipe_OneMove.class));
 				return true;
 			default:
 				return false;
@@ -131,40 +132,22 @@ public class BaseActivity extends Activity {
 		
 		// For Wipe
 		else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__wipe))) {
+				R.string.title_activity_activity__wipe))||currentActivityName.equals(getResources().getString(
+						R.string.title_activity_activity__wipe_permanent))) { //if one of the wipe activities is active
 			if (item.getGroupId() == R.id.submenu_changeMove) {
 
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					/* TODO --> name of new permanent wipe class
 					startActivity(new Intent(this,
-							Activity_Wipe_Permanent.class)); */
+							Activity_Wipe_PermanentMove.class)); 
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Wipe.class));
+					startActivity(new Intent(this, Activity_Wipe_OneMove.class));
 					return true;
 				default:
 					return false;
 				}
 
-			}
-		} else if (item.getGroupId() == R.id.submenu_changeMove
-				&& currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__wipe_permanent))) {
-
-			if (item.getGroupId() == R.id.submenu_changeMove) {
-				switch (item.getItemId()) {
-				case R.id.permanent:
-					/* TODO --> name of new permanent wipe class
-					startActivity(new Intent(this,
-							Activity_Wipe_Permanent.class)); */
-					return true;
-				case R.id.single:
-					startActivity(new Intent(this, Activity_Wipe.class));
-					return true;
-				default:
-					return false;
-				}
 			}
 		}
 		

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.airswimmer.gui"
+<manifest package="de.airswimmer.gui"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <supports-screens
         android:anyDensity="true"
@@ -35,10 +34,12 @@
             android:name="de.airswimmer.gui.Activity_Tilt"
             android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Wipe"
+        <activity android:name="de.airswimmer.gui.Activity_Wipe_OneMove"
             	  android:label="@string/title_activity_activity__wipe" android:screenOrientation="landscape">
         </activity>
         <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity>
+        <activity android:name="de.airswimmer.gui.Activity_Wipe_PermanentMove" 
+            	  android:label="@string/title_activity_activity__wipe_permanent" android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

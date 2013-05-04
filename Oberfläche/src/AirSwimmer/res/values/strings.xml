@@ -32,11 +32,11 @@
  	<!-- submenu of change-mode -->
     <string name="title_activity_activity__buttons">Activity_Buttons</string>
     <string name="title_activity_activity__tilt">Activity_Tilt</string>
-    <string name="title_activity_activity__wipe">Activity_Wipe</string>
+    <string name="title_activity_activity__wipe">Activity_Wipe_OneMove</string>
     
     <!-- submenu of change-move -->
     <string name="title_activity_activity__buttons_permanent">Activity_Buttons_Permanent</string>
-    <string name="title_activity_activity__wipe_permanent">Activity_Wipe_Permanent</string>
+    <string name="title_activity_activity__wipe_permanent">Activity_Wipe_PermanentMove</string>
 	<string name="title_activity_activity__tilt_permanent">Activity_Tilt_Permanent</string>
 	<string name="single">Einfach</string>
 	<string name="permanent">Permanent</string>
