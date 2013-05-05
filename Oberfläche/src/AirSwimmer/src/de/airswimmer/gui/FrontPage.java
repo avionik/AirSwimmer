@@ -17,7 +17,33 @@ public class FrontPage extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.front_page);
-	}
+		
+		
+		// Alert Dialog
+		final CharSequence[] items = {"Oben", "Links"};
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this)
+		.setTitle("Wähle AUX-Eingang")
+		.setCancelable(false)
+		.setItems(items, new DialogInterface.OnClickListener() {
+			
+		@Override
+		public void onClick(DialogInterface dialog, int item) {
+		
+		String choice = (String)items[item];
+		// TODO Auto-generated method stub
+	    //Here the activity 
+			
+		}
+			
+	});
+		
+		AlertDialog alert = builder.create();
+		alert.show();	
+		
+		
+		}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,31 +64,11 @@ public class FrontPage extends Activity{
 				startActivity(new Intent(this, Activity_Wipe.class));
 			default:;
 			
-			// Alert Diloge //TODO stürzt ab !!
-			/*final CharSequence[] items = {"alert_up", "alert_right"};
-			
-			AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext())
-			.setTitle("alert_title")
-			.setCancelable(false)
-			.setItems(items, new DialogInterface.OnClickListener() {
-				
-			@Override
-			public void onClick(DialogInterface dialog, int item) {
-			// TODO Auto-generated method stub
-		    //Here the activity 
-				
-			Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
-			}
-				
-		});
-			
-			AlertDialog alert = builder.create();
-			alert.show();*/	
+
 		};
-		
-		
-		}
-		
+
+	
+	}
 	}
 		
 	
