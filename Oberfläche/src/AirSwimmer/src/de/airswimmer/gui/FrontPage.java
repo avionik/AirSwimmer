@@ -1,10 +1,13 @@
 package de.airswimmer.gui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 // FrontPage.java implements Activity-Functions of FrontPage
 
@@ -34,12 +37,32 @@ public class FrontPage extends Activity{
 			case R.id.Button_Wipe:
 				startActivity(new Intent(this, Activity_Wipe.class));
 			default:;
-					
+			
+			// Alert Diloge //TODO stürzt ab !!
+			/*final CharSequence[] items = {"alert_up", "alert_right"};
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext())
+			.setTitle("alert_title")
+			.setCancelable(false)
+			.setItems(items, new DialogInterface.OnClickListener() {
+				
+			@Override
+			public void onClick(DialogInterface dialog, int item) {
+			// TODO Auto-generated method stub
+		    //Here the activity 
+				
+			Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+			}
+				
+		});
+			
+			AlertDialog alert = builder.create();
+			alert.show();*/	
+		};
+		
 		
 		}
+		
 	}
-
+		
 	
-	
-
-}

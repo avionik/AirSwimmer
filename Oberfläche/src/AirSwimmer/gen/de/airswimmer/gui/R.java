@@ -74,8 +74,8 @@ public final class R {
         public static final int water=0x7f090012;
     }
     public static final class layout {
-        public static final int activity_layot_buttons_permanent=0x7f030000;
-        public static final int activity_layout_buttons=0x7f030001;
+        public static final int activity_layout_buttons=0x7f030000;
+        public static final int activity_layout_buttons_permanent=0x7f030001;
         public static final int activity_layout_tilt=0x7f030002;
         public static final int activity_layout_wipe=0x7f030003;
         public static final int front_page=0x7f030004;
@@ -88,6 +88,11 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
+        public static final int alert_right=0x7f06001a;
+        public static final int alert_title=0x7f06001b;
+        /**  for alertDialog 
+         */
+        public static final int alert_up=0x7f060019;
         /**  Front page 
          */
         public static final int app_name=0x7f060000;

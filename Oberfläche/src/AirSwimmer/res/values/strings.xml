@@ -40,4 +40,9 @@
 	<string name="title_activity_activity__tilt_permanent">Activity_Tilt_Permanent</string>
 	<string name="single">Einfach</string>
 	<string name="permanent">Permanent</string>
+	
+    <!-- for alertDialog -->
+ 	<string name="alert_up">Oben</string> 
+ 	<string name="alert_right">Rechts</string>
+ 	<string name="alert_title">Wähle AUX-Eingang</string>
 </resources>
