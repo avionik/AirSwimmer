@@ -7,6 +7,8 @@ import android.media.AudioTrack;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,12 +25,14 @@ public class MainActivity extends Activity {
 			AudioFormat.ENCODING_PCM_8BIT);
 	AudioTrack ir;
 	AudioManager audio;
+	SharedPreferences mPrefs;
 	// private static final String path = "/samsungLirc.txt";
 	private static final String path = "/storage/sdcard0/AirSwimmerLirc.txt";
 
 	// private static final String path = "/storage/sdcard0/AirSwimmerLirc.txt";
 	// private static final String path = "/storage/sdcard0/Lircleft.txt";
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,11 +42,26 @@ public class MainActivity extends Activity {
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 		audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		mPrefs = this.getApplicationContext().getSharedPreferences(
+				"myAppPrefs", 0); // 0 = mode private. only this app can read
+									// these preferences
 
+		int now = getVolume();
+		if (audio.isBluetoothA2dpOn()) {
+
+			audio.setBluetoothA2dpOn(true);
+			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
+
+			audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		} else {
+			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
+
+			audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		}
 		super.onCreate(savedInstanceState);
-		
+
 		buttons();
-		
+
 		// get lirc config file for the air swimmer remote
 		System.out.println(readConfigFile(path));
 
@@ -63,6 +82,7 @@ public class MainActivity extends Activity {
 	 */
 	public boolean readConfigFile(String filepath) {
 
+		System.out.println("Filepath = " + filepath);
 		if (lirc.parse(filepath) == 0) {
 			System.err.println("error parsing lirc file");
 			return false;
@@ -88,6 +108,7 @@ public class MainActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	public void sendCommand(String command) {
 
+		//ir.release();
 		// expects the name of the Lirc file (not filename, name is stated in
 		// the file) & the command which should be executed
 		buffer = lirc.getIrBuffer(nameInLirc, command);
@@ -102,9 +123,11 @@ public class MainActivity extends Activity {
 
 		if (bufSize < buffer.length)
 			bufSize = buffer.length;
-
+		for(int i =0; i < buffer.length; i++){
+			System.out.println(buffer[i]);
+		}
 		ir.write(buffer, 0, buffer.length);
-
+		
 		ir.setStereoVolume(1, 1);
 
 		ir.play();
@@ -125,10 +148,13 @@ public class MainActivity extends Activity {
 
 				System.out.println("left pressed");
 				sendCommand(Commands.TAILLEFT.name());
+				System.out.println(Commands.TAILLEFT.name());
+				// try hard coded string
+				sendCommand("TAILLEFT");
 
 			}
 		});
-		
+
 		right.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -138,7 +164,7 @@ public class MainActivity extends Activity {
 
 			}
 		});
-		
+
 		climb.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -148,7 +174,7 @@ public class MainActivity extends Activity {
 
 			}
 		});
-		
+
 		dive.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -158,6 +184,29 @@ public class MainActivity extends Activity {
 
 			}
 		});
+	}
+
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		System.out.println("KeyCode = " + keyCode);
+		System.out.println("Event = " + event);
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_VOLUME_UP:
+			audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+					AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
+			return true;
+		case KeyEvent.KEYCODE_VOLUME_DOWN:
+			audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+					AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
+			return true;
+
+		default:
+			super.onKeyDown(keyCode, event);
+			return false;
+		}
+	}
+
+	public int getVolume() {
+		return mPrefs.getInt("volume", 50);
 	}
 
 }
