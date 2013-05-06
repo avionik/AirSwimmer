@@ -58,7 +58,7 @@ public class FrontPage extends Activity{
 				startActivity(new Intent(this, Activity_Buttons.class));
 				break;
 			case R.id.Button_Tilt:
-				startActivity(new Intent(this, Activity_Tilt.class));
+				startActivity(new Intent(this, Start_button_tilt.class));
 				break;
 			case R.id.Button_Wipe:
 				startActivity(new Intent(this, Activity_Wipe.class));

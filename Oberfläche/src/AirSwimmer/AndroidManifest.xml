@@ -40,6 +40,7 @@
         <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity>
         <activity android:name="de.airswimmer.gui.Activity_Wipe_Permanent" 
             	  android:label="@string/title_activity_activity__wipe_permanent" android:screenOrientation="landscape"></activity>
+        <activity android:name="de.airswimmer.gui.Start_button_tilt"></activity>
     </application>
 
 </manifest>
