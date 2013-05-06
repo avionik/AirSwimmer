@@ -32,7 +32,7 @@ public class BaseActivity extends Activity {
 		int id = 0;
 		if (currentActivityName.equals("BaseButtons")){
 			id = R.id.mode_buttons;
-		} else if (currentActivityName.equals("Activity_Tilt")) {
+		} else if (currentActivityName.equals("BaseTilt")) {
 			id = R.id.mode_tilt;
 		} else if (currentActivityName.equals("BaseWipe")) {
 			id = R.id.mode_wipe;
@@ -159,9 +159,9 @@ public class BaseActivity extends Activity {
 
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					/* TODO --> name of new permanent tilt class
+					//* TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class)); */
+							Activity_Tilt_Permanent.class)); 
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Tilt.class));
@@ -178,9 +178,9 @@ public class BaseActivity extends Activity {
 			if (item.getGroupId() == R.id.submenu_changeMove) {
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					/* TODO --> name of new permanent tilt class
+					//* TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class)); */
+							Activity_Tilt_Permanent.class)); 
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Tilt.class));
