@@ -19,7 +19,7 @@ public abstract class BaseButtons extends BaseActivity implements OnClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		    
+
 		button_up = (ImageButton) findViewById(R.id.imageButtonUp);
 		button_up.setOnClickListener(this);
 		button_right = (ImageButton) findViewById(R.id.imageButtonRight);

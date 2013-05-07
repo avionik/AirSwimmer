@@ -2,7 +2,6 @@ package de.airswimmer.gui;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 
 

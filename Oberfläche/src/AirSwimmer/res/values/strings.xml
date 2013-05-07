@@ -9,7 +9,7 @@
     <string name="button_wischen">WISCHEN</string>
     <string name="button_kippen">KIPPEN</string>
     
-    <!-- buttons fpr button_mode -->
+    <!-- buttons of button_mode -->
     <string name="button_up">Up</string>
     <string name="button_down">Down</string>
     <string name="button_right">Right</string>
@@ -20,7 +20,7 @@
  	<string name="mode_tilt">Kippen</string> 
  	<string name="mode_wipe">Wischen</string> 
 
- 	<!-- start.xml menu -->
+ 	<!-- control.xml menu -->
  	<string name="select_mode">Modus auswählen</string>
  	<string name="change_background">Hintergrund ändern</string>
  	<string name="change_move">Steuerungsart ändern</string>
@@ -42,6 +42,10 @@
 	<string name="single">Einfach</string>
 	<string name="permanent">Permanent</string>
 	
+	<!-- start.xml menu -->
+	<string name="change_layout_orientation">Ausrichtung ändern</string>
+	<string name="orientation_portrait">Aux-Anschluss an der kurzen Seite</string>
+	<string name="orientation_landscape">Aux-Anschluss an der langen Seite</string>	
 	
   
 </resources>

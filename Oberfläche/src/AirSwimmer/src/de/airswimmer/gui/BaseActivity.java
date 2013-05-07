@@ -1,8 +1,11 @@
 package de.airswimmer.gui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
@@ -12,25 +15,38 @@ import android.widget.RelativeLayout;
  * 
  */
 public class BaseActivity extends Activity {
+	
+	@Override
+	//handles screen orientation
+	protected void onCreate(Bundle savedInstanceState) {
+		SharedPreferences prefs = getSharedPreferences("AirSwimmerPrefs",
+				Context.MODE_PRIVATE); // get preferences which are stored in
+										// file AirSwimmerPrefs
+		int layout = prefs.getInt("layout", -1);
+		if (layout != -1) {
+			setRequestedOrientation(layout); //set screen orientation of current activity to stored value
+		}
+		super.onCreate(savedInstanceState);
+	}
 
 	/**
-	 * Creates Menu from start.xml and make current mode invisible in menu. Only
-	 * called once per activity.
+	 * Creates Menu from control.xml and make current mode invisible in menu.
+	 * Only called once per activity.
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.start, menu);
+		getMenuInflater().inflate(R.menu.control, menu);
 		// get name of current activity
 		String currentActivityPath = this.getClass().getSuperclass().getName();
-		if(currentActivityPath.endsWith("BaseActivity")){
-			currentActivityPath=this.getClass().getName();
+		if (currentActivityPath.endsWith("BaseActivity")) {
+			currentActivityPath = this.getClass().getName();
 		}
 		String currentActivityName = currentActivityPath
 				.substring(currentActivityPath.lastIndexOf(".") + 1);
 		// find id to class name
 		int id = 0;
-		if (currentActivityName.equals("BaseButtons")){
+		if (currentActivityName.equals("BaseButtons")) {
 			id = R.id.mode_buttons;
 		} else if (currentActivityName.equals("BaseTilt")) {
 			id = R.id.mode_tilt;
@@ -74,7 +90,7 @@ public class BaseActivity extends Activity {
 				background.setBackgroundDrawable(source
 						.getDrawable(R.drawable.th_ingolstadt));
 				return true;
-				
+
 			default:
 				return false;
 			}
@@ -97,7 +113,7 @@ public class BaseActivity extends Activity {
 		}
 		// reaction to selected menupoint in submenu for changing
 		// permanent/single move
-		
+
 		// For Buttons
 		if (currentActivityName.equals(getResources().getString(
 				R.string.title_activity_activity__buttons))) {
@@ -134,17 +150,25 @@ public class BaseActivity extends Activity {
 				}
 			}
 		}
-		
+
 		// For Wipe
 		else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__wipe))||currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__wipe_permanent))) { //if one of the wipe activities is active
+				R.string.title_activity_activity__wipe))
+				|| currentActivityName.equals(getResources().getString(
+						R.string.title_activity_activity__wipe_permanent))) { // if
+																				// one
+																				// of
+																				// the
+																				// wipe
+																				// activities
+																				// is
+																				// active
 			if (item.getGroupId() == R.id.submenu_changeMove) {
 
 				switch (item.getItemId()) {
 				case R.id.permanent:
 					startActivity(new Intent(this,
-							Activity_Wipe_Permanent.class)); 
+							Activity_Wipe_Permanent.class));
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Wipe.class));
@@ -155,8 +179,7 @@ public class BaseActivity extends Activity {
 
 			}
 		}
-		
-		
+
 		// For Tilt
 		else if (currentActivityName.equals(getResources().getString(
 				R.string.title_activity_activity__tilt))) {
@@ -164,9 +187,9 @@ public class BaseActivity extends Activity {
 
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					//* TODO --> name of new permanent tilt class
+					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class)); 
+							Activity_Tilt_Permanent.class));
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Tilt.class));
@@ -183,9 +206,9 @@ public class BaseActivity extends Activity {
 			if (item.getGroupId() == R.id.submenu_changeMove) {
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					//* TODO --> name of new permanent tilt class
+					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class)); 
+							Activity_Tilt_Permanent.class));
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Tilt.class));
@@ -195,8 +218,7 @@ public class BaseActivity extends Activity {
 				}
 			}
 		}
-		
-		
+
 		return false;
 	}
 }

@@ -161,7 +161,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	    }
 
 	    /**
-	     * Overrides changeBackground so mipmap is changed instead of background.
+	     * Overrides changeBackground so bitmap is changed instead of background.
 	     */
 	    @Override
 	    public boolean onOptionsItemSelected(MenuItem item) {
@@ -174,6 +174,9 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 			       break;
 				case R.id.water:
 					id=R.drawable.sea;
+					break;
+				case R.id.th_picture:
+					id=R.drawable.th_ingolstadt;
 					break;
 				default: 
 					return false;
