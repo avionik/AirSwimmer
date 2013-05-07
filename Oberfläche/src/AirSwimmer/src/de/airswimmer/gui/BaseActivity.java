@@ -70,6 +70,11 @@ public class BaseActivity extends Activity {
 				background.setBackgroundDrawable(source
 						.getDrawable(R.drawable.sea));
 				return true;
+			case R.id.th_picture:
+				background.setBackgroundDrawable(source
+						.getDrawable(R.drawable.th_ingolstadt));
+				return true;
+				
 			default:
 				return false;
 			}

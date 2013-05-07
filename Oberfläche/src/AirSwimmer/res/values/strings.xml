@@ -28,6 +28,7 @@
  	<!-- submenu of change-background -->
  	<string name="water_picture">Wasser</string> 
  	<string name="sky_picture">Himmel</string>
+ 	<string name="th_picture">Hochschule</string>
  	
  	<!-- submenu of change-mode -->
     <string name="title_activity_activity__buttons">Activity_Buttons</string>
@@ -40,6 +41,7 @@
 	<string name="title_activity_activity__tilt_permanent">Activity_Tilt_Permanent</string>
 	<string name="single">Einfach</string>
 	<string name="permanent">Permanent</string>
+	
 	
   
 </resources>
