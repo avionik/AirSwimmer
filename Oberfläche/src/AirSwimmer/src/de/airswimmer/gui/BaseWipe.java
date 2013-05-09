@@ -64,7 +64,7 @@ public abstract class BaseWipe extends BaseActivity {
             int imageX = xAxis - viewCoords[0]; // viewCoords[0] is the X coordinate
             int imageY = yAxis - viewCoords[1]; // viewCoords[1] is the Y coordinate
 
-            if (imageX <= 100 && imageX > -100 && imageY <= 100 && imageY > -100) { // check, if movement is in the image
+            if (imageX <= 100 && imageX > -100 || imageY <= 100 && imageY > -100) { // check, if movement is in the image
                 move(xAxis, yAxis); // method for movement of the fish is called
 
                 @SuppressWarnings("deprecation")
