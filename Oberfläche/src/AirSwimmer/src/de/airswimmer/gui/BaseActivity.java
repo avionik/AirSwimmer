@@ -105,7 +105,7 @@ public class BaseActivity extends Activity {
 				startActivity(new Intent(this, Activity_Tilt.class));
 				return true;
 			case R.id.mode_wipe:
-				startActivity(new Intent(this, Activity_Wipe.class));
+				startActivity(new Intent(this, Activity_Slide.class));
 				return true;
 			default:
 				return false;
@@ -168,10 +168,10 @@ public class BaseActivity extends Activity {
 				switch (item.getItemId()) {
 				case R.id.permanent:
 					startActivity(new Intent(this,
-							Activity_Wipe_Permanent.class));
+							Activity_Slide_Permanent.class));
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Wipe.class));
+					startActivity(new Intent(this, Activity_Slide.class));
 					return true;
 				default:
 					return false;

@@ -100,7 +100,7 @@ public class FrontPage extends Activity {
 			startActivity(new Intent(this, Start_button_tilt.class));
 			break;
 		case R.id.Button_Wipe:
-			startActivity(new Intent(this, Activity_Wipe.class));
+			startActivity(new Intent(this, Activity_Slide.class));
 		default:
 			;
 

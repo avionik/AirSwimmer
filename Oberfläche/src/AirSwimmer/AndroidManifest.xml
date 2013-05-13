@@ -34,10 +34,10 @@
             android:name="de.airswimmer.gui.Activity_Tilt"
             android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Wipe"
+        <activity android:name="de.airswimmer.gui.Activity_Slide"
             	  android:label="@string/title_activity_activity__wipe" android:screenOrientation="landscape">
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity><activity android:name="de.airswimmer.gui.Activity_Wipe_Permanent" 
+        <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity><activity android:name="de.airswimmer.gui.Activity_Slide_Permanent" 
             	  android:label="@string/title_activity_activity__wipe_permanent" android:screenOrientation="landscape"></activity>
         <activity android:name="de.airswimmer.gui.Start_button_tilt"></activity>
         
