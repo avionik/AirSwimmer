@@ -50,8 +50,8 @@ public class BaseActivity extends Activity {
 			id = R.id.mode_buttons;
 		} else if (currentActivityName.equals("BaseTilt")) {
 			id = R.id.mode_tilt;
-		} else if (currentActivityName.equals("BaseWipe")) {
-			id = R.id.mode_wipe;
+		} else if (currentActivityName.equals("BaseSlide")) {
+			id = R.id.mode_slide;
 		}
 		// if id was found set current screen invisible so only different modes
 		// are visible
@@ -104,7 +104,7 @@ public class BaseActivity extends Activity {
 			case R.id.mode_tilt:
 				startActivity(new Intent(this, Activity_Tilt.class));
 				return true;
-			case R.id.mode_wipe:
+			case R.id.mode_slide:
 				startActivity(new Intent(this, Activity_Slide.class));
 				return true;
 			default:
@@ -151,15 +151,15 @@ public class BaseActivity extends Activity {
 			}
 		}
 
-		// For Wipe
+		// For Slide
 		else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__wipe))
+				R.string.title_activity_activity__slide))
 				|| currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__wipe_permanent))) { // if
+						R.string.title_activity_activity__slide_permanent))) { // if
 																				// one
 																				// of
 																				// the
-																				// wipe
+																				// slide
 																				// activities
 																				// is
 																				// active

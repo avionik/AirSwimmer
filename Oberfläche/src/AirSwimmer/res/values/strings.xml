@@ -18,7 +18,7 @@
 	<!-- submenu of select_mode -->	
  	<string name="mode_buttons">Tasten</string> 
  	<string name="mode_tilt">Kippen</string> 
- 	<string name="mode_wipe">Wischen</string> 
+ 	<string name="mode_slide">Wischen</string> 
 
  	<!-- control.xml menu -->
  	<string name="select_mode">Modus auswählen</string>
@@ -33,11 +33,11 @@
  	<!-- submenu of change-mode -->
     <string name="title_activity_activity__buttons">Activity_Buttons</string>
     <string name="title_activity_activity__tilt">Activity_Tilt</string>
-    <string name="title_activity_activity__wipe">Activity_Wipe</string>
+    <string name="title_activity_activity__slide">Activity_Slide</string>
     
     <!-- submenu of change-move -->
     <string name="title_activity_activity__buttons_permanent">Activity_Buttons_Permanent</string>
-    <string name="title_activity_activity__wipe_permanent">Activity_Wipe_Permanent</string>
+    <string name="title_activity_activity__slide_permanent">Activity_Slide_Permanent</string>
 	<string name="title_activity_activity__tilt_permanent">Activity_Tilt_Permanent</string>
 	<string name="single">Einfach</string>
 	<string name="permanent">Permanent</string>

@@ -35,10 +35,10 @@
             android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
         </activity>
         <activity android:name="de.airswimmer.gui.Activity_Slide"
-            	  android:label="@string/title_activity_activity__wipe" android:screenOrientation="landscape">
+            	  android:label="@string/title_activity_activity__slide" android:screenOrientation="landscape">
         </activity>
         <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity><activity android:name="de.airswimmer.gui.Activity_Slide_Permanent" 
-            	  android:label="@string/title_activity_activity__wipe_permanent" android:screenOrientation="landscape"></activity>
+            	  android:label="@string/title_activity_activity__slide_permanent" android:screenOrientation="landscape"></activity>
         <activity android:name="de.airswimmer.gui.Start_button_tilt"></activity>
         
     </application>

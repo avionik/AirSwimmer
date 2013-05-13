@@ -31,8 +31,8 @@
                 android:title="@string/mode_tilt"/>
             <!--  Switch to control AirSwimmer via sliding fish on screen -->
             <item
-                android:id="@+id/mode_wipe"
-                android:title="@string/mode_wipe"/>
+                android:id="@+id/mode_slide"
+                android:title="@string/mode_slide"/>
             
             </group>
         </menu>

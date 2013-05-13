@@ -49,8 +49,8 @@ public final class R {
     }
     public static final class id {
         public static final int Button_Button=0x7f09000d;
+        public static final int Button_Slide=0x7f09000c;
         public static final int Button_Tilt=0x7f09000f;
-        public static final int Button_Wipe=0x7f09000c;
         public static final int RelativeLayout1=0x7f090007;
         public static final int action_settings=0x7f090011;
         public static final int buttonStart=0x7f090005;
@@ -68,8 +68,8 @@ public final class R {
         public static final int linearLayout1=0x7f090008;
         public static final int linearLayout2=0x7f090009;
         public static final int mode_buttons=0x7f090019;
+        public static final int mode_slide=0x7f09001b;
         public static final int mode_tilt=0x7f09001a;
-        public static final int mode_wipe=0x7f09001b;
         public static final int permanent=0x7f09001e;
         public static final int portrait=0x7f090022;
         public static final int single=0x7f09001f;
@@ -123,8 +123,8 @@ public final class R {
         /**  submenu of select_mode 
          */
         public static final int mode_buttons=0x7f060009;
+        public static final int mode_slide=0x7f06000b;
         public static final int mode_tilt=0x7f06000a;
-        public static final int mode_wipe=0x7f06000b;
         public static final int orientation_landscape=0x7f06001c;
         public static final int orientation_portrait=0x7f06001b;
         public static final int permanent=0x7f060019;
@@ -140,10 +140,10 @@ public final class R {
         /**  submenu of change-move 
          */
         public static final int title_activity_activity__buttons_permanent=0x7f060015;
+        public static final int title_activity_activity__slide=0x7f060014;
+        public static final int title_activity_activity__slide_permanent=0x7f060016;
         public static final int title_activity_activity__tilt=0x7f060013;
         public static final int title_activity_activity__tilt_permanent=0x7f060017;
-        public static final int title_activity_activity__wipe=0x7f060014;
-        public static final int title_activity_activity__wipe_permanent=0x7f060016;
         /**  submenu of change-background 
          */
         public static final int water_picture=0x7f06000f;
