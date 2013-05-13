@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
  * Base class for remote control via wiping. Provides layout and movement of layout.
  * 
  */
-public abstract class BaseWipe extends BaseActivity {
+public abstract class BaseSlide extends BaseActivity {
 
     private View selected_item = null;
     private int offset_x = 0;
@@ -20,7 +20,7 @@ public abstract class BaseWipe extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_layout_wipe); // set Layout
+        setContentView(R.layout.activity_layout_slide); // set Layout
         ViewGroup vg = (ViewGroup) findViewById(R.id.layout); // set ViewGroup
         vg.setOnTouchListener(new View.OnTouchListener() { // set OnTouchListener for ViewGroup
 

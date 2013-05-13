@@ -9,7 +9,7 @@ import android.view.View;
  * Class for wiping where shark is swimming permanently and sliding causes change of direction
  * 
  */
-public class Activity_Wipe_Permanent extends BaseWipe {
+public class Activity_Slide_Permanent extends BaseSlide {
     boolean swimmForward = false; //indicates if AirSwimmer has to swim forward
     @Override
     protected boolean moveImage(View view, MotionEvent event) {
