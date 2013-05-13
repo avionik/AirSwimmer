@@ -91,9 +91,8 @@ public final class R {
         public static final int activity_layout_slide=0x7f030002;
         public static final int activity_layout_tilt=0x7f030003;
         public static final int activity_layout_tilt_permanent=0x7f030004;
-        public static final int activity_layout_wipe=0x7f030005;
-        public static final int front_page=0x7f030006;
-        public static final int start_button_tilt=0x7f030007;
+        public static final int front_page=0x7f030005;
+        public static final int start_button_tilt=0x7f030006;
     }
     public static final class menu {
         public static final int activity__buttons=0x7f080000;
