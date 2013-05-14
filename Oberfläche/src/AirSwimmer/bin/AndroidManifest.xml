@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="de.airswimmer.gui"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.airswimmer.gui"
     android:versionCode="1"
-    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionName="1.0" >
 
     <supports-screens
         android:anyDensity="true"
@@ -19,7 +20,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="de.airswimmer.gui.FrontPage"
-            android:label="@string/app_name" android:screenOrientation="landscape" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,18 +30,39 @@
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Buttons"
-            android:label="@string/title_activity_activity__buttons" android:screenOrientation="landscape">
+            android:label="Einfache Tastensteuerung"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Tilt"
-            android:label="@string/title_activity_activity__tilt" android:screenOrientation="landscape">
+            android:label="Einfache Kippsteuerung"
+            android:screenOrientation="landscape" >
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Slide"
-            	  android:label="@string/title_activity_activity__slide" android:screenOrientation="landscape">
+        <activity
+            android:name="de.airswimmer.gui.Activity_Slide"
+            android:label="Einfache Wischsteuerung"
+            android:screenOrientation="landscape" >
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"></activity><activity android:name="de.airswimmer.gui.Activity_Slide_Permanent" 
-            	  android:label="@string/title_activity_activity__slide_permanent" android:screenOrientation="landscape"></activity>
-        <activity android:name="de.airswimmer.gui.Start_button_tilt"></activity>
+        <activity
+            android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
+            android:label="Permanente Tastensteuerung"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="de.airswimmer.gui.Activity_Slide_Permanent"
+            android:label="Permanente Wischsteuerung"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="de.airswimmer.gui.Activity_Tilt_Permanent"
+            android:label="Permanente Kippsteuerung"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="de.airswimmer.gui.Start_button_tilt"
+            android:label="Permanente Kippsteuerung"
+            android:screenOrientation="landscape" >
+        </activity>
         
     </application>
 

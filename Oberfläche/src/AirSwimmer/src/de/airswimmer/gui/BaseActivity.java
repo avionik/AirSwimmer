@@ -189,7 +189,7 @@ public class BaseActivity extends Activity {
 				case R.id.permanent:
 					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class));
+							Start_button_tilt.class));
 					return true;
 				case R.id.single:
 					startActivity(new Intent(this, Activity_Tilt.class));
