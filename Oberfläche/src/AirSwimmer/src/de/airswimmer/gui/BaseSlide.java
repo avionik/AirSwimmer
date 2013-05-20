@@ -54,9 +54,9 @@ public abstract class BaseSlide extends BaseActivity {
         ImageView img = (ImageView) findViewById(R.id.img);
         switch (event.getActionMasked()) {
         case MotionEvent.ACTION_MOVE: // when view moves
-            int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.2)); // calculate position of fish in xAxis, '/' to prevent fish from 'jumping'
+            int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1)); // calculate position of fish in xAxis, '/' to prevent fish from 'jumping'
                                                                           // away from finger
-            int yAxis = (int) ((int) event.getRawY() - (offset_y * 1.3)); // calculate position of fish in yAxis, '*' to prevent fish from 'jumping'
+            int yAxis = (int) event.getY() - offset_y; // calculate position of fish in yAxis, '*' to prevent fish from 'jumping'
                                                                           // away from finger
 
             int[] viewCoords = new int[2];
@@ -64,7 +64,7 @@ public abstract class BaseSlide extends BaseActivity {
             int imageX = xAxis - viewCoords[0]; // viewCoords[0] is the X coordinate
             int imageY = yAxis - viewCoords[1]; // viewCoords[1] is the Y coordinate
 
-            if (imageX <= 100 && imageX > -100 || imageY <= 100 && imageY > -100) { // check, if movement is in the image
+            if (imageX <= 80 && imageX > -15 || imageY <= 50 && imageY > -10) { // check, if movement is in the image
                 move(xAxis, yAxis); // method for movement of the fish is called
 
                 @SuppressWarnings("deprecation")
