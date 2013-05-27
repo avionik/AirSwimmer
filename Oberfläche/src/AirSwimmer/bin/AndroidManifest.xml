@@ -30,40 +30,30 @@
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Buttons"
-            android:label="Einfache Tastensteuerung"
+            android:label="@string/title_activity_activity__buttons"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Tilt"
-            android:label="Einfache Kippsteuerung"
+            android:label="@string/title_activity_activity__tilt"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Slide"
-            android:label="Einfache Wischsteuerung"
+            android:label="@string/title_activity_activity__slide"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
-            android:label="Permanente Tastensteuerung"
-            android:screenOrientation="landscape" >
+        <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
+            android:label="@string/title_activity_activity__buttons_permanent" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Slide_Permanent"
-            android:label="Permanente Wischsteuerung"
+            android:label="@string/title_activity_activity__slide_permanent"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="de.airswimmer.gui.Activity_Tilt_Permanent"
-            android:label="Permanente Kippsteuerung"
-            android:screenOrientation="landscape" >
+        <activity android:name="de.airswimmer.gui.Start_button_tilt" >
         </activity>
-        <activity
-            android:name="de.airswimmer.gui.Start_button_tilt"
-            android:label="Permanente Kippsteuerung"
-            android:screenOrientation="landscape" >
-        </activity>
-        
+        <activity android:name="de.airswimmer.gui.Start_button_tilt_Permanent"></activity>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 
-public class Start_button_tilt extends BaseActivity implements OnClickListener{
+public class Start_button_tilt_Permanent extends BaseActivity implements OnClickListener{
 
 	private ImageButton Button_start_tilt;
 
@@ -24,7 +24,7 @@ public class Start_button_tilt extends BaseActivity implements OnClickListener{
 	public void onClick(View v) { // what happens when you click a button
 		if (v == Button_start_tilt) { 
 		
-			startActivity(new Intent(this, Activity_Tilt.class));
+			startActivity(new Intent(this, Activity_Tilt_Permanent.class));
 		}
 	}
 }

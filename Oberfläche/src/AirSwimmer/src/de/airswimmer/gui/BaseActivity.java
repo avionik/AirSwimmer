@@ -189,10 +189,10 @@ public class BaseActivity extends Activity {
 				case R.id.permanent:
 					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Start_button_tilt.class));
+							Start_button_tilt_Permanent.class));
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Tilt.class));
+					startActivity(new Intent(this, Start_button_tilt.class));
 					return true;
 				default:
 					return false;
@@ -208,10 +208,10 @@ public class BaseActivity extends Activity {
 				case R.id.permanent:
 					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class));
+							Start_button_tilt_Permanent.class));
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Tilt.class));
+					startActivity(new Intent(this, Start_button_tilt.class));
 					return true;
 				default:
 					return false;
