@@ -11,6 +11,17 @@
     android:background="@drawable/ic_sky"
     tools:context=".StartActivity" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/start_button_tilt1"
+        android:layout_alignTop="@+id/start_button_tilt1"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="16dp"
+        android:text="Start Permanent"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ImageButton
         android:id="@+id/start_button_tilt1"
         android:layout_width="wrap_content"
@@ -18,16 +29,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:src="@drawable/bellishark_1_medium" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/start_button_tilt1"
-        android:layout_alignTop="@+id/start_button_tilt1"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="43dp"
-        android:text="Start"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

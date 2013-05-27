@@ -102,7 +102,7 @@ public class BaseActivity extends Activity {
 				startActivity(new Intent(this, Activity_Buttons.class));
 				return true;
 			case R.id.mode_tilt:
-				startActivity(new Intent(this, Activity_Tilt.class));
+				startActivity(new Intent(this, Start_button_tilt.class));
 				return true;
 			case R.id.mode_slide:
 				startActivity(new Intent(this, Activity_Slide.class));
