@@ -16,8 +16,11 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public abstract class BaseTilt extends BaseActivity implements SensorEventListener {
 
@@ -189,7 +192,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	    	return super.onOptionsItemSelected(item);
 	    }
 	    
-	    
+	   
 	    /**
 	     * Stops drawing thread before execute step back
 	     */

@@ -43,7 +43,7 @@
             android:label="Einfache Wischsteuerung"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
+        <activity 
             android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
             android:label="Permanente Tastensteuerung"
             android:screenOrientation="landscape" >
@@ -53,17 +53,16 @@
             android:label="Permanente Wischsteuerung"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="de.airswimmer.gui.Activity_Tilt_Permanent"
-            android:label="Permanente Kippsteuerung"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
+        <activity 
+            android:name="de.airswimmer.gui.Activity_Tilt_Permanent" 
+            android:label="Permanente Kippsteuerung" 
+            android:screenOrientation="landscape" > 
+        </activity> 
+        <activity 
             android:name="de.airswimmer.gui.Start_button_tilt"
-            android:label="Permanente Kippsteuerung"
+            android:label="Kippsteuerung"
             android:screenOrientation="landscape" >
         </activity>
-        
     </application>
 
 </manifest>
