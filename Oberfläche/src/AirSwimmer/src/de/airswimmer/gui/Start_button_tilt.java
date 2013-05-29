@@ -24,7 +24,7 @@ public class Start_button_tilt extends BaseActivity implements OnClickListener{
 	public void onClick(View v) { // what happens when you click a button
 		if (v == Button_start_tilt) { 
 		
-			startActivity(new Intent(this, Activity_Tilt_Permanent.class));
+			startActivity(new Intent(this, Activity_Tilt.class));
 		}
 	}
 }

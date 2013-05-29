@@ -29,18 +29,16 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) { 
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) { // to able to detect the change of the sensor 
-		try {
-			Thread.sleep(20);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		
 		sensorY = event.values[0];
 		sensorX = event.values[1];
@@ -95,8 +93,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	        	isRunning=false;
 	        }
 	        private void drawShark(){
-	         
-                
+	        	double delay = 0;  //sensitivity of sensor  //TODO find value where shark is not shaking
                 Display display = getWindowManager().getDefaultDisplay();    // to get the Window height and widt
                 int width = display.getWidth();
                 int height = display.getHeight();
@@ -112,9 +109,19 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
                 canvas.drawBitmap(scaled, 0,0, new Paint()); // set Background
                 float startX = 350;
                 float startY = 150;
-                float offsetX = (float) ((100.0/360.0*sensorX)*width/4);
-                float offsetY = (float) ((100.0/360.0*sensorY)*height/4);
-        
+                float offsetX = 0; 
+                float offsetY = 0;
+                //ignore tilt between ]-delay;delay[
+                if(sensorX>delay){  //if sensor value x is bigger than delay start moving picture
+                	offsetX=(float) ((100.0/360.0*(sensorX-delay))*width/4); 
+                }else if (sensorX<delay*-1){  //if sensor value x is smaller than -delay start moving picture
+                	offsetX=(float) ((100.0/360.0*(sensorX+delay))*width/4);
+                }
+                if(sensorY>delay){ //if sensor value y is bigger than delay start moving picture
+                	offsetY=(float) ((100.0/360.0*(sensorY-delay))*width/4);
+                }else if (sensorY<delay*-1){ //if sensor value y is smaller than -delay start moving picture
+                	offsetY=(float) ((100.0/360.0*(sensorY+delay))*width/4);
+                }
                 canvas.drawBitmap(shark, startX +offsetX, startY+offsetY, null);
                 ourHolder.unlockCanvasAndPost(canvas);
 	        }
@@ -126,14 +133,6 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	            		continue;
 	            	}
 	               drawShark();
-	               if(sensorX>0){
-	            	   //TODO implement ?forward? movement
-	               }
-	               if(sensorY<0){
-	            	   //TODO implement ?right? curve
-	               }else if (sensorY>0){
-	            	   //TODO implement ?left? curve
-	               }
 	            }
 	        }
 
@@ -189,7 +188,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	    	return super.onOptionsItemSelected(item);
 	    }
 	    
-	    
+	   
 	    /**
 	     * Stops drawing thread before execute step back
 	     */

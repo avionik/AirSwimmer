@@ -30,28 +30,38 @@
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Buttons"
-            android:label="@string/title_activity_activity__buttons"
+            android:label="Einfache Tastensteuerung"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Tilt"
-            android:label="@string/title_activity_activity__tilt"
+            android:label="Einfache Kippsteuerung"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Slide"
-            android:label="@string/title_activity_activity__slide"
+            android:label="Einfache Wischsteuerung"
             android:screenOrientation="landscape" >
         </activity>
-        <activity android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
-            android:label="@string/title_activity_activity__buttons_permanent" >
+        <activity 
+            android:name="de.airswimmer.gui.Activity_Buttons_Permanent"
+            android:label="Permanente Tastensteuerung"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.airswimmer.gui.Activity_Slide_Permanent"
-            android:label="@string/title_activity_activity__slide_permanent"
+            android:label="Permanente Wischsteuerung"
             android:screenOrientation="landscape" >
         </activity>
-        <activity android:name="de.airswimmer.gui.Start_button_tilt" >
+        <activity 
+            android:name="de.airswimmer.gui.Activity_Tilt_Permanent" 
+            android:label="Permanente Kippsteuerung" 
+            android:screenOrientation="landscape" > 
+        </activity> 
+        <activity 
+            android:name="de.airswimmer.gui.Start_button_tilt"
+            android:label="Kippsteuerung"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

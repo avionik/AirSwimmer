@@ -15,16 +15,18 @@ import android.widget.RelativeLayout;
  * 
  */
 public class BaseActivity extends Activity {
-	
+
 	@Override
-	//handles screen orientation
+	// handles screen orientation
 	protected void onCreate(Bundle savedInstanceState) {
 		SharedPreferences prefs = getSharedPreferences("AirSwimmerPrefs",
 				Context.MODE_PRIVATE); // get preferences which are stored in
 										// file AirSwimmerPrefs
 		int layout = prefs.getInt("layout", -1);
 		if (layout != -1) {
-			setRequestedOrientation(layout); //set screen orientation of current activity to stored value
+			setRequestedOrientation(layout); // set screen orientation of
+												// current activity to stored
+												// value
 		}
 		super.onCreate(savedInstanceState);
 	}
@@ -102,7 +104,7 @@ public class BaseActivity extends Activity {
 				startActivity(new Intent(this, Activity_Buttons.class));
 				return true;
 			case R.id.mode_tilt:
-				startActivity(new Intent(this, Activity_Tilt.class));
+				startActivity(new Intent(this, Start_button_tilt.class));
 				return true;
 			case R.id.mode_slide:
 				startActivity(new Intent(this, Activity_Slide.class));
@@ -113,30 +115,14 @@ public class BaseActivity extends Activity {
 		}
 		// reaction to selected menupoint in submenu for changing
 		// permanent/single move
-
-		// For Buttons
-		if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__buttons))) {
-			if (item.getGroupId() == R.id.submenu_changeMove) {
-
-				switch (item.getItemId()) {
-				case R.id.permanent:
-					startActivity(new Intent(this,
-							Activity_Buttons_Permanent.class));
-					return true;
-				case R.id.single:
-					startActivity(new Intent(this, Activity_Buttons.class));
-					return true;
-				default:
-					return false;
-				}
-
-			}
-		} else if (item.getGroupId() == R.id.submenu_changeMove
-				&& currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__buttons_permanent))) {
-
-			if (item.getGroupId() == R.id.submenu_changeMove) {
+		if (item.getGroupId() == R.id.submenu_changeMove) {
+			// For Buttons
+			if (currentActivityName.equals(getResources().getString(
+					R.string.title_activity_activity__buttons))
+					|| currentActivityName
+							.equals(getResources()
+									.getString(
+											R.string.title_activity_activity__buttons_permanent))) {
 				switch (item.getItemId()) {
 				case R.id.permanent:
 					startActivity(new Intent(this,
@@ -149,22 +135,19 @@ public class BaseActivity extends Activity {
 					return false;
 				}
 			}
-		}
 
-		// For Slide
-		else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__slide))
-				|| currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__slide_permanent))) { // if
-																				// one
-																				// of
-																				// the
-																				// slide
-																				// activities
-																				// is
-																				// active
-			if (item.getGroupId() == R.id.submenu_changeMove) {
-
+			// For Slide
+			else if (currentActivityName.equals(getResources().getString(
+					R.string.title_activity_activity__slide))
+					|| currentActivityName.equals(getResources().getString(
+							R.string.title_activity_activity__slide_permanent))) { // if
+																					// one
+																					// of
+																					// the
+																					// slide
+																					// activities
+																					// is
+																					// active
 				switch (item.getItemId()) {
 				case R.id.permanent:
 					startActivity(new Intent(this,
@@ -176,49 +159,27 @@ public class BaseActivity extends Activity {
 				default:
 					return false;
 				}
-
 			}
-		}
 
-		// For Tilt
-		else if (currentActivityName.equals(getResources().getString(
-				R.string.title_activity_activity__tilt))) {
-			if (item.getGroupId() == R.id.submenu_changeMove) {
-
+			// For Tilt
+			else if (currentActivityName.equals(getResources().getString(
+					R.string.title_activity_activity__tilt))
+					|| currentActivityName.equals(getResources().getString(
+							R.string.title_activity_activity__tilt_permanent))) {
 				switch (item.getItemId()) {
 				case R.id.permanent:
-					// * TODO --> name of new permanent tilt class
 					startActivity(new Intent(this,
-							Start_button_tilt.class));
+							Start_button_tilt_Permanent.class));
 					return true;
 				case R.id.single:
-					startActivity(new Intent(this, Activity_Tilt.class));
+					startActivity(new Intent(this, Start_button_tilt.class));
 					return true;
 				default:
 					return false;
 				}
 
 			}
-		} else if (item.getGroupId() == R.id.submenu_changeMove
-				&& currentActivityName.equals(getResources().getString(
-						R.string.title_activity_activity__tilt_permanent))) {
-
-			if (item.getGroupId() == R.id.submenu_changeMove) {
-				switch (item.getItemId()) {
-				case R.id.permanent:
-					// * TODO --> name of new permanent tilt class
-					startActivity(new Intent(this,
-							Activity_Tilt_Permanent.class));
-					return true;
-				case R.id.single:
-					startActivity(new Intent(this, Activity_Tilt.class));
-					return true;
-				default:
-					return false;
-				}
-			}
 		}
-
 		return false;
 	}
 }
