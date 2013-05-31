@@ -93,7 +93,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	        	isRunning=false;
 	        }
 	        private void drawShark(){
-	        	double delay = 0;  //sensitivity of sensor  //TODO find value where shark is not shaking
+	        	double delay = 0.4;  //sensitivity of sensor  //TODO find value where shark is not shaking
                 Display display = getWindowManager().getDefaultDisplay();    // to get the Window height and widt
                 int width = display.getWidth();
                 int height = display.getHeight();
