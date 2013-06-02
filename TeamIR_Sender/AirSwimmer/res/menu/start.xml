@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--  Menu element for changing orientation-->
+        <item android:title="@string/change_layout_orientation" android:id="@+id/change_layout_orientation">
+            <menu>
+                <group android:id="@+id/submenu_change_layout_orientation" >
+                <item
+                    android:id="@+id/portrait"
+                    android:title="@string/orientation_portrait"/>
+                	
+                <item
+                    android:id="@+id/landscape"
+                    android:title="@string/orientation_landscape"/>
+                </group>
+            </menu>
+        </item>
+
+</menu>
