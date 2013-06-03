@@ -16,15 +16,37 @@ import android.view.View;
 
 public class FrontPage extends Activity {
 	private SharedPreferences preferences;
-
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.front_page);
 		preferences = getSharedPreferences("AirSwimmerPrefs",
 				Context.MODE_WORLD_READABLE); //get preferences in file AirSwimmerPrefs
 		int layout = preferences.getInt("layout", -1); //get value for key "layout" or -1 if "layout" does not exist
+
+		//reference for infrared transmitter
+		final CharSequence[] answer = { "OK" };					
+		AlertDialog.Builder builder2 = new AlertDialog.Builder(this)
+				.setTitle("Bitte schlieﬂen Sie, falls noch nicht geschen, einen Infrarotsender an !").setCancelable(false)
+				.setItems(answer, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int item) {
+						String choice = (String) answer[item];
+						if (choice == answer[0]) { 
+							
+						} else if (choice == answer[1]) {
+							
+						}
+					}
+				});
+
+		AlertDialog alert2 = builder2.create();
+		alert2.show();
+		
+		
 		if (layout == -1) { //if layout does not exist ask where aux is
 			// Alert Dialog
 			final CharSequence[] items = { "kurze Seite", "lange Seite" };
@@ -48,14 +70,16 @@ public class FrontPage extends Activity {
 							editor.commit();
 							setRequestedOrientation(layout); //change screen orientation of frontPage
 						}
-
 					});
 
 			AlertDialog alert = builder.create();
 			alert.show();
+			setRequestedOrientation(layout); //set screen orientation to stored value
+
 		}
-		setRequestedOrientation(layout); //set screen orientation to stored value
 	}
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
