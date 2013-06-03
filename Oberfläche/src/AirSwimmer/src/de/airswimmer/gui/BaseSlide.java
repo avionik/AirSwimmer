@@ -41,6 +41,7 @@ public abstract class BaseSlide extends BaseActivity {
                     return false;
             }
         });
+        
         ImageView img = (ImageView) findViewById(R.id.img); // fish image is initialized
         img.setOnTouchListener(new View.OnTouchListener() { // onTouchListener for fish
 
@@ -67,8 +68,6 @@ public abstract class BaseSlide extends BaseActivity {
         case MotionEvent.ACTION_MOVE: // when view moves
             int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
             int yAxis = (int) event.getY() - offset_y;                      // calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
-            
-            move(xAxis, yAxis); // method for movement of the fish is called
 
             @SuppressWarnings("deprecation")
             int width = getWindowManager().getDefaultDisplay().getWidth() - 325; // get screen size ('-' so the fish stays the same size)
@@ -81,6 +80,8 @@ public abstract class BaseSlide extends BaseActivity {
             if (yAxis > height) // if fish is dragged too far up/down
                 yAxis = height;
 
+            move(xAxis, yAxis); // method for movement of the fish is called
+            
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
             // when picture moves, the view gets created again
             lp.setMargins(xAxis, yAxis, 0, 0);
