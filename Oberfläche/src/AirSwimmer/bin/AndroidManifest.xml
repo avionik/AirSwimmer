@@ -63,6 +63,7 @@
             android:label="Kippsteuerung"
             android:screenOrientation="landscape" >
         </activity>
+        <activity android:name="de.airswimmer.gui.Start_button_tilt_Permanent"></activity>
     </application>
 
 </manifest>

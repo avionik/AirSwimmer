@@ -178,6 +178,18 @@ public class BaseActivity extends Activity {
 					return false;
 				}
 
+			}else if(currentActivityName.equals("Start_button_tilt_Permanent")||currentActivityName.equals("Start_button_tilt")){
+				switch (item.getItemId()) {
+				case R.id.permanent:
+					startActivity(new Intent(this,
+							Start_button_tilt_Permanent.class));
+					return true;
+				case R.id.single:
+					startActivity(new Intent(this, Start_button_tilt.class));
+					return true;
+				default:
+					return false;
+				}
 			}
 		}
 		return false;

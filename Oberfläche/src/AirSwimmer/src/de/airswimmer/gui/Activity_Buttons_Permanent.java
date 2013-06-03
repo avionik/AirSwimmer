@@ -3,17 +3,11 @@ package de.airswimmer.gui;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class Activity_Buttons_Permanent extends BaseButtons {
 
 	private boolean forwardMovement = false;
-	/*TextView mCustomTitle;
-	
-	public void setTitle(CharSequence title) {
-	    //you can override the other setTitle as well if you need it
-	    mCustomTitle.setText("Permanente Tastensteuerung");        
-	}*/
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_layout_buttons_permanent);

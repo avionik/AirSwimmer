@@ -21,11 +21,11 @@ import android.view.SurfaceView;
 
 public abstract class BaseTilt extends BaseActivity implements SensorEventListener {
 
-	Bitmap shark;
-	SensorManager sm;
-	DrawShark ourView;
-	float sensorX, sensorY;
-	Bitmap mBitmap;
+	private Bitmap shark;
+	private SensorManager sm;
+	protected DrawShark ourView;
+	private float sensorX, sensorY;
+	private Bitmap mBitmap;
 	
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) { 
@@ -33,13 +33,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	}
 
 	@Override
-	public void onSensorChanged(SensorEvent event) { // to able to detect the change of the sensor 
-//		try {
-//			Thread.sleep(10);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		
+	public void onSensorChanged(SensorEvent event) { // to able to detect the change of the sensor 		
 		sensorY = event.values[0];
 		sensorX = event.values[1];
 		
@@ -93,10 +87,12 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	        	isRunning=false;
 	        }
 	        private void drawShark(){
-	        	double delay = 0.4;  //sensitivity of sensor  //TODO find value where shark is not shaking
-                Display display = getWindowManager().getDefaultDisplay();    // to get the Window height and widt
-                int width = display.getWidth();
-                int height = display.getHeight();
+	        	double delay = 0.4;  //sensitivity of sensor
+                Display display = getWindowManager().getDefaultDisplay();    // to get the Window height and width
+				@SuppressWarnings("deprecation") //deprecated function has to be used because of target android version
+				int width = display.getWidth();
+				@SuppressWarnings("deprecation") //deprecated function has to be used because of target android version
+				int height = display.getHeight();
                 
                 mBitmap = BitmapFactory.decodeResource(getResources(), background); //new Bitmap to make the background image
                 int h = width;
@@ -148,6 +144,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	        }
 	        shark = BitmapFactory.decodeResource(getResources(), R.drawable.bellishark_1_medium);
 	        sensorX = sensorY = 0;
+
 	        ourView = new DrawShark(this);
 	        ourView.resume();
 	        setContentView(ourView);
@@ -182,7 +179,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 			}		
 					ourView.changeBackground(id);
 			        return true;
-	    	}else if(item.getGroupId()==R.id.submenu_changeMode){
+	    	}else if(item.getGroupId()==R.id.submenu_changeMode||item.getGroupId()==R.id.submenu_changeMove){
 	    		ourView.stop(); //stops drawing thread before mode is changed	
 	    	}
 	    	return super.onOptionsItemSelected(item);
@@ -200,6 +197,7 @@ public abstract class BaseTilt extends BaseActivity implements SensorEventListen
 	    	return super.onKeyDown(keyCode, event);
 	    }
 
+	    
 	 // method for movement of the fish
 	    public abstract void move(int xAxis, int yAxis);
 	    // TODO: implement movement
