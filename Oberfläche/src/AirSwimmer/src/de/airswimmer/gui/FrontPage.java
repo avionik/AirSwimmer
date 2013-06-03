@@ -26,7 +26,8 @@ public class FrontPage extends Activity {
 				Context.MODE_WORLD_READABLE); //get preferences in file AirSwimmerPrefs
 		int layout = preferences.getInt("layout", -1); //get value for key "layout" or -1 if "layout" does not exist
 
-		final CharSequence[] answer = { "OK" };			
+		//reference for infrared transmitter
+		final CharSequence[] answer = { "OK" };					
 		AlertDialog.Builder builder2 = new AlertDialog.Builder(this)
 				.setTitle("Bitte schlieﬂen Sie, falls noch nicht geschen, einen Infrarotsender an !").setCancelable(false)
 				.setItems(answer, new DialogInterface.OnClickListener() {
