@@ -1,0 +1,37 @@
+#
+# this config file was automatically generated
+# using lirc-0.9.0(emulation) on Tue Jun 04 12:32:14 2013
+#
+# contributed by 
+#
+# brand:                       \\rz-home\ff9315\Desktop\FbLeftSend
+# model no. of remote control: 
+# devices being controlled by this remote:
+#
+# Da der Arduino nur die Raw Werte ohne das LIRC File erzeugt hat, habe ich das Raw File von links1raw als Rahmen verwendet.
+# Es wurden zwar zwei Messungen durchgeführt aber die hex Werte waren in beiden Fällen die gleichen.
+
+begin remote
+
+  name  \\rz-home\ff9315\Desktop\FbLeftSend
+  bits           24
+  flags SPACE_ENC|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  one           187   807
+  zero          187   330
+  ptrail        185
+  gap          210903
+  toggle_bit_mask 0x0
+
+      begin codes
+          TAILRIGHT               0xC9B11E
+          TAILLEFT                0xC9B12D
+          CLIMB                   0xC9B14B
+          DIVE                    0xC9B187
+      end codes
+
+end remote
+
+
