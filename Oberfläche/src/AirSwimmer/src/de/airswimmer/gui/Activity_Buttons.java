@@ -1,6 +1,8 @@
 package de.airswimmer.gui;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 
 public class Activity_Buttons extends BaseButtons{
 	
@@ -20,6 +22,12 @@ public class Activity_Buttons extends BaseButtons{
 	public void moveRight() {
 		// TODO implement one right move
 		
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

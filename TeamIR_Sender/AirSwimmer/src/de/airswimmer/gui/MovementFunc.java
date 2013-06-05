@@ -1,9 +1,18 @@
 package de.airswimmer.gui;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import com.microcontrollerbg.irdroid.Lirc;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
@@ -15,24 +24,24 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MovementFunc extends Activity {
 
 	byte buffer[];
 	Lirc lirc;
 	private static final String nameInLirc = "AirSwimmer2013";
-	//private static final String path = "/storage/sdcard0/AirSwimmerLirc.txt";
-	private static final String path = "/mnt/sdcard/AirSwimmerLirc.txt";
-	// private static final String path = "/storage/sdcard0/AirSwimmerLirc.txt";
-	// private static final String path = "/storage/sdcard0/Lircleft.txt";
+	private static final String nameOfLirc = "lirc.txt";
 	int bufSize;
 	AudioTrack ir;
 	AudioManager audio;
 	SharedPreferences prefs;
 	BaseActivity caller;
 	private Handler mHandler = new Handler();
+
 	// private static final String path = "/samsungLirc.txt";
-	public MovementFunc(BaseActivity caller, AudioManager audio, SharedPreferences prefs){
+	public MovementFunc(BaseActivity caller, AudioManager audio,
+			SharedPreferences prefs) {
 		this.caller = caller;
 		this.audio = audio;
 		this.prefs = prefs;
@@ -41,7 +50,8 @@ public class MovementFunc extends Activity {
 				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT);
 	}
-	//Thread Definitions for each function 
+
+	// Thread Definitions for each function
 	private Runnable dive = new Runnable() {
 		public void run() {
 			System.out.println("dive pressed");
@@ -64,7 +74,7 @@ public class MovementFunc extends Activity {
 
 		}
 	};
-	
+
 	private Runnable climb = new Runnable() {
 		public void run() {
 			System.out.println("climb pressed");
@@ -87,7 +97,7 @@ public class MovementFunc extends Activity {
 
 		}
 	};
-	
+
 	private Runnable left = new Runnable() {
 		public void run() {
 			System.out.println("left pressed");
@@ -110,7 +120,7 @@ public class MovementFunc extends Activity {
 
 		}
 	};
-	
+
 	private Runnable right = new Runnable() {
 		public void run() {
 			System.out.println("right pressed");
@@ -133,7 +143,6 @@ public class MovementFunc extends Activity {
 
 		}
 	};
-	
 
 	@SuppressWarnings("deprecation")
 	protected void initialise() {
@@ -141,20 +150,31 @@ public class MovementFunc extends Activity {
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 		audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
-		
+
 		int now = getVolume();
 		if (audio.isBluetoothA2dpOn()) {
 
 			audio.setBluetoothA2dpOn(true);
 			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
 
-			audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
+			audio = (AudioManager) caller
+					.getSystemService(Context.AUDIO_SERVICE);
 		} else {
 			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
-			audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
+			audio = (AudioManager) caller
+					.getSystemService(Context.AUDIO_SERVICE);
 		}
 		// get lirc config file for the air swimmer remote
-		System.out.println(readConfigFile(path));
+		if (readConfigFile(importLircfile())) {
+			System.out.println("Read and wrote Lirc-File successfully");
+			// Configure Volume Level
+			// configureVolume();
+		} else {
+			Toast.makeText(getApplicationContext(),
+					"Failed to parse Lirc-File", Toast.LENGTH_SHORT).show();
+			System.err.println("Error in Lirc Context");
+			finish();
+		}
 
 	}
 
@@ -164,6 +184,78 @@ public class MovementFunc extends Activity {
 	 * @param filepath
 	 * @return true if lirc file parsed successfully else return false
 	 */
+	public String importLircfile() {
+		String newFolder = "/AirSwimmer";
+		String extStorageDirectory = Environment.getExternalStorageDirectory()
+				.toString();
+
+		File dir = new File(extStorageDirectory + newFolder + "/Lirc.txt");
+		if (!dir.isDirectory()) {
+
+			File myNewFolder = new File(extStorageDirectory + newFolder);
+			myNewFolder.mkdir();
+			File f = new File(extStorageDirectory + newFolder + "/Lirc.txt");
+			try {
+				final InputStream is = getResources().getAssets().open(
+						nameOfLirc);
+				BufferedReader br = null;
+				try {
+					br = new BufferedReader(new InputStreamReader(is));
+					StringBuilder sb = new StringBuilder();
+					String line;
+					while ((line = br.readLine()) != null) {
+						sb.append(line + '\n');
+					}
+					FileWriter fwriter = new FileWriter(f);
+					BufferedWriter bwriter = new BufferedWriter(fwriter);
+					bwriter.write(sb.toString());
+					bwriter.close();
+				} catch (IOException e) {
+					Toast.makeText(getApplicationContext(),
+							"Failed to parse Lirc-File", Toast.LENGTH_SHORT)
+							.show();
+					System.err
+							.println("IOException when parsing and writing file: "
+									+ e);
+				} finally {
+
+					if (is != null) {
+						try {
+							is.close();
+						} catch (IOException e) {
+							System.err
+									.println("IOException when closing input stream: "
+											+ e);
+							Toast.makeText(getApplicationContext(),
+									"Failed to parse Lirc-File",
+									Toast.LENGTH_SHORT).show();
+						}
+					}
+					if (br != null) {
+						try {
+							br.close();
+						} catch (IOException e) {
+							System.err
+									.println("IOException when closing buffered reader: "
+											+ e);
+							Toast.makeText(getApplicationContext(),
+									"Failed to parse Lirc-File",
+									Toast.LENGTH_SHORT).show();
+						}
+					}
+
+				}
+
+			} catch (IOException e) {
+				System.err.println("Lirc File could not be opened!");
+				e.printStackTrace();
+				Toast.makeText(getApplicationContext(),
+						"Failed to parse Lirc-File", Toast.LENGTH_SHORT).show();
+			}
+		}
+		return dir.getAbsolutePath();
+	}
+
 	public boolean readConfigFile(String filepath) {
 
 		System.out.println("Filepath = " + filepath);
@@ -196,15 +288,18 @@ public class MovementFunc extends Activity {
 		ir.write(buffer, 0, buffer.length);
 
 		ir.setStereoVolume(2, 2);
-		//audio.setStreamVolume(AudioManager.STREAM_MUSIC, 5, 0);
+		// festes setzten der Lautstärke muss noch manuell angepasst werden, so
+		// läuft es nur auf dem s2
+		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 5, 0);
 		ir.play();
+		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
 
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		//System.out.println("KeyCode = " + keyCode);
-		//System.out.println("Event = " + event);
+		// System.out.println("KeyCode = " + keyCode);
+		// System.out.println("Event = " + event);
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_VOLUME_UP:
 			audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
@@ -219,11 +314,13 @@ public class MovementFunc extends Activity {
 			return super.onKeyDown(keyCode, event);
 		}
 	}
+
 	public int getVolume() {
 		return prefs.getInt("volume", 50);
 	}
-	void diveListener(ImageButton btdive){
-		
+
+	void diveListener(ImageButton btdive) {
+
 		btdive.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View view, MotionEvent motionevent) {
 				int action = motionevent.getAction();
@@ -244,8 +341,7 @@ public class MovementFunc extends Activity {
 						e.printStackTrace();
 					}
 
-					mHandler.postAtTime(dive,
-							SystemClock.uptimeMillis() + 250);
+					mHandler.postAtTime(dive, SystemClock.uptimeMillis() + 250);
 				}
 
 				if (action == MotionEvent.ACTION_UP) {
@@ -269,7 +365,8 @@ public class MovementFunc extends Activity {
 
 		});
 	}
-	void climbListener(ImageButton button_up){
+
+	void climbListener(ImageButton button_up) {
 		button_up.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View view, MotionEvent motionevent) {
 				int action = motionevent.getAction();
@@ -290,8 +387,7 @@ public class MovementFunc extends Activity {
 						e.printStackTrace();
 					}
 
-					mHandler.postAtTime(climb,
-							SystemClock.uptimeMillis() + 250);
+					mHandler.postAtTime(climb, SystemClock.uptimeMillis() + 250);
 				}
 
 				else if (action == MotionEvent.ACTION_UP) {
@@ -315,8 +411,8 @@ public class MovementFunc extends Activity {
 
 		});
 	}
-	
-	void leftListener(ImageButton btleft){
+
+	void leftListener(ImageButton btleft) {
 		btleft.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View view, MotionEvent motionevent) {
 				int action = motionevent.getAction();
@@ -337,8 +433,7 @@ public class MovementFunc extends Activity {
 						e.printStackTrace();
 					}
 
-					mHandler.postAtTime(left,
-							SystemClock.uptimeMillis() + 250);
+					mHandler.postAtTime(left, SystemClock.uptimeMillis() + 250);
 				}
 
 				else if (action == MotionEvent.ACTION_UP) {
@@ -363,7 +458,7 @@ public class MovementFunc extends Activity {
 		});
 	}
 
-	void rightListener(ImageButton btright){
+	void rightListener(ImageButton btright) {
 		btright.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View view, MotionEvent motionevent) {
 				int action = motionevent.getAction();
@@ -384,8 +479,7 @@ public class MovementFunc extends Activity {
 						e.printStackTrace();
 					}
 
-					mHandler.postAtTime(right,
-							SystemClock.uptimeMillis() + 250);
+					mHandler.postAtTime(right, SystemClock.uptimeMillis() + 250);
 				}
 
 				else if (action == MotionEvent.ACTION_UP) {

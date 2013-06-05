@@ -14,13 +14,15 @@ public abstract class BaseButtons extends BaseActivity implements OnTouchListene
 	private ImageButton button_down;
 	private ImageButton button_right;
 	private ImageButton button_left;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		/*
 		button_up = (ImageButton) findViewById(R.id.imageButtonUp);
 		button_up.setOnTouchListener(this);
+		action.climbListener(button_up);
 		button_right = (ImageButton) findViewById(R.id.imageButtonRight);
 		button_right.setOnTouchListener(this);
 		button_down = (ImageButton) findViewById(R.id.imageButtonDown);
@@ -33,8 +35,21 @@ public abstract class BaseButtons extends BaseActivity implements OnTouchListene
 		button_up.setBackgroundColor(Color.TRANSPARENT);
 		button_left.setBackgroundColor(Color.TRANSPARENT);
 		button_right.setBackgroundColor(Color.TRANSPARENT);
+		*/
+		button_up = (ImageButton) findViewById(R.id.imageButtonUp);
+		action.climbListener(button_up);
+		
+		button_down = (ImageButton) findViewById(R.id.imageButtonDown);
+		action.diveListener(button_down);
+		
+		button_right = (ImageButton) findViewById(R.id.imageButtonRight);
+		action.rightListener(button_right);
+		
+		button_left = (ImageButton) findViewById(R.id.imageButtonLeft);
+		action.leftListener(button_left);
+		
 	}
-
+/*
 	@Override
 	public boolean onTouch(View v, MotionEvent event) { // what happens when you click a button    
 		if (v == button_up) { // if button_up was clicked
@@ -109,7 +124,8 @@ public abstract class BaseButtons extends BaseActivity implements OnTouchListene
 				}
 		return true;
 	}
-	
+	*/
 	public abstract void moveLeft();
 	public abstract void moveRight();
+	
 }
