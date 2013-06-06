@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import com.microcontrollerbg.irdroid.Lirc;
+//import com.microcontrollerbg.irdroid.Lirc;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -34,7 +34,7 @@ public class Movement extends Activity {
 
 	private Handler mHandler = new Handler();
 	byte buffer[];
-	Lirc lirc = new Lirc();
+//	Lirc lirc = new Lirc();
 	SharedPreferences mPrefs;
 	int volumeLvl = 1;
 	boolean repeat = true;
@@ -53,7 +53,7 @@ public class Movement extends Activity {
 		this.caller = baseActivity;
 		this.audio = audio;
 		mPrefs = prefs;
-		lirc = new Lirc();
+	//	lirc = new Lirc();
 		bufSize = AudioTrack.getMinBufferSize(48000,
 				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT);
