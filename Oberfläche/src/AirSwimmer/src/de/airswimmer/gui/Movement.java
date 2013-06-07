@@ -7,13 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
 
 import com.microcontrollerbg.irdroid.Lirc;
 
-=======
-//import com.microcontrollerbg.irdroid.Lirc;
->>>>>>> e8725f5bd1cab53d42f4b703f4537c7327a793be
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -30,7 +26,7 @@ public class Movement extends Activity {
 
 	private Handler mHandler = new Handler();
 	byte buffer[];
-//	Lirc lirc = new Lirc();
+	Lirc lirc = new Lirc();
 	SharedPreferences mPrefs;
 	int volumeLvl = 1;
 	boolean repeat = true;
@@ -44,21 +40,7 @@ public class Movement extends Activity {
 	AudioTrack ir;
 	AlertDialog vol;
 	AudioManager audio;
-<<<<<<< HEAD
 
-=======
-	BaseActivity caller;
-	public Movement(BaseActivity baseActivity, AudioManager audio, SharedPreferences prefs){
-		this.caller = baseActivity;
-		this.audio = audio;
-		mPrefs = prefs;
-	//	lirc = new Lirc();
-		bufSize = AudioTrack.getMinBufferSize(48000,
-				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
-				AudioFormat.ENCODING_PCM_8BIT);
-	}
-	
->>>>>>> e8725f5bd1cab53d42f4b703f4537c7327a793be
 	// thread declaration
 	private Runnable dive = new Runnable() {
 		public void run() {
