@@ -1,7 +1,6 @@
 package de.airswimmer.gui;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,12 +38,6 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 	public void moveRight() {
 		// TODO implement right curve
 		
-	}
-
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

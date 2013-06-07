@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +15,7 @@ import android.widget.RelativeLayout;
  * 
  */
 public class BaseActivity extends Activity {
-	
-	Movement action;
-	AudioManager audio;
+
 	@Override
 	// handles screen orientation
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +28,6 @@ public class BaseActivity extends Activity {
 												// current activity to stored
 												// value
 		}
-		
-		audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		action = new Movement(this, audio, prefs);
-		action.initialise();
 		super.onCreate(savedInstanceState);
 	}
 

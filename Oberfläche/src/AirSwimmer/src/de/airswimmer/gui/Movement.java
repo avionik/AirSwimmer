@@ -7,27 +7,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import com.microcontrollerbg.irdroid.Lirc;
+
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Movement extends Activity {
@@ -48,17 +40,7 @@ public class Movement extends Activity {
 	AudioTrack ir;
 	AlertDialog vol;
 	AudioManager audio;
-	BaseActivity caller;
-	public Movement(BaseActivity baseActivity, AudioManager audio, SharedPreferences prefs){
-		this.caller = baseActivity;
-		this.audio = audio;
-		mPrefs = prefs;
-		lirc = new Lirc();
-		bufSize = AudioTrack.getMinBufferSize(48000,
-				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
-				AudioFormat.ENCODING_PCM_8BIT);
-	}
-	
+
 	// thread declaration
 	private Runnable dive = new Runnable() {
 		public void run() {
@@ -136,20 +118,26 @@ public class Movement extends Activity {
 		}
 	};
 
-	@SuppressWarnings("deprecation")
-	protected void initialise(){
+	public void init(){
 
-		//audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
+		mPrefs = this.getApplicationContext().getSharedPreferences(
+				"myAppPrefs", 0); // 0 = mode private. only this app can read
+									// these preferences
 
 		int now = getVolume();
 		if (audio.isBluetoothA2dpOn()) {
 
 			audio.setBluetoothA2dpOn(true);
 			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
+
+			audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		} else {
 			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
+
+			audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		}
 
 		// get lirc config file for the air swimmer remote
@@ -164,6 +152,7 @@ public class Movement extends Activity {
 			finish();
 		}
 	}
+	
 
 	/**
 	 * reads the lirc file in the package directory and saves it to sdcard on
@@ -175,12 +164,13 @@ public class Movement extends Activity {
 		String newFolder = "/AirSwimmer";
 		String extStorageDirectory = Environment.getExternalStorageDirectory()
 				.toString();
-
+		// create directory
 		File dir = new File(extStorageDirectory + newFolder + "/Lirc.txt");
 		if (!dir.isDirectory()) {
 
 			File myNewFolder = new File(extStorageDirectory + newFolder);
 			myNewFolder.mkdir();
+			// create lirc file
 			File f = new File(extStorageDirectory + newFolder + "/Lirc.txt");
 			try {
 				final InputStream is = getResources().getAssets().open(nameOfLirc);
@@ -257,19 +247,6 @@ public class Movement extends Activity {
 
 		return true;
 
-		/*
-		 * java.io.File file = new java.io.File(filename);
-		 * 
-		 * final String LIRCD_CONF_FILE = "/sdcard/lirc.conf";
-		 * 
-		 * 
-		 * try { FileInputStream in = new FileInputStream(file);
-		 * FileOutputStream out = new FileOutputStream(LIRCD_CONF_FILE); byte[]
-		 * buf = new byte[1024]; int i = 0; while ((i = in.read(buf)) != -1) {
-		 * out.write(buf, 0, i); } in.close(); out.close(); } catch (Exception
-		 * e) { System.err.println("error reading file: " + e); return false; }
-		 */
-
 	}
 
 	@SuppressWarnings("deprecation")
@@ -295,36 +272,30 @@ public class Movement extends Activity {
 		ir.setStereoVolume(2, 2);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 5, 0);
 		ir.play();
-		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
+		//System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
 
 	}
-
-void diveListener(final ImageButton btdive){
-		
+/*
 		btdive.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View view, MotionEvent motionevent) {
 				int action = motionevent.getAction();
 
-				while (action == MotionEvent.ACTION_DOWN) {
-					
-					btdive.setBackgroundColor(Color.BLUE);	
+				if (action == MotionEvent.ACTION_DOWN) {
+
 					String mycmd = Commands.DIVE.name();
 
 					try {
-
 						sendCommand(mycmd);
 						System.out.println("dive pressed");
 					} catch (IllegalStateException e) {
 						e.printStackTrace();
 					}
 
-					mHandler.postAtTime(dive,
-							SystemClock.uptimeMillis() + 250);
+					mHandler.postAtTime(dive, SystemClock.uptimeMillis());
 				}
 
-				if (action == MotionEvent.ACTION_UP) {
-					btdive.setBackgroundColor(Color.TRANSPARENT);	
+				else if (action == MotionEvent.ACTION_UP) {
 					try {
 						Thread.sleep(180);
 						if (ir != null) {
@@ -342,181 +313,9 @@ void diveListener(final ImageButton btdive){
 			}
 
 		});
-	}
-	void climbListener(final ImageButton btclimb){
-		btclimb.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View view, MotionEvent motionevent) {
-				int action = motionevent.getAction();
-
-				if (action == MotionEvent.ACTION_DOWN) {
-
-					btclimb.setBackgroundColor(Color.BLUE);	
-					String mycmd = Commands.CLIMB.name();
-
-					try {
-
-						sendCommand(mycmd);
-						System.out.println("climb pressed");
-					} catch (IllegalStateException e) {
-						e.printStackTrace();
-					}
-
-					mHandler.postAtTime(climb,
-							SystemClock.uptimeMillis() + 250);
-				}
-
-				else if (action == MotionEvent.ACTION_UP) {
-					btclimb.setBackgroundColor(Color.TRANSPARENT);	
-					try {
-						Thread.sleep(180);
-						if (ir != null) {
-							ir.flush();
-							ir.release();
-
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					mHandler.removeCallbacks(climb);
-
-				}
-				return false;
-			}
-
-		});
-	}
-	
-	void leftListener(final ImageButton btleft){
-		btleft.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View view, MotionEvent motionevent) {
-				int action = motionevent.getAction();
-
-				if (action == MotionEvent.ACTION_DOWN) {
-
-					btleft.setBackgroundColor(Color.BLUE);	
-					String mycmd = Commands.TAILLEFT.name();
-
-					try {
-
-						sendCommand(mycmd);
-						System.out.println("left pressed");
-					} catch (IllegalStateException e) {
-						e.printStackTrace();
-					}
-
-					mHandler.postAtTime(left,
-							SystemClock.uptimeMillis() + 250);
-				}
-
-				else if (action == MotionEvent.ACTION_UP) {
-					btleft.setBackgroundColor(Color.TRANSPARENT);	
-					try {
-						Thread.sleep(180);
-						if (ir != null) {
-							ir.flush();
-							ir.release();
-
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					mHandler.removeCallbacks(left);
-
-				}
-				return false;
-			}
-
-		});
-	}
-	
-	void rightListener(final ImageButton btright){
-		btright.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View view, MotionEvent motionevent) {
-				int action = motionevent.getAction();
-
-				if (action == MotionEvent.ACTION_DOWN) {
-
-					btright.setBackgroundColor(Color.BLUE);	
-					String mycmd = Commands.TAILLEFT.name();
-
-					try {
-
-						sendCommand(mycmd);
-						System.out.println("right pressed");
-					} catch (IllegalStateException e) {
-						e.printStackTrace();
-					}
-
-					mHandler.postAtTime(left,
-							SystemClock.uptimeMillis() + 250);
-				}
-
-				else if (action == MotionEvent.ACTION_UP) {
-					btright.setBackgroundColor(Color.TRANSPARENT);	
-					try {
-						Thread.sleep(180);
-						if (ir != null) {
-							ir.flush();
-							ir.release();
-
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					mHandler.removeCallbacks(right);
-
-				}
-				return false;
-			}
-
-		});
-	}
+*/
+		
 	public int getVolume() {
 		return mPrefs.getInt("volume", 50);
 	}
-
-	
-	
-	
-	/*
-	public int configureVolume() {
-
-		AlertDialog.Builder builder = new Builder(this);
-		builder.setTitle("Volume Configuration");
-		builder.setMessage("Volume will be configured please push movement button if there was a movement");
-
-		DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-
-				if (which == -1) {
-					repeat = false;
-					vol.dismiss();
-				} else if (which == -3) {
-					volumeLvl++;
-					vol.show();
-				}
-			}
-		};
-
-		builder.setPositiveButton("movement", listener);
-		builder.setNeutralButton("no movement", listener);
-
-		goThroughVolume();
-		vol = builder.create();
-		vol.show();
-
-		return volumeLvl;
-	}
-
-	public void goThroughVolume() {
-
-		for (int i = 0; i < 3; i++) {
-			// dive.run();
-			System.out.println("Testlauf " + 1);
-		}
-	}
-	
-	*/
 }
