@@ -15,10 +15,15 @@ import android.view.View;
 // FrontPage.java implements Activity-Functions of FrontPage
 
 public class FrontPage extends Activity {
+	
+	AlertDialog alert;
+	AlertDialog alert2;
+	
 	private SharedPreferences preferences;
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.front_page);
@@ -31,7 +36,8 @@ public class FrontPage extends Activity {
 		AlertDialog.Builder builder2 = new AlertDialog.Builder(this)
 				.setTitle("Bitte schlieﬂen Sie, falls noch nicht geschen, einen Infrarotsender an !").setCancelable(false)
 				.setItems(answer, new DialogInterface.OnClickListener() {
-
+					
+					
 					@Override
 					public void onClick(DialogInterface dialog, int item) {
 						String choice = (String) answer[item];
@@ -40,24 +46,35 @@ public class FrontPage extends Activity {
 						} else if (choice == answer[1]) {
 							
 						}
+						alert2.dismiss();
+						
 					}
 				});
 
-		AlertDialog alert2 = builder2.create();
+		alert2 = builder2.create();
+		
 		alert2.show();
+	
 		
 		
 		if (layout == -1) { //if layout does not exist ask where aux is
 			// Alert Dialog
+			
 			final CharSequence[] items = { "kurze Seite", "lange Seite" };
+
+		
 			AlertDialog.Builder builder = new AlertDialog.Builder(this)
 					.setTitle("W‰hle AUX-Eingang").setCancelable(false)
-					.setItems(items, new DialogInterface.OnClickListener() {
+					.setItems(items, new DialogInterface.OnClickListener() 
 
+					{
+						
 						@Override
 						public void onClick(DialogInterface dialog, int item) {
+							
 							SharedPreferences.Editor editor = preferences
 									.edit();
+									
 							String choice = (String) items[item];
 							int layout = 0;
 							if (choice == items[0]) { //get value for requested screen orientation
@@ -69,16 +86,22 @@ public class FrontPage extends Activity {
 							editor.putInt("layout", layout); //save requested screen orientation in preferences
 							editor.commit();
 							setRequestedOrientation(layout); //change screen orientation of frontPage
+							alert.dismiss();
 						}
+						
 					});
+			
 
-			AlertDialog alert = builder.create();
+			alert = builder.create();
 			alert.show();
-			setRequestedOrientation(layout); //set screen orientation to stored value
-
+			
+			setRequestedOrientation(layout); //set screen orientation to stored value	 
 		}
+	
+		
 	}
 	
+
 	
 
 	@Override
