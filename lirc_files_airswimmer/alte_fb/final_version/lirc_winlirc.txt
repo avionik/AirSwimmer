@@ -10,30 +10,27 @@
 #
 # lirc file Rechts1hex wurde als basis genommen und fehlende codes wurden aus anderen Messungen genommen.
 # Da die Hex Werte in allen vier Messungen gleich waren ist es egal aus welcher Datei sie kommen.
-# Die Werte bei one, zero, ptrail und gap wurden gerundet. Das FB Team sollte Testen welche Version besser ist.
-#
-# Versuch1:
-# PreData wird vor jedem Befehl geschickt. Die einzelnen Befehle sind dadurch kürzer.
+# Die Werte bei one, zero, ptrail und gap wurden gerundet. Das Ergebnis stellte sich als besser herraus.
+
 begin remote
 
   name  H:\Eigene
-  bits           8
+  bits           24
   flags SPACE_ENC|CONST_LENGTH
   eps            30
   aeps          100
-  one           305   717
-  zero          305   205
-  ptrail        301
-  pre_data_bits 16
-  pre_data      0xC9B1
-  gap          114794
+
+  one           300   720
+  zero          300   220
+  ptrail        300
+  gap          115000
   toggle_bit_mask 0x0
 
       begin codes
-          DIVE                     0x87
-          CLIMB                    0x4B
-          TAILLEFT                 0x2D
-          TAILRIGHT                0x1E
+          DIVE                     0xC9B187
+          CLIMB                    0xC9B14B
+          TAILLEFT                 0xC9B12D
+          TAILRIGHT                0xC9B11E
       end codes
 
 end remote
