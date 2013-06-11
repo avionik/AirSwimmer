@@ -46,25 +46,12 @@ public class Movement extends Activity {
 		init();
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void init(){
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 		audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
 
-		int now = getVolume();
-		if (audio.isBluetoothA2dpOn()) {
-
-			audio.setBluetoothA2dpOn(true);
-			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
-
-			audio = (AudioManager) caller
-					.getSystemService(Context.AUDIO_SERVICE);
-		} else {
-			audio.setStreamVolume(AudioManager.STREAM_MUSIC, now, 0);
-			audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
-		}
 		// get lirc config file for the air swimmer remote
 		
 		if (readConfigFile(importLircfile())) {
@@ -77,7 +64,6 @@ public class Movement extends Activity {
 			System.err.println("Error in Lirc Context");
 			finish();
 		}
-		
 	}
 	
 
@@ -198,8 +184,9 @@ public class Movement extends Activity {
 
 		ir.write(buffer, 0, buffer.length);
 
-		ir.setStereoVolume(2, 2);
-		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 5, 0);
+		ir.setStereoVolume(1, 1);
+		
+		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 6, 0);
 		ir.play();
 		//System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
