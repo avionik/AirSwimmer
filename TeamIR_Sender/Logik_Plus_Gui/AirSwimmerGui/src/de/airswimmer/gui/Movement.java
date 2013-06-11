@@ -34,6 +34,7 @@ public class Movement extends Activity {
 	private int bufSize;
 	AudioTrack ir;
 	private AudioManager audio;
+	
 
 	@SuppressWarnings("deprecation")
 	public Movement(BaseActivity caller, AudioManager audio, SharedPreferences pref) {
@@ -301,9 +302,12 @@ public class Movement extends Activity {
 		}
 		mHandler.removeCallbacks(right);
 
-	}	
-
+	}
 	
+	
+	
+	
+		
 	// thread declaration
 		Runnable dive = new Runnable() {
 			public void run() {
@@ -380,4 +384,6 @@ public class Movement extends Activity {
 				}
 			}
 		};
+		
+
 }
