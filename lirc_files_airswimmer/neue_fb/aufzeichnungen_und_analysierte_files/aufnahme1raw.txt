@@ -1,0 +1,46 @@
+
+# Please make this file available to others
+# by sending it to <lirc@bartelmus.de>
+#
+# this config file was automatically generated
+# using lirc-0.9.0(SerialDevice) on Wed Jun 05 23:07:10 2013
+#
+# contributed by 
+#
+# brand:                       C:\Users\Ridone\Desktop\lirc\fb_neu\fb_05_06
+# model no. of remote control: 
+# devices being controlled by this remote:
+#
+
+begin remote
+
+  name  AirSwimmer2013
+  flags RAW_CODES|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  gap          151996
+
+      begin raw_codes
+
+          name DIVE
+             8997   64986    4982
+
+          name CLIMB
+            5003   65967   12016
+
+          name LEFT
+            11996   63991    2999
+
+          name RIGHT
+             2987   68001   11999
+
+          name STRAIGHT
+            14989   60997   14971
+
+          
+             
+
+      end raw_codes
+
+end remote
