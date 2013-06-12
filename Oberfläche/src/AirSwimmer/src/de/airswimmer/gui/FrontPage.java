@@ -129,10 +129,14 @@ public class FrontPage extends Activity {
 				layout = getRequestedOrientation(); //per default use current orientation
 				break;
 			}
+			
 			editor.putInt("layout", layout);	//save orientation in preferences (AirSwimmerPrefs)
 			editor.commit();
 			setRequestedOrientation(layout);	//set orientation of FrontPage to requested orientation
 			return true;
+		}
+		else if (item.getItemId() == R.id.info_page) {
+			startActivity(new Intent(this, info_page.class));
 		}
 		return false;
 	}
