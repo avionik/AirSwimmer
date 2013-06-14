@@ -14,5 +14,8 @@
                 </group>
             </menu>
         </item>
+        <!--  Menu element for info page-->
+        <item android:id="@+id/info_page" android:title="@string/open_info_page"></item>
+        
 
 </menu>

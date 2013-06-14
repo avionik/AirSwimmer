@@ -45,7 +45,8 @@
 	<!-- start.xml menu -->
 	<string name="change_layout_orientation">Ausrichtung ändern</string>
 	<string name="orientation_portrait">Aux-Anschluss an der kurzen Seite</string>
-	<string name="orientation_landscape">Aux-Anschluss an der langen Seite</string>	
+	<string name="orientation_landscape">Aux-Anschluss an der langen Seite</string>
+	<string name="open_info_page">Info</string>	
 	
   
 </resources>

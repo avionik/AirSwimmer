@@ -10,19 +10,19 @@
 #
 # lirc file Rechts1hex wurde als basis genommen und fehlende codes wurden aus anderen Messungen genommen.
 # Da die Hex Werte in allen vier Messungen gleich waren ist es egal aus welcher Datei sie kommen.
-
+#
+# CONSTANT_LENGTH raus dafür gap runter
 begin remote
 
   name  \\rz-home\ff9315\Eigene
   bits           24
-  flags SPACE_ENC|CONST_LENGTH
+  flags SPACE_ENC
   eps            30
   aeps          100
-
-  one           305   717
-  zero          305   205
-  ptrail        301
-  gap          114794
+  one           300   720
+  zero          300   220
+  ptrail        300
+  gap          25000
   toggle_bit_mask 0x0
 
       begin codes

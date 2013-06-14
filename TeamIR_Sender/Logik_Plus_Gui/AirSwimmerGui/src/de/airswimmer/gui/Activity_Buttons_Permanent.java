@@ -1,55 +1,115 @@
 package de.airswimmer.gui;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Activity_Buttons_Permanent extends BaseButtons {
 
-	private boolean forwardMovement = false;
+	private boolean forwardMovement = true;
+	private Button buttonStart;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_layout_buttons_permanent);
 		super.onCreate(savedInstanceState);
-	}
-	
-	public void changeMoveState(View view){
-		Button button_start = (Button) view;
-		if(forwardMovement){
-			forwardMovement=false;
-			button_start.setText("Start");
-			//TODO stop forward movement
+		buttonStart = (Button) findViewById(R.id.buttonStart);
+		buttonStart.setOnClickListener(new OnClickListener() {
 			
-		}else{
-			forwardMovement=true;
-			button_start.setText("Stop");
-			//TODO start forward movement
+			public void onClick(View v) {
+				
+				buttonStart.setText("stop");
+				while(forwardMovement){
+					swim();
+				}
+				buttonStart.setText("start");
+				
+			}
+		});
+	}
+
+	public boolean swim() {
+		
+		if (forwardMovement) {
+			forwardMovement = false;
+
+		} else {
+			
+			forwardMovement = true;
+			moveLeft();
+			action.finishMovingLeft();
+			SystemClock.sleep(waiting_time);
+			moveRight();
+			action.finishMovingRight();
+			
+			
 		}
+		return false;
+
 	}
 
 	@Override
 	public void moveLeft() {
-		// TODO implement left curve
-		
+		action.moveLeft();
+
 	}
 
 	@Override
 	public void moveRight() {
-		// TODO implement right curve
-		
+		action.moveRight();
+
 	}
 
 	@Override
 	public void dive() {
-		// TODO Auto-generated method stub
-		
+		action.diving();
+
 	}
 
 	@Override
 	public void climb() {
-		// TODO Auto-generated method stub
-		
+		action.climbing();
+
 	}
+
+	private Runnable permanent_thread = new Runnable() {
+
+		public void run() {
+
+			// loop of right and left moves
+			do {
+				moveRight();
+				try {
+					// Thread should wait until AirSwimmer has moved to the
+					// right, once
+					Thread.sleep(waiting_time);
+				} catch (InterruptedException e) {
+					System.err
+							.println("Exception while swimming forward after right move: "
+									+ e);
+				}
+
+				moveLeft();
+
+				try {
+					// Thread should wait until AirSwimmer has moved to the
+					// left,
+					// once
+					Thread.sleep(waiting_time);
+				} catch (InterruptedException e) {
+					System.err
+							.println("Exception while swimming forward after left move: "
+									+ e);
+				}
+				action.finishMovingLeft();
+			} while (forwardMovement == true);
+
+		}
+
+	};
 
 }

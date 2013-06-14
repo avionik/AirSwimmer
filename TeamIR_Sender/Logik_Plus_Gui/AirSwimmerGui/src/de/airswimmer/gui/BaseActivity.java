@@ -19,6 +19,7 @@ public class BaseActivity extends Activity {
 
 	protected Movement action;
 	private AudioManager audio;
+	public int waiting_time = 5000;
 	
 	@Override
 	// handles screen orientation
