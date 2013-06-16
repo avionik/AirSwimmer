@@ -210,27 +210,27 @@ public abstract class BaseTilt extends BaseActivity implements
 
 	// method for movement of the fish
 	public void move(int xAxis, int yAxis){
-	
+	double delta =  0.4;
 	sensorX = xAxis; 
 	sensorY = yAxis; 
 	
-	if(xAxis == 350 && yAxis < 150 ){
+	if( yAxis < 150 - delta ){
 		//Todo command up 
 		
 	}
-	if(xAxis == 350 && yAxis > 150){
+	if( yAxis > 150 + delta){
 	//Todo action down 	
 	}
-	if(xAxis < 350 && yAxis == 150){
+	if(xAxis < 350 - delta){
 		moveLeft();
 	}
-	if(xAxis > 350 && yAxis == 150){
+	if(xAxis > 350 + delta){
 		moveRight(); 
 	}
 	
 	
-	}
-	
+ }
+
 	public abstract void moveLeft();
 	public abstract void moveRight();
 
