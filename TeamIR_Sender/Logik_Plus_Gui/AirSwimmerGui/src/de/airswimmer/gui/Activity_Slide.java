@@ -1,6 +1,5 @@
 package de.airswimmer.gui;
 
-import android.os.SystemClock;
 
 /**
  * Class for wiping where one slide causes one move of airswimmer
@@ -22,25 +21,43 @@ public class Activity_Slide extends BaseSlide {
 		int m_height = max_height/2;
 		
 		//fish is situated in the upper region
-		if((yAxis > min_height && yAxis < m_height) && (xAxis > max_width*0.33 && xAxis < max_width*0.66)){
-			//action.climbing();
-			//action.finishClimbing();
+		if((yAxis > min_height && yAxis < m_height -70) && (xAxis > max_width*0.33 && xAxis < max_width*0.66)){
+			climb();
+			action.finishClimbing();
 			System.out.println("climb");
-		}else if((yAxis > m_height && yAxis < max_height) && (xAxis > max_width*0.33 && xAxis < max_width*0.66)){
-			action.diving();
-			action.finishDiving();
+		}else if((yAxis > m_height  && yAxis < max_height) && (xAxis > max_width*0.33 && xAxis < max_width*0.66)){
+			//dive();
+			//action.finishDiving();
 			System.out.println("dive");
-		}else if((xAxis > m_width && xAxis < max_width)&& (yAxis > max_height*0.33 && yAxis <  max_height*0.66)){
-			action.moveRight();
+		}else if((xAxis > m_width +70  && xAxis < max_width) && (yAxis > max_height*0.33 && yAxis <  max_height*0.66)){
+			//moveRight();
 			
-			action.finishMovingRight();
+			//action.finishMovingRight();
 			System.out.println("right");
-		}else if((xAxis > min_width && xAxis < m_width)&&(yAxis > max_height*0.33 && yAxis <  max_height*0.66)){
-			action.moveLeft();
+		}else if((xAxis > min_width && xAxis < m_width -70)&&(yAxis > max_height*0.33 && yAxis <  max_height*0.66)){
+			//moveLeft();
 			
-			action.finishMovingLeft();
+			//action.finishMovingLeft();
 			System.out.println("left");
 		}
 	}
-	
+	@Override
+	public void moveLeft() {
+		action.moveLeft();
+	}
+
+	@Override
+	public void moveRight() {
+		action.moveRight();
+	}
+
+	@Override
+	public void dive() {
+		action.diving();		
+	}
+
+	@Override
+	public void climb() {
+		action.climbing();
+	}
 }

@@ -125,6 +125,7 @@ public class FrontPage extends Activity {
 			break;
 		case R.id.Button_Slide:
 			startActivity(new Intent(this, Activity_Slide.class));
+			break;
 		default:
 			;
 

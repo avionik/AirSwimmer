@@ -23,23 +23,24 @@ import android.widget.Toast;
 
 public class Movement extends Activity {
 
-	protected Handler mHandler = new Handler();
+	
 	private byte buffer[];
 	private Lirc lirc = new Lirc();
 	private SharedPreferences mPrefs;
 	private static final String nameInLirc = "AirSwimmer2013";
 	private static final String nameOfLirc = "lirc.txt";
-	
+	protected Handler mHandler;
 	private BaseActivity caller;
 	private int bufSize;
-	AudioTrack ir;
+	private AudioTrack ir;
 	private AudioManager audio;
 	
 
 	@SuppressWarnings("deprecation")
-	public Movement(BaseActivity caller, AudioManager audio, SharedPreferences pref) {
+	public Movement(BaseActivity caller, AudioManager audio, SharedPreferences pref,  Handler mHandler) {
 		this.audio = audio;
 		this.caller = caller;
+		this.mHandler = mHandler;
 		mPrefs = pref;
 		bufSize = AudioTrack.getMinBufferSize(45000,
 				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
@@ -51,13 +52,12 @@ public class Movement extends Activity {
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
-		audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
 		
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
 				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
-		// get lirc config file for the air swimmer remote
 		
+		// get lirc config file for the air swimmer remote
 		if (readConfigFile(importLircfile())) {
 			System.out.println("Read and wrote Lirc-File successfully");
 			// Configure Volume Level
@@ -204,13 +204,13 @@ public class Movement extends Activity {
 	
 	
 	public void diving(){
-		/*String mycmd = Commands.DIVE.name();
-		try {
-			sendCommand(mycmd);
-		} catch (IllegalStateException e) {
-			System.err.println("Exception while diving: " + e);
-		}
-	*/
+		//7String mycmd = Commands.DIVE.name();
+		//try {
+			//sendCommand(mycmd);
+		//} catch (IllegalStateException e) {
+			//System.err.println("Exception while diving: " + e);
+		//}
+	
 		mHandler.postAtTime(dive, SystemClock.uptimeMillis());
 	}
 	
@@ -230,39 +230,39 @@ public class Movement extends Activity {
 	}
 
 	public void climbing(){
-		/*String mycmd = Commands.CLIMB.name();
-		try {
-			sendCommand(mycmd);
-		} catch (IllegalStateException e) {
-			System.err.println("Exception while climbing: " + e);
-		}
-*/
+//		String mycmd = Commands.CLIMB.name();
+//		try {
+//			sendCommand(mycmd);
+//		} catch (IllegalStateException e) {
+//			System.err.println("Exception while climbing: " + e);
+//		}
+
 		mHandler.postAtTime(climb, SystemClock.uptimeMillis());
 	}
 	
 	public void finishClimbing(){
-		try {
-			Thread.sleep(180);
-			if (ir != null) {
-				ir.flush();
-				ir.release();
-
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(180);
+//			if (ir != null) {
+//				ir.flush();
+//				ir.release();
+//
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		mHandler.removeCallbacks(climb);
 
 	}	
 	
 	public void moveLeft(){
-		/*String mycmd = Commands.TAILLEFT.name();
-		try {
-			sendCommand(mycmd);
-		} catch (IllegalStateException e) {
-			System.err.println("Exception while swimming left: " + e);
-		}
-*/
+//		String mycmd = Commands.TAILLEFT.name();
+//		try {
+//			sendCommand(mycmd);
+//		} catch (IllegalStateException e) {
+//			System.err.println("Exception while swimming left: " + e);
+//		}
+
 		mHandler.postAtTime(left, SystemClock.uptimeMillis());
 	}
 	
@@ -282,13 +282,13 @@ public class Movement extends Activity {
 	}	
 	
 	public void moveRight(){
-		/*String mycmd = Commands.TAILRIGHT.name();
+		String mycmd = Commands.TAILRIGHT.name();
 		try {
 			sendCommand(mycmd);
 		} catch (IllegalStateException e) {
 			System.err.println("Exception while swimming right: " + e);
 		}
-*/
+
 		mHandler.postAtTime(right, SystemClock.uptimeMillis());
 	}
 	
@@ -307,14 +307,10 @@ public class Movement extends Activity {
 
 	}
 	
-	
-	
-	
-		
 	// thread declaration
 		Runnable dive = new Runnable() {
 			public void run() {
-				System.out.println("dive pressed");
+				System.out.println("dive pressed runnable");
 				if (ir != null) {
 					ir.flush();
 					ir.release();

@@ -99,6 +99,12 @@ public abstract class BaseSlide extends BaseActivity {
     // method for movement of the fish
     public abstract void move(int xAxis, int yAxis);
     // TODO: implement movement
+    public abstract void moveLeft();
 
+	public abstract void moveRight();
+
+	public abstract void dive();
+
+	public abstract void climb();
 
 }
