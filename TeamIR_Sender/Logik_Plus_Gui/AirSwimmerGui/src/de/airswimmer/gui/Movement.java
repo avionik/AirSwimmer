@@ -52,7 +52,10 @@ public class Movement extends Activity {
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 		audio = (AudioManager) caller.getSystemService(Context.AUDIO_SERVICE);
-
+		
+		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
+				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
+				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
 		// get lirc config file for the air swimmer remote
 		
 		if (readConfigFile(importLircfile())) {
@@ -201,13 +204,13 @@ public class Movement extends Activity {
 	
 	
 	public void diving(){
-		String mycmd = Commands.DIVE.name();
+		/*String mycmd = Commands.DIVE.name();
 		try {
 			sendCommand(mycmd);
 		} catch (IllegalStateException e) {
 			System.err.println("Exception while diving: " + e);
 		}
-
+	*/
 		mHandler.postAtTime(dive, SystemClock.uptimeMillis());
 	}
 	
@@ -227,13 +230,13 @@ public class Movement extends Activity {
 	}
 
 	public void climbing(){
-		String mycmd = Commands.CLIMB.name();
+		/*String mycmd = Commands.CLIMB.name();
 		try {
 			sendCommand(mycmd);
 		} catch (IllegalStateException e) {
 			System.err.println("Exception while climbing: " + e);
 		}
-
+*/
 		mHandler.postAtTime(climb, SystemClock.uptimeMillis());
 	}
 	
@@ -253,13 +256,13 @@ public class Movement extends Activity {
 	}	
 	
 	public void moveLeft(){
-		String mycmd = Commands.TAILLEFT.name();
+		/*String mycmd = Commands.TAILLEFT.name();
 		try {
 			sendCommand(mycmd);
 		} catch (IllegalStateException e) {
 			System.err.println("Exception while swimming left: " + e);
 		}
-
+*/
 		mHandler.postAtTime(left, SystemClock.uptimeMillis());
 	}
 	
@@ -279,13 +282,13 @@ public class Movement extends Activity {
 	}	
 	
 	public void moveRight(){
-		String mycmd = Commands.TAILRIGHT.name();
+		/*String mycmd = Commands.TAILRIGHT.name();
 		try {
 			sendCommand(mycmd);
 		} catch (IllegalStateException e) {
 			System.err.println("Exception while swimming right: " + e);
 		}
-
+*/
 		mHandler.postAtTime(right, SystemClock.uptimeMillis());
 	}
 	
