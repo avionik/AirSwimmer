@@ -112,7 +112,7 @@ public abstract class BaseTilt extends BaseActivity implements
 			Bitmap scaled = Bitmap.createScaledBitmap(mBitmap, width, height, true);
 
 			Canvas canvas = ourHolder.lockCanvas();
-			canvas.drawColor(Color.WHITE);
+			canvas.drawColor(Color.WHITE); 
 			canvas.drawBitmap(scaled, 0, 0, new Paint()); // set Background
 			
 			//calculate new position of shark
@@ -209,7 +209,29 @@ public abstract class BaseTilt extends BaseActivity implements
 	}
 
 	// method for movement of the fish
-	public abstract void move(int xAxis, int yAxis);
-	// TODO: implement movement
+	public void move(int xAxis, int yAxis){
+	double delta =  0.4;
+	sensorX = xAxis; 
+	sensorY = yAxis; 
+	
+	if( yAxis < 150 - delta ){
+		//Todo command up 
+		
+	}
+	if( yAxis > 150 + delta){
+	//Todo action down 	
+	}
+	if(xAxis < 350 - delta){
+		moveLeft();
+	}
+	if(xAxis > 350 + delta){
+		moveRight(); 
+	}
+	
+	
+ }
+
+	public abstract void moveLeft();
+	public abstract void moveRight();
 
 }

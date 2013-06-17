@@ -31,4 +31,21 @@ public class Activity_Tilt extends BaseTilt {
         // TODO: implement movement 
     }
 
+
+	@Override
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 }
