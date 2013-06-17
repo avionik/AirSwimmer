@@ -28,5 +28,23 @@ public class Activity_Slide_Permanent extends BaseSlide {
     public void move(int xAxis, int yAxis) {
         // TODO Implement movement: swimmForward=true -->AirSwimmer has to swim
     }
+    @Override
+	public void moveLeft() {
+		action.moveLeft();
+	}
 
+	@Override
+	public void moveRight() {
+		action.moveRight();
+	}
+
+	@Override
+	public void dive() {
+		action.diving();		
+	}
+
+	@Override
+	public void climb() {
+		action.climbing();
+	}
 }
