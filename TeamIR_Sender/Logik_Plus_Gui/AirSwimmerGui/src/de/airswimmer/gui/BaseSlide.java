@@ -19,7 +19,8 @@ public abstract class BaseSlide extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        
+    	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_slide); // set Layout
         ViewGroup vg = (ViewGroup) findViewById(R.id.layout); // set ViewGroup
         vg.setOnTouchListener(new View.OnTouchListener() { // set OnTouchListener for ViewGroup
@@ -29,7 +30,7 @@ public abstract class BaseSlide extends BaseActivity {
                 ImageView img = (ImageView) findViewById(R.id.img);
                 int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
                 int yAxis = (int) event.getY() - offset_y;                      // calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
-     
+                
                 int[] viewCoords = new int[2];
                 img.getLocationOnScreen(viewCoords);
                 
@@ -66,7 +67,8 @@ public abstract class BaseSlide extends BaseActivity {
     protected boolean moveImage(View view, MotionEvent event) {
         switch (event.getActionMasked()) {
         case MotionEvent.ACTION_MOVE: // when view moves
-            int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
+            
+        	int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
             int yAxis = (int) event.getY() - offset_y;                      // calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
 
             @SuppressWarnings("deprecation")
@@ -79,7 +81,7 @@ public abstract class BaseSlide extends BaseActivity {
  
             if (yAxis > height) // if fish is dragged too far up/down
                 yAxis = height;
-
+            
             move(xAxis, yAxis); // method for movement of the fish is called
             
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
@@ -97,5 +99,6 @@ public abstract class BaseSlide extends BaseActivity {
     // method for movement of the fish
     public abstract void move(int xAxis, int yAxis);
     // TODO: implement movement
+
 
 }
