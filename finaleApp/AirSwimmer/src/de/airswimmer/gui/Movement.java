@@ -1,4 +1,5 @@
 package de.airswimmer.gui;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,21 +22,21 @@ import com.microcontrollerbg.irdroid.Lirc;
 
 public class Movement extends Activity {
 
-	
 	private byte buffer[];
 	private Lirc lirc = new Lirc();
 	private SharedPreferences mPrefs;
 	private static final String nameInLirc = "AirSwimmer2013";
 	private static final String nameOfLirc = "lirc.txt";
-	protected Handler mHandler;
+	final Handler mHandler;
 	private BaseActivity caller;
 	private int bufSize;
 	private AudioTrack ir;
 	private AudioManager audio;
-	
+	private Thread worker;
 
 	@SuppressWarnings("deprecation")
-	public Movement(BaseActivity caller, AudioManager audio, SharedPreferences pref,  Handler mHandler) {
+	public Movement(BaseActivity caller, AudioManager audio,
+			SharedPreferences pref, Handler mHandler) {
 		this.audio = audio;
 		this.caller = caller;
 		this.mHandler = mHandler;
@@ -45,22 +46,22 @@ public class Movement extends Activity {
 				AudioFormat.ENCODING_PCM_8BIT);
 		init();
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	public void init(){
+	public void init() {
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
-		
+
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
 				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
-		
+
 		// get lirc config file for the air swimmer remote
 		if (readConfigFile(importLircfile())) {
 			System.out.println("Read and wrote Lirc-File successfully");
 			// Configure Volume Level
-			//configureVolume();
+			// configureVolume();
 		} else {
 			Toast.makeText(getApplicationContext(),
 					"Failed to parse Lirc-File", Toast.LENGTH_SHORT).show();
@@ -68,7 +69,6 @@ public class Movement extends Activity {
 			finish();
 		}
 	}
-	
 
 	/**
 	 * reads the lirc file in the package directory and saves it to sdcard on
@@ -90,7 +90,8 @@ public class Movement extends Activity {
 			File f = new File(extStorageDirectory + newFolder + "/Lirc.txt");
 			try {
 
-				//final InputStream is = getResources().getAssets().open(nameOfLirc);
+				// final InputStream is =
+				// getResources().getAssets().open(nameOfLirc);
 				final InputStream is = caller.getAssets().open(nameOfLirc);
 				BufferedReader br = null;
 				try {
@@ -188,126 +189,22 @@ public class Movement extends Activity {
 		ir.write(buffer, 0, buffer.length);
 
 		ir.setStereoVolume(1, 1);
-		
+
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 6, 0);
 		ir.play();
 		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
 
 	}
-	
-	
+
 	protected int getVolume() {
 		return mPrefs.getInt("volume", 50);
 	}
-	
-	
-	public void diving(){
-		//7String mycmd = Commands.DIVE.name();
-		//try {
-			//sendCommand(mycmd);
-		//} catch (IllegalStateException e) {
-			//System.err.println("Exception while diving: " + e);
-		//}
-	
-		mHandler.postAtTime(dive, SystemClock.uptimeMillis());
-	}
-	
-	public void finishDiving(){
-		try {
-			Thread.sleep(180);
-			if (ir != null) {
-				ir.flush();
-				ir.release();
 
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		mHandler.removeCallbacks(dive);
+	public void diving() {
 
-	}
-
-	public void climbing(){
-//		String mycmd = Commands.CLIMB.name();
-//		try {
-//			sendCommand(mycmd);
-//		} catch (IllegalStateException e) {
-//			System.err.println("Exception while climbing: " + e);
-//		}
-
-		mHandler.postAtTime(climb, SystemClock.uptimeMillis());
-	}
-	
-	public void finishClimbing(){
-//		try {
-//			Thread.sleep(180);
-//			if (ir != null) {
-//				ir.flush();
-//				ir.release();
-//
-//			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		mHandler.removeCallbacks(climb);
-
-	}	
-	
-	public void moveLeft(){
-//		String mycmd = Commands.TAILLEFT.name();
-//		try {
-//			sendCommand(mycmd);
-//		} catch (IllegalStateException e) {
-//			System.err.println("Exception while swimming left: " + e);
-//		}
-
-		mHandler.postAtTime(left, SystemClock.uptimeMillis());
-	}
-	
-	public void finishMovingLeft(){
-		try {
-			Thread.sleep(180);
-			if (ir != null) {
-				ir.flush();
-				ir.release();
-
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		mHandler.removeCallbacks(left);
-
-	}	
-	
-	public void moveRight(){
-		String mycmd = Commands.TAILRIGHT.name();
-		try {
-			sendCommand(mycmd);
-		} catch (IllegalStateException e) {
-			System.err.println("Exception while swimming right: " + e);
-		}
-
-		mHandler.postAtTime(right, SystemClock.uptimeMillis());
-	}
-	
-	public void finishMovingRight(){
-		try {
-			Thread.sleep(180);
-			if (ir != null) {
-				ir.flush();
-				ir.release();
-
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		mHandler.removeCallbacks(right);
-
-	}
-	
-	// thread declaration
-		Runnable dive = new Runnable() {
+		Thread thread = new Thread() {
+			@Override
 			public void run() {
 				System.out.println("dive pressed runnable");
 				if (ir != null) {
@@ -320,15 +217,33 @@ public class Movement extends Activity {
 					} catch (IllegalStateException e) {
 						e.printStackTrace();
 					}
-					mHandler.postAtTime(this, SystemClock.uptimeMillis() + 250);
-
 				}
 			}
 		};
 
-		private Runnable climb = new Runnable() {
+		thread.start();
+	}
+
+//	public void finishDiving() {
+//		try {
+//			Thread.sleep(180);
+//			if (ir != null) {
+//				ir.flush();
+//				ir.release();
+//
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		mHandler.removeCallbacks(dive);
+//
+//	}
+
+	public void climbing() {
+		Thread thread = new Thread() {
+			@Override
 			public void run() {
-				System.out.println("climb pressed");
+				System.out.println("climb pressed runnable");
 				if (ir != null) {
 					ir.flush();
 					ir.release();
@@ -339,34 +254,69 @@ public class Movement extends Activity {
 					} catch (IllegalStateException e) {
 						e.printStackTrace();
 					}
-					mHandler.postAtTime(this, SystemClock.uptimeMillis() + 250);
-
 				}
 			}
 		};
 
-		private Runnable left = new Runnable() {
+		thread.start();
+	}
+
+//	public void finishClimbing() {
+//		try {
+//			Thread.sleep(180);
+//			if (ir != null) {
+//				ir.flush();
+//				ir.release();
+//
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		mHandler.removeCallbacks(climb);
+//
+//	}
+
+	public void moveLeft() {
+		Thread thread = new Thread() {
+			@Override
 			public void run() {
-				System.out.println("left pressed");
+				System.out.println("left pressed runnable");
 				if (ir != null) {
 					ir.flush();
 					ir.release();
 
-					String coolcmd = Commands.TAILLEFT.name();
+					String cmd = Commands.TAILLEFT.name();
 					try {
-						sendCommand(coolcmd);
+						sendCommand(cmd);
 					} catch (IllegalStateException e) {
 						e.printStackTrace();
 					}
-					mHandler.postAtTime(this, SystemClock.uptimeMillis() + 250);
-
 				}
 			}
 		};
 
-		private Runnable right = new Runnable() {
+		thread.start();
+	}
+
+//	public void finishMovingLeft() {
+//		try {
+//			Thread.sleep(180);
+//			if (ir != null) {
+//				ir.flush();
+//				ir.release();
+//
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		mHandler.removeCallbacks(left);
+//	}
+
+	public void moveRight() {
+		Thread thread = new Thread() {
+			@Override
 			public void run() {
-				System.out.println("right pressed");
+				System.out.println("right pressed runnable");
 				if (ir != null) {
 					ir.flush();
 					ir.release();
@@ -377,11 +327,27 @@ public class Movement extends Activity {
 					} catch (IllegalStateException e) {
 						e.printStackTrace();
 					}
-					mHandler.postAtTime(this, SystemClock.uptimeMillis() + 250);
-
 				}
 			}
 		};
-		
 
+		thread.start();
+	}
+
+//	public void finishMovingRight() {
+//		try {
+//			Thread.sleep(180);
+//			if (ir != null) {
+//				ir.flush();
+//				ir.release();
+//
+//			}
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		mHandler.removeCallbacks(right);
+//	}
+
+
+	// thread declaration
 }

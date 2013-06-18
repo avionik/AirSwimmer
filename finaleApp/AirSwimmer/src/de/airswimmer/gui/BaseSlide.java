@@ -16,7 +16,7 @@ public abstract class BaseSlide extends BaseActivity {
     private View selected_item = null;
     private int offset_x = 0;
     private int offset_y = 0;
-
+    int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         
@@ -27,7 +27,8 @@ public abstract class BaseSlide extends BaseActivity {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                ImageView img = (ImageView) findViewById(R.id.img);
+                
+            	ImageView img = (ImageView) findViewById(R.id.img);
                 int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
                 int yAxis = (int) event.getY() - offset_y;                      // calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
                 
@@ -36,7 +37,8 @@ public abstract class BaseSlide extends BaseActivity {
                 
                 int imageX = xAxis - viewCoords[0];  // viewCoords[0] is the X coordinate
                 int imageY = yAxis - viewCoords[1];  // viewCoords[1] is the Y coordinate
-                if (MotionEvent.ACTION_MOVE >= imageX - 70 && MotionEvent.ACTION_MOVE < imageX + 70 || MotionEvent.ACTION_MOVE >= imageY - 30 && MotionEvent.ACTION_MOVE < imageY + 30) // check, if movement is in the image
+                if (MotionEvent.ACTION_MOVE >= imageX - 70 && MotionEvent.ACTION_MOVE < imageX + 70 || MotionEvent.ACTION_MOVE >= imageY - 30 && MotionEvent.ACTION_MOVE < imageY + 30) 
+                	// check, if movement is in the image
                     return moveImage(v, event);
                 else 
                     return false;
@@ -68,7 +70,7 @@ public abstract class BaseSlide extends BaseActivity {
         switch (event.getActionMasked()) {
         case MotionEvent.ACTION_MOVE: // when view moves
             
-        	int xAxis = (int) ((int) event.getRawX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
+        	int xAxis = (int) ((int) event.getX() - (offset_x / 1.1));   // calculate position of fish in xAxis, '/' to prevent fish from 'jumping' away from finger
             int yAxis = (int) event.getY() - offset_y;                      // calculate position of fish in yAxis, '*' to prevent fish from 'jumping' away from finger
 
             @SuppressWarnings("deprecation")
@@ -82,7 +84,7 @@ public abstract class BaseSlide extends BaseActivity {
             if (yAxis > height) // if fish is dragged too far up/down
                 yAxis = height;
             
-            move(xAxis, yAxis); // method for movement of the fish is called
+                move(xAxis, yAxis); // method for movement of the fish is called
             
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
             // when picture moves, the view gets created again
@@ -98,8 +100,9 @@ public abstract class BaseSlide extends BaseActivity {
 
     // method for movement of the fish
     public abstract void move(int xAxis, int yAxis);
-    // TODO: implement movement
-    public abstract void moveLeft();
+
+	// TODO: implement movement
+	public abstract void moveLeft();
 
 	public abstract void moveRight();
 

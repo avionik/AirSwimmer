@@ -64,8 +64,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
 
-				action.finishClimbing();
-				
 				// action while pressing the button up
 				button_up.setBackgroundColor(Color.TRANSPARENT);
 
@@ -87,8 +85,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
 
-				action.finishDiving();
-
 				button_down.setBackgroundColor(Color.TRANSPARENT);
 
 				return true;
@@ -109,8 +105,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
 
-				action.finishMovingRight();
-				
 				button_right.setBackgroundColor(Color.TRANSPARENT);
 
 				return true;
@@ -129,15 +123,13 @@ public abstract class BaseButtons extends BaseActivity implements
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
 
-				
-				action.finishMovingLeft();
-				
 				button_left.setBackgroundColor(Color.TRANSPARENT);
 
 				return true;
 			}
 			return false;
 		}
+		
 		return true;
 	}
 

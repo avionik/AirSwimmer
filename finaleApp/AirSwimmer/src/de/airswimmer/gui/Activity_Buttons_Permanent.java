@@ -41,11 +41,8 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 			
 			forwardMovement = true;
 			moveLeft();
-			action.finishMovingLeft();
 			SystemClock.sleep(waiting_time);
 			moveRight();
-			action.finishMovingRight();
-			
 			
 		}
 		return false;
@@ -105,7 +102,6 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 							.println("Exception while swimming forward after left move: "
 									+ e);
 				}
-				action.finishMovingLeft();
 			} while (forwardMovement == true);
 
 		}

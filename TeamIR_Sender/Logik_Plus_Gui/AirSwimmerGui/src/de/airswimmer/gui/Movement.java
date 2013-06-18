@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import de.airswimmer.irdroid.Lirc;
+import com.microcontrollerbg.irdroid.Lirc;
+
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
