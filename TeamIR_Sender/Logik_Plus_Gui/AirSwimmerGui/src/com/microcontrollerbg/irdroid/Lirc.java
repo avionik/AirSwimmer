@@ -1,4 +1,4 @@
-package de.airswimmer.irdroid;
+package com.microcontrollerbg.irdroid;
 
 import java.io.File;
 
