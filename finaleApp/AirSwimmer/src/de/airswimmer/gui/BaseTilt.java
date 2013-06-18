@@ -25,7 +25,11 @@ public abstract class BaseTilt extends BaseActivity implements
 	protected DrawShark ourView;
 	private float sensorX, sensorY;
 	private Bitmap mBitmap;
-
+	private boolean isFirstTiltUp = false;
+	private boolean isFirstTiltDown = false;
+	private boolean isFirstTiltLeft = false;
+	private boolean isFirstTiltRight = false;
+	
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
 
@@ -208,8 +212,62 @@ public abstract class BaseTilt extends BaseActivity implements
 		return super.onKeyDown(keyCode, event);
 	}
 
-	// method for movement of the fish
-	public abstract void move(int xAxis, int yAxis);
-	// TODO: implement movement
 
+// method to move fish 
+
+	public void move (int xAxis, int yAxis){
+	double delta = 0.4;
+	sensorX = xAxis;
+	sensorY = yAxis;
+
+	//Up 
+	if (yAxis < 150 - delta){
+		if (!isFirstTiltUp){
+			action.climbing();
+			isFirstTiltUp = true;
+		}
+	}
+	else{
+	//action.finishClimbing();
+	isFirstTiltUp = false;
+	}
+
+	// Down
+	if (yAxis > 150 + delta){
+		if (!isFirstTiltDown){
+			action.diving();
+			isFirstTiltDown = true;
+		}
+	}
+	else{
+	//action.finishDiving();
+	isFirstTiltDown = false;
+	}
+	
+
+	//MoveLeft
+	if (xAxis < 350 - delta){
+		if (!isFirstTiltLeft){
+			action.moveLeft();
+			isFirstTiltLeft = true;
+		}
+	}
+	else{
+	//action.finishMovingLeft();
+	isFirstTiltLeft = false;
+	}
+
+	//Move Right
+	if (xAxis > 350 + delta){
+		if (!isFirstTiltRight){
+			action.moveRight();
+			isFirstTiltRight = true;
+		}
+	}
+	else{
+	//action.finishMovingRight();
+	isFirstTiltRight = false;
+	}
+	
+  }
 }
