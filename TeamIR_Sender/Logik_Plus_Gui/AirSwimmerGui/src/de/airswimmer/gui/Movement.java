@@ -48,6 +48,7 @@ public class Movement extends Activity {
 		init();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void init(){
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -190,7 +191,7 @@ public class Movement extends Activity {
 
 		ir.setStereoVolume(1, 1);
 		
-		//audio.setStreamVolume(AudioManager.STREAM_MUSIC, 6, 0);
+		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 6, 0);
 		ir.play();
 		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
