@@ -202,6 +202,9 @@ public class BaseActivity extends Activity {
 					return false;
 				}
 			}
+		}else if(item.getItemId()==R.id.frontPage){
+			startActivity(new Intent(this,
+					FrontPage.class));
 		}
 		return false;
 	}

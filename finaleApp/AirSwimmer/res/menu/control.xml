@@ -46,5 +46,6 @@
             </group>
         </menu>
     </item>
+    <item android:title="@string/back_to_start" android:id="@+id/frontPage"/>            <!--return to frontpage -->
 
 </menu>

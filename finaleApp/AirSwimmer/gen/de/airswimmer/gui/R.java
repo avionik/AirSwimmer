@@ -58,30 +58,31 @@ public final class R {
         public static final int Text=0x7f090009;
         public static final int buttonStart=0x7f090005;
         public static final int change_background=0x7f090012;
-        public static final int change_layout_orientation=0x7f090020;
+        public static final int change_layout_orientation=0x7f090021;
         public static final int change_mode=0x7f090017;
         public static final int change_move_buttons=0x7f09001c;
+        public static final int frontPage=0x7f090020;
         public static final int imageButtonDown=0x7f090003;
         public static final int imageButtonLeft=0x7f090004;
         public static final int imageButtonRight=0x7f090002;
         public static final int imageButtonUp=0x7f090001;
         public static final int img=0x7f090006;
-        public static final int info_page=0x7f090025;
-        public static final int landscape=0x7f090023;
+        public static final int info_page=0x7f090026;
+        public static final int landscape=0x7f090024;
         public static final int layout=0x7f090000;
         public static final int mode_buttons=0x7f090019;
         public static final int mode_slide=0x7f09001b;
         public static final int mode_tilt=0x7f09001a;
         public static final int permanent=0x7f09001e;
-        public static final int portrait=0x7f090022;
+        public static final int portrait=0x7f090023;
         public static final int single=0x7f09001f;
         public static final int sky=0x7f090015;
-        public static final int sound_calc=0x7f090024;
+        public static final int sound_calc=0x7f090025;
         public static final int start_button_tilt1=0x7f090011;
         public static final int submenu_changeBackground=0x7f090013;
         public static final int submenu_changeMode=0x7f090018;
         public static final int submenu_changeMove=0x7f09001d;
-        public static final int submenu_change_layout_orientation=0x7f090021;
+        public static final int submenu_change_layout_orientation=0x7f090022;
         public static final int textView1=0x7f09000e;
         public static final int textView2=0x7f090010;
         public static final int textView3=0x7f09000f;
@@ -104,54 +105,49 @@ public final class R {
         public static final int start=0x7f080001;
     }
     public static final class string {
-        public static final int OKButton=0x7f06001d;
+        public static final int OKButton=0x7f06001a;
         public static final int action_settings=0x7f060001;
         /**  Front page 
          */
         public static final int app_name=0x7f060000;
+        public static final int back_to_start=0x7f06000b;
         public static final int button_buttonb=0x7f060002;
-        public static final int button_down=0x7f060006;
         public static final int button_kippen=0x7f060004;
-        public static final int button_left=0x7f060008;
-        public static final int button_right=0x7f060007;
-        /**  buttons of button_mode 
-         */
-        public static final int button_up=0x7f060005;
         public static final int button_wischen=0x7f060003;
-        public static final int change_background=0x7f06000d;
+        public static final int change_background=0x7f060009;
         /**  start.xml menu 
          */
-        public static final int change_layout_orientation=0x7f06001a;
-        public static final int change_move=0x7f06000e;
+        public static final int change_layout_orientation=0x7f060017;
+        public static final int change_move=0x7f06000a;
         /**  submenu of select_mode 
          */
-        public static final int mode_buttons=0x7f060009;
-        public static final int mode_slide=0x7f06000b;
-        public static final int mode_tilt=0x7f06000a;
-        public static final int orientation_landscape=0x7f06001c;
-        public static final int orientation_portrait=0x7f06001b;
-        public static final int permanent=0x7f060019;
+        public static final int mode_buttons=0x7f060005;
+        public static final int mode_slide=0x7f060007;
+        public static final int mode_tilt=0x7f060006;
+        public static final int orientation_landscape=0x7f060019;
+        public static final int orientation_portrait=0x7f060018;
+        public static final int permanent=0x7f060016;
         /**  control.xml menu 
          */
-        public static final int select_mode=0x7f06000c;
-        public static final int single=0x7f060018;
-        public static final int sky_picture=0x7f060010;
-        public static final int sound_calc_string=0x7f06001e;
-        public static final int string_info_page=0x7f06001f;
-        public static final int th_picture=0x7f060011;
+        public static final int select_mode=0x7f060008;
+        public static final int single=0x7f060015;
+        public static final int sky_picture=0x7f06000d;
+        public static final int sound_calc_string=0x7f06001b;
+        public static final int string_info_page=0x7f06001c;
+        public static final int th_picture=0x7f06000e;
         /**  submenu of change-mode 
          */
-        public static final int title_activity_activity__buttons=0x7f060012;
+        public static final int title_activity_activity__buttons=0x7f06000f;
         /**  submenu of change-move 
          */
-        public static final int title_activity_activity__buttons_permanent=0x7f060015;
-        public static final int title_activity_activity__slide=0x7f060014;
-        public static final int title_activity_activity__slide_permanent=0x7f060016;
-        public static final int title_activity_activity__tilt=0x7f060013;
-        public static final int title_activity_activity__tilt_permanent=0x7f060017;
+        public static final int title_activity_activity__buttons_permanent=0x7f060012;
+        public static final int title_activity_activity__slide=0x7f060011;
+        public static final int title_activity_activity__slide_permanent=0x7f060013;
+        public static final int title_activity_activity__tilt=0x7f060010;
+        public static final int title_activity_activity__tilt_permanent=0x7f060014;
         /**  submenu of change-background 
          */
-        public static final int water_picture=0x7f06000f;
+        public static final int water_picture=0x7f06000c;
     }
     public static final class style {
         /** 

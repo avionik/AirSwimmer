@@ -9,12 +9,6 @@
     <string name="button_wischen">WISCHEN</string>
     <string name="button_kippen">KIPPEN</string>
     
-    <!-- buttons of button_mode -->
-    <string name="button_up">Up</string>
-    <string name="button_down">Down</string>
-    <string name="button_right">Right</string>
-    <string name="button_left">Left</string>
-    
 	<!-- submenu of select_mode -->	
  	<string name="mode_buttons">Tasten</string> 
  	<string name="mode_tilt">Kippen</string> 
@@ -24,6 +18,7 @@
  	<string name="select_mode">Modus auswählen</string>
  	<string name="change_background">Hintergrund ändern</string>
  	<string name="change_move">Steuerungsart ändern</string>
+ 	<string name="back_to_start">Startseite</string>
  	
  	<!-- submenu of change-background -->
  	<string name="water_picture">Wasser</string> 
