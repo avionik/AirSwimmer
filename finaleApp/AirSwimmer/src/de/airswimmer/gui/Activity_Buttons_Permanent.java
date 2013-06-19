@@ -2,11 +2,9 @@ package de.airswimmer.gui;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Activity_Buttons_Permanent extends BaseButtons {
 
@@ -19,31 +17,31 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 		super.onCreate(savedInstanceState);
 		buttonStart = (Button) findViewById(R.id.buttonStart);
 		buttonStart.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
-				
+
 				buttonStart.setText("stop");
-				while(forwardMovement){
+				while (forwardMovement) {
 					swim();
 				}
 				buttonStart.setText("start");
-				
+
 			}
 		});
 	}
 
 	public boolean swim() {
-		
+
 		if (forwardMovement) {
 			forwardMovement = false;
 
 		} else {
-			
+
 			forwardMovement = true;
 			moveLeft();
 			SystemClock.sleep(waiting_time);
 			moveRight();
-			
+
 		}
 		return false;
 
@@ -73,7 +71,7 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 
 	}
 
-	private Runnable permanent_thread = new Runnable() {
+	Runnable permanent_thread = new Runnable() {
 
 		public void run() {
 

@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.media.AudioFormat;
@@ -15,7 +14,6 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.widget.Toast;
 
 import com.microcontrollerbg.irdroid.Lirc;
@@ -32,9 +30,8 @@ public class Movement extends Activity {
 	private int bufSize;
 	private AudioTrack ir;
 	private AudioManager audio;
-	private Thread worker;
 
-	@SuppressWarnings("deprecation")
+
 	public Movement(BaseActivity caller, AudioManager audio,
 			SharedPreferences pref, Handler mHandler) {
 		this.audio = audio;
@@ -42,19 +39,18 @@ public class Movement extends Activity {
 		this.mHandler = mHandler;
 		mPrefs = pref;
 		bufSize = AudioTrack.getMinBufferSize(45000,
-				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
+				AudioFormat. CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT);
 		init();
 	}
 
-	@SuppressWarnings("deprecation")
 	public void init() {
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
-				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
+				AudioFormat.CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
 
 		// get lirc config file for the air swimmer remote
@@ -168,9 +164,8 @@ public class Movement extends Activity {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void sendCommand(String command) {
-
+		int volLevel = mPrefs.getInt("voice", 6);
 		// expects the name of the Lirc file (not filename, name is stated in
 		// the file) & the command which should be executed
 		buffer = lirc.getIrBuffer(nameInLirc, command);
@@ -180,7 +175,7 @@ public class Movement extends Activity {
 			return;
 		}
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
-				AudioFormat.CHANNEL_CONFIGURATION_STEREO,
+				AudioFormat.CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
 
 		if (bufSize < buffer.length)
@@ -189,8 +184,8 @@ public class Movement extends Activity {
 		ir.write(buffer, 0, buffer.length);
 
 		ir.setStereoVolume(1, 1);
-
-		audio.setStreamVolume(AudioManager.STREAM_MUSIC, 6, 0);
+		
+		audio.setStreamVolume(AudioManager.STREAM_MUSIC, volLevel, 0);
 		ir.play();
 		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
@@ -224,20 +219,6 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-//	public void finishDiving() {
-//		try {
-//			Thread.sleep(180);
-//			if (ir != null) {
-//				ir.flush();
-//				ir.release();
-//
-//			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		mHandler.removeCallbacks(dive);
-//
-//	}
 
 	public void climbing() {
 		Thread thread = new Thread() {
@@ -261,21 +242,6 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-//	public void finishClimbing() {
-//		try {
-//			Thread.sleep(180);
-//			if (ir != null) {
-//				ir.flush();
-//				ir.release();
-//
-//			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		mHandler.removeCallbacks(climb);
-//
-//	}
-
 	public void moveLeft() {
 		Thread thread = new Thread() {
 			@Override
@@ -298,19 +264,6 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-//	public void finishMovingLeft() {
-//		try {
-//			Thread.sleep(180);
-//			if (ir != null) {
-//				ir.flush();
-//				ir.release();
-//
-//			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		mHandler.removeCallbacks(left);
-//	}
 
 	public void moveRight() {
 		Thread thread = new Thread() {
@@ -334,20 +287,4 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-//	public void finishMovingRight() {
-//		try {
-//			Thread.sleep(180);
-//			if (ir != null) {
-//				ir.flush();
-//				ir.release();
-//
-//			}
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		mHandler.removeCallbacks(right);
-//	}
-
-
-	// thread declaration
 }

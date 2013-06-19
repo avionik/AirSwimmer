@@ -1,7 +1,5 @@
 package de.airswimmer.gui;
 
-import android.os.SystemClock;
-
 
 /**
  * Class for wiping where one slide causes one move of airswimmer

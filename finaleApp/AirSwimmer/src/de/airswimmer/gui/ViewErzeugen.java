@@ -1,22 +1,18 @@
 package de.airswimmer.gui;
 
-import android.R;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
+
 
 public class ViewErzeugen extends SurfaceView {
 
 	private SurfaceHolder surfaceHolder;
 	private Bitmap bmp;
-	private Bitmap mbmp;
 	//private String mText;
 	private int y = 670;
 	private info_page_thread theGameLoopThread;
