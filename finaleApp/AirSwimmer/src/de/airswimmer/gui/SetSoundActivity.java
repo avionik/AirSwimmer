@@ -4,6 +4,7 @@ package de.airswimmer.gui;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.Menu;
@@ -125,6 +126,13 @@ public class SetSoundActivity extends Activity implements OnClickListener{
                         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
                         audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, value, 0);
                         
+                        SharedPreferences preferences = getSharedPreferences("AirSwimmerPrefs",
+                        		Context.MODE_WORLD_READABLE);
+                        SharedPreferences.Editor editor = preferences
+                        		.edit();
+                        		editor.putInt("voice", value);
+                        		editor.commit();
+                 
                         return true;
                     }
                     else if (event.getAction() == MotionEvent.ACTION_UP){   //if button is released
