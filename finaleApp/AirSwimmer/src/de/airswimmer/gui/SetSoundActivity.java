@@ -1,21 +1,19 @@
 package de.airswimmer.gui;
 
 
-import android.media.AudioManager;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.view.Menu;
+import android.media.AudioManager;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 
 public class SetSoundActivity extends Activity implements OnClickListener{
     
@@ -28,7 +26,15 @@ public class SetSoundActivity extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_sound);
-        
+    	SharedPreferences prefs = getSharedPreferences("AirSwimmerPrefs",
+				Context.MODE_PRIVATE); // get preferences which are stored in
+										// file AirSwimmerPrefs
+		int layout = prefs.getInt("layout", -1);
+		if (layout != -1) {
+			setRequestedOrientation(layout); // set screen orientation of
+												// current activity to stored
+												// value
+		}
         okbutton = (Button) findViewById(R.id.OKButton);                //set button
         okbutton.setOnClickListener(this);                              //set listener
         okbutton.performClick();                                        //calls onClickListener
@@ -103,12 +109,6 @@ public class SetSoundActivity extends Activity implements OnClickListener{
     
     }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.set_sound, menu);
-        return true;
-    }
 
     @Override
     public void onClick(View v) {
@@ -132,7 +132,6 @@ public class SetSoundActivity extends Activity implements OnClickListener{
                         		.edit();
                         		editor.putInt("voice", value);
                         		editor.commit();
-                 
                         return true;
                     }
                     else if (event.getAction() == MotionEvent.ACTION_UP){   //if button is released
