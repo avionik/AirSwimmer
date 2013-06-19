@@ -111,6 +111,9 @@ public class FrontPage extends Activity {
 			setRequestedOrientation(layout);	//set orientation of FrontPage to requested orientation
 			return true;
 		}
+		else if (item.getItemId() == R.id.sound_calc) {
+			startActivity(new Intent(this, SetSoundActivity.class));
+		}
 		return false;
 	}
 

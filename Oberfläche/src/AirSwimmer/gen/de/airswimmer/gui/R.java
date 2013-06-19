@@ -72,6 +72,7 @@ public final class R {
         public static final int portrait=0x7f090021;
         public static final int single=0x7f09001e;
         public static final int sky=0x7f090014;
+        public static final int sound_calc=0x7f090024;
         public static final int start_button_tilt1=0x7f090010;
         public static final int submenu_changeBackground=0x7f090012;
         public static final int submenu_changeMode=0x7f090017;
@@ -125,6 +126,7 @@ public final class R {
         public static final int mode_slide=0x7f06000b;
         public static final int mode_tilt=0x7f06000a;
         public static final int open_info_page=0x7f06001d;
+        public static final int open_sound_calc=0x7f06001e;
         public static final int orientation_landscape=0x7f06001c;
         public static final int orientation_portrait=0x7f06001b;
         public static final int permanent=0x7f060019;

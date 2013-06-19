@@ -138,6 +138,9 @@ public class FrontPage extends Activity {
 		else if (item.getItemId() == R.id.info_page) {
 			startActivity(new Intent(this, info_page.class));
 		}
+		else if (item.getItemId() == R.id.sound_calc) {
+			//startActivity(new Intent(this, Giuseppe_voltage.class));
+		}
 		return false;
 	}
 

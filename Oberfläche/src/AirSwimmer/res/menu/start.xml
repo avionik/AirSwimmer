@@ -16,6 +16,7 @@
         </item>
         <!--  Menu element for info page-->
         <item android:id="@+id/info_page" android:title="@string/open_info_page"></item>
-        
+        <!--  Menu element for sound_calc-->
+         <item android:id="@+id/sound_calc" android:title="@string/open_sound_calc"></item>
 
 </menu>
