@@ -14,8 +14,11 @@
                 </group>
             </menu>
         </item>
-<!--  Menu element for changing orientation-->
+<!--  Menu element for Sound calculation-->
         <item android:title="@string/sound_calc_string" android:id="@+id/sound_calc">
+        </item>
+<!--  Menu element for info page-->
+        <item android:title="@string/string_info_page" android:id="@+id/info_page">
         </item>
             
 </menu>

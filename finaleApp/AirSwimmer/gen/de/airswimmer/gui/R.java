@@ -67,6 +67,7 @@ public final class R {
         public static final int imageButtonRight=0x7f090002;
         public static final int imageButtonUp=0x7f090001;
         public static final int img=0x7f090006;
+        public static final int info_page=0x7f090026;
         public static final int landscape=0x7f090024;
         public static final int layout=0x7f090000;
         public static final int mode_buttons=0x7f090019;
@@ -138,6 +139,7 @@ public final class R {
         public static final int single=0x7f060018;
         public static final int sky_picture=0x7f060010;
         public static final int sound_calc_string=0x7f06001e;
+        public static final int string_info_page=0x7f06001f;
         public static final int th_picture=0x7f060011;
         /**  submenu of change-mode 
          */
