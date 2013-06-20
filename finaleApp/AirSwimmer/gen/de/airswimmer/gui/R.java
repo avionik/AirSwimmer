@@ -105,11 +105,19 @@ public final class R {
         public static final int start=0x7f080001;
     }
     public static final class string {
-        public static final int OKButton=0x7f06001a;
+        public static final int OKButton=0x7f060018;
         public static final int action_settings=0x7f060001;
+        /**  string for AlertDiaolg getAux 
+         */
+        public static final int alert_aux_title=0x7f06001b;
+        /**  string for AlertDiaolg to remind irdroid 
+         */
+        public static final int alert_ir_title=0x7f06001e;
         /**  Front page 
          */
         public static final int app_name=0x7f060000;
+        public static final int aux_longSide=0x7f06001d;
+        public static final int aux_shortSide=0x7f06001c;
         public static final int back_to_start=0x7f06000b;
         public static final int button_buttonb=0x7f060002;
         public static final int button_kippen=0x7f060004;
@@ -124,16 +132,14 @@ public final class R {
         public static final int mode_buttons=0x7f060005;
         public static final int mode_slide=0x7f060007;
         public static final int mode_tilt=0x7f060006;
-        public static final int orientation_landscape=0x7f060019;
-        public static final int orientation_portrait=0x7f060018;
         public static final int permanent=0x7f060016;
         /**  control.xml menu 
          */
         public static final int select_mode=0x7f060008;
         public static final int single=0x7f060015;
         public static final int sky_picture=0x7f06000d;
-        public static final int sound_calc_string=0x7f06001b;
-        public static final int string_info_page=0x7f06001c;
+        public static final int sound_calc_string=0x7f060019;
+        public static final int string_info_page=0x7f06001a;
         public static final int th_picture=0x7f06000e;
         /**  submenu of change-mode 
          */

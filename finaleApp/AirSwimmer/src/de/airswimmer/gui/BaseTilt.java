@@ -25,11 +25,8 @@ public abstract class BaseTilt extends BaseActivity implements
 	protected DrawShark ourView;
 	private float sensorX, sensorY;
 	private Bitmap mBitmap;
-	private boolean isFirstTiltUp = false;
-	private boolean isFirstTiltDown = false;
-	private boolean isFirstTiltLeft = false;
-	private boolean isFirstTiltRight = false;
-	
+
+
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
 
@@ -59,6 +56,7 @@ public abstract class BaseTilt extends BaseActivity implements
 		@Override
 		public void run() {
 			while (isRunning) {
+				move(sensorX, sensorY);
 				if (!ourHolder.getSurface().isValid()) {
 					continue;
 				}
@@ -105,21 +103,37 @@ public abstract class BaseTilt extends BaseActivity implements
 
 		private void drawSharkImage() {
 			double delay = 0.4; // sensitivity of sensor
-			Display display = getWindowManager().getDefaultDisplay(); // to get the Window height and width
-			@SuppressWarnings("deprecation") // deprecated function has to be used because of target android version
+			Display display = getWindowManager().getDefaultDisplay(); // to get
+																		// the
+																		// Window
+																		// height
+																		// and
+																		// width
+			@SuppressWarnings("deprecation")
+			// deprecated function has to be used because of target android
+			// version
 			int width = display.getWidth();
-			@SuppressWarnings("deprecation") // deprecated function has to be used because of target android version
+			@SuppressWarnings("deprecation")
+			// deprecated function has to be used because of target android
+			// version
 			int height = display.getHeight();
 
-			mBitmap = BitmapFactory.decodeResource(getResources(), background); // new Bitmap to make the background image
+			mBitmap = BitmapFactory.decodeResource(getResources(), background); // new
+																				// Bitmap
+																				// to
+																				// make
+																				// the
+																				// background
+																				// image
 
-			Bitmap scaled = Bitmap.createScaledBitmap(mBitmap, width, height, true);
+			Bitmap scaled = Bitmap.createScaledBitmap(mBitmap, width, height,
+					true);
 
 			Canvas canvas = ourHolder.lockCanvas();
 			canvas.drawColor(Color.WHITE);
 			canvas.drawBitmap(scaled, 0, 0, new Paint()); // set Background
-			
-			//calculate new position of shark
+
+			// calculate new position of shark
 			float startX = 350;
 			float startY = 150;
 			float offsetX = 0;
@@ -141,7 +155,7 @@ public abstract class BaseTilt extends BaseActivity implements
 												// picture
 				offsetY = (float) ((100.0 / 360.0 * (sensorY + delay)) * width / 4);
 			}
-			
+
 			canvas.drawBitmap(shark, startX + offsetX, startY + offsetY, null);
 			ourHolder.unlockCanvasAndPost(canvas);
 		}
@@ -151,7 +165,16 @@ public abstract class BaseTilt extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE); // sensor listener to get the move of the device
+		
+		sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE); // sensor
+																		// listener
+																		// to
+																		// get
+																		// the
+																		// move
+																		// of
+																		// the
+																		// device
 		if (sm.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0) {
 			Sensor s = sm.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
 			sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
@@ -172,7 +195,8 @@ public abstract class BaseTilt extends BaseActivity implements
 	}
 
 	/**
-	 * Overrides changeBackground so bitmap is changed instead of background. Stops thread if menu changes activity.
+	 * Overrides changeBackground so bitmap is changed instead of background.
+	 * Stops thread if menu changes activity.
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -195,7 +219,7 @@ public abstract class BaseTilt extends BaseActivity implements
 			ourView.changeBackground(id);
 			return true;
 		} else if (item.getGroupId() == R.id.submenu_changeMode
-				|| item.getGroupId() == R.id.submenu_changeMove) {
+				|| item.getGroupId() == R.id.submenu_changeMove||item.getItemId()==R.id.frontPage) {
 			ourView.stop(); // stops drawing thread before mode is changed
 		}
 		return super.onOptionsItemSelected(item);
@@ -212,62 +236,7 @@ public abstract class BaseTilt extends BaseActivity implements
 		return super.onKeyDown(keyCode, event);
 	}
 
+	// method to move fish
 
-// method to move fish 
-
-	public void move (int xAxis, int yAxis){
-	double delta = 0.4;
-	sensorX = xAxis;
-	sensorY = yAxis;
-
-	//Up 
-	if (yAxis < 150 - delta){
-		if (!isFirstTiltUp){
-			action.climbing();
-			isFirstTiltUp = true;
-		}
-	}
-	else{
-	//action.finishClimbing();
-	isFirstTiltUp = false;
-	}
-
-	// Down
-	if (yAxis > 150 + delta){
-		if (!isFirstTiltDown){
-			action.diving();
-			isFirstTiltDown = true;
-		}
-	}
-	else{
-	//action.finishDiving();
-	isFirstTiltDown = false;
-	}
-	
-
-	//MoveLeft
-	if (xAxis < 350 - delta){
-		if (!isFirstTiltLeft){
-			action.moveLeft();
-			isFirstTiltLeft = true;
-		}
-	}
-	else{
-	//action.finishMovingLeft();
-	isFirstTiltLeft = false;
-	}
-
-	//Move Right
-	if (xAxis > 350 + delta){
-		if (!isFirstTiltRight){
-			action.moveRight();
-			isFirstTiltRight = true;
-		}
-	}
-	else{
-	//action.finishMovingRight();
-	isFirstTiltRight = false;
-	}
-	
-  }
+	public abstract void move(float xAxis, float yAxis);
 }

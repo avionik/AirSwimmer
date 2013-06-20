@@ -24,7 +24,7 @@ public class Activity_Tilt_Permanent extends BaseTilt {
 	}
 
 	// method for movement of the fish
-	public void move(int xAxis, int yAxis) {
+	public void move(float xAxis, float yAxis) {
 		// TODO: implement movement
 	}
 }

@@ -6,11 +6,11 @@
                 <group android:id="@+id/submenu_change_layout_orientation" >
                 <item
                     android:id="@+id/portrait"
-                    android:title="@string/orientation_portrait"/>
+                    android:title="@string/aux_shortSide"/>
                 	
                 <item
                     android:id="@+id/landscape"
-                    android:title="@string/orientation_landscape"/>
+                    android:title="@string/aux_longSide"/>
                 </group>
             </menu>
         </item>

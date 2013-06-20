@@ -197,7 +197,6 @@ public class Movement extends Activity {
 	}
 
 	public void diving() {
-
 		Thread thread = new Thread() {
 			@Override
 			public void run() {

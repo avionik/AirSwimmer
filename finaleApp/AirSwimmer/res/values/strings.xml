@@ -39,11 +39,16 @@
 	
 	<!-- start.xml menu -->
 	<string name="change_layout_orientation">Ausrichtung ändern</string>
-	<string name="orientation_portrait">Aux-Anschluss an der kurzen Seite</string>
-	<string name="orientation_landscape">Aux-Anschluss an der langen Seite</string>
 	<string name="OKButton">OK</string>
 	<string name="sound_calc_string">Lautstärkeregulierung</string>
 	<string name="string_info_page">Info</string>	
 	
+	<!-- string for AlertDiaolg getAux -->
+	<string name="alert_aux_title">Wähle AUX-Eingang</string>
+	<string name="aux_shortSide">Aux-Anschluss an der kurzen Seite</string>
+	<string name="aux_longSide">Aux-Anschluss an der langen Seite</string>
+	
+		<!-- string for AlertDiaolg to remind irdroid -->
+	<string name="alert_ir_title">Bitte schließen Sie, falls noch nicht geschehen, einen Infrarotsender an !</string>
   
 </resources>
