@@ -50,5 +50,7 @@
 	
 		<!-- string for AlertDiaolg to remind irdroid -->
 	<string name="alert_ir_title">Bitte schließen Sie, falls noch nicht geschehen, einen Infrarotsender an !</string>
+	<string name="DescriptionText">Automatische Lautstärkenregelung, bitte warten.</string>
+	<string name="RequestText">Bei Bewegung des Fisches bitte OK drücken</string>
   
 </resources>

@@ -35,7 +35,17 @@
         android:layout_above="@+id/SoundBar"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="123dp"
-        android:text="Bei Bewegung des Fisches OK drücken"
+        android:text="@string/RequestText"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/Text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:text="@string/DescriptionText"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
