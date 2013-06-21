@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#00BFFF"
+    android:background="@drawable/frontpage_background"
     tools:context=".SetSoundActivity" >
 
     <SeekBar
@@ -36,7 +36,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="123dp"
         android:text="@string/RequestText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:textColor="#f6f60e"/>
 
     <TextView
         android:id="@+id/Text1"
@@ -46,6 +47,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="43dp"
         android:text="@string/DescriptionText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f6f60e" />
 
 </RelativeLayout>
