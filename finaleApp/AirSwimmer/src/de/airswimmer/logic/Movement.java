@@ -33,7 +33,6 @@ public class Movement extends Activity {
 	private AudioTrack ir;
 	private AudioManager audio;
 
-
 	public Movement(BaseActivity caller, AudioManager audio,
 			SharedPreferences pref, Handler mHandler) {
 		this.audio = audio;
@@ -41,25 +40,28 @@ public class Movement extends Activity {
 		this.mHandler = mHandler;
 		mPrefs = pref;
 		bufSize = AudioTrack.getMinBufferSize(45000,
-				AudioFormat. CHANNEL_IN_STEREO,
-				AudioFormat.ENCODING_PCM_8BIT);
+				AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_8BIT);
 		init();
 	}
 
+	/**
+	 * initialize needed variables and import lircfile to current working set
+	 * device
+	 * 
+	 * @return void
+	 */
 	public void init() {
 
 		int currentVolume = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume / 2, 0);
 
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
-				AudioFormat.CHANNEL_IN_STEREO,
-				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
+				AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_8BIT,
+				bufSize, AudioTrack.MODE_STATIC);
 
 		// get lirc config file for the air swimmer remote
 		if (readConfigFile(importLircfile())) {
 			System.out.println("Read and wrote Lirc-File successfully");
-			// Configure Volume Level
-			// configureVolume();
 		} else {
 			Toast.makeText(getApplicationContext(),
 					"Failed to parse Lirc-File", Toast.LENGTH_SHORT).show();
@@ -88,8 +90,6 @@ public class Movement extends Activity {
 			File f = new File(extStorageDirectory + newFolder + "/Lirc.txt");
 			try {
 
-				// final InputStream is =
-				// getResources().getAssets().open(nameOfLirc);
 				final InputStream is = caller.getAssets().open(nameOfLirc);
 				BufferedReader br = null;
 				try {
@@ -166,6 +166,12 @@ public class Movement extends Activity {
 
 	}
 
+	/**
+	 * Method for sending movement command to the irdroid adapter via an
+	 * audiotrack
+	 * 
+	 * @return void
+	 */
 	public void sendCommand(String command) {
 		int volLevel = mPrefs.getInt("voice", 6);
 		// expects the name of the Lirc file (not filename, name is stated in
@@ -177,27 +183,29 @@ public class Movement extends Activity {
 			return;
 		}
 		ir = new AudioTrack(AudioManager.STREAM_MUSIC, 45000,
-				AudioFormat.CHANNEL_IN_STEREO,
-				AudioFormat.ENCODING_PCM_8BIT, bufSize, AudioTrack.MODE_STATIC);
+				AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_8BIT,
+				bufSize, AudioTrack.MODE_STATIC);
 
 		if (bufSize < buffer.length)
 			bufSize = buffer.length;
 
 		ir.write(buffer, 0, buffer.length);
-
+		// set Stereo Volume and the volume of Stream music media on the device
 		ir.setStereoVolume(1, 1);
-		
 		audio.setStreamVolume(AudioManager.STREAM_MUSIC, volLevel, 0);
+
 		ir.play();
 		System.out.println(audio.getStreamVolume(AudioManager.STREAM_MUSIC));
 		System.out.println(command + " sent successfully!");
 
 	}
 
-	protected int getVolume() {
-		return mPrefs.getInt("volume", 50);
-	}
-
+	/**
+	 * Method to let the fish dive
+	 * 
+	 * 
+	 * @return void
+	 */
 	public void diving() {
 		Thread thread = new Thread() {
 			@Override
@@ -220,7 +228,12 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-
+	/**
+	 * Method to let the fish climb
+	 * 
+	 * 
+	 * @return void
+	 */
 	public void climbing() {
 		Thread thread = new Thread() {
 			@Override
@@ -243,6 +256,12 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
+	/**
+	 * Method to let the fish move left
+	 * 
+	 * 
+	 * @return void
+	 */
 	public void moveLeft() {
 		Thread thread = new Thread() {
 			@Override
@@ -265,7 +284,12 @@ public class Movement extends Activity {
 		thread.start();
 	}
 
-
+	/**
+	 * Method to let the fish move right
+	 * 
+	 * 
+	 * @return void
+	 */
 	public void moveRight() {
 		Thread thread = new Thread() {
 			@Override
