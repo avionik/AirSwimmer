@@ -1,5 +1,6 @@
 package de.airswimmer.gui;
 
+import de.airswimmer.logic.Movement;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

@@ -23,6 +23,7 @@ public class FrontPage extends Activity {
 		boolean firstStart;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.front_page);
+		//check if frontpage is started the first time so reminder to irdroid adapter has to be shown
 		Intent i = getIntent();
 		firstStart = i.getBooleanExtra("firstStart", true);
 		if (firstStart) {
@@ -63,7 +64,7 @@ public class FrontPage extends Activity {
 					.getString(R.string.aux_shortSide);
 			String long_side = getResources().getString(R.string.aux_longSide);
 			// Alert Dialog
-			final CharSequence[] possibleSides = { short_side, long_side };
+			final CharSequence[] possibleSides = { short_side, long_side }; //elements of dialog
 			AlertDialog.Builder getAuxADBuilder = new AlertDialog.Builder(this)
 					.setTitle(title)
 					.setCancelable(false)

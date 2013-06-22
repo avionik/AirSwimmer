@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public abstract class BaseButtons extends BaseActivity implements
 		OnTouchListener {
@@ -67,7 +66,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				dive();
 
 				button_down.setBackgroundColor(Color.BLUE);
-				
 
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -86,7 +84,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				moveRight();
 
 				button_right.setBackgroundColor(Color.BLUE);
-				
 
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -103,7 +100,6 @@ public abstract class BaseButtons extends BaseActivity implements
 				moveLeft();
 
 				button_left.setBackgroundColor(Color.BLUE);
-				
 
 				return true;
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -114,10 +110,12 @@ public abstract class BaseButtons extends BaseActivity implements
 			}
 			return false;
 		}
-		
+
 		return true;
 	}
 
+	// abtract methodes for movement; perform either one or permanent move in
+	// direction
 	public abstract void moveLeft();
 
 	public abstract void moveRight();

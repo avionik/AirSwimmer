@@ -101,6 +101,7 @@ public abstract class BaseTilt extends BaseActivity implements
 			this.background = background;
 		}
 
+		//draws image of shark which position moves while target is tilted
 		private void drawSharkImage() {
 			double delay = 0.4; // sensitivity of sensor
 			Display display = getWindowManager().getDefaultDisplay(); // to get
@@ -188,6 +189,9 @@ public abstract class BaseTilt extends BaseActivity implements
 		setContentView(ourView);
 	}
 
+	/**
+	 * restarts thread for drawing image each time activity is reactivated
+	 */
 	@Override
 	public void onResume() {
 		ourView.resume();

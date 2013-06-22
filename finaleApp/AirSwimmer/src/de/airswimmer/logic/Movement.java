@@ -1,4 +1,4 @@
-package de.airswimmer.gui;
+package de.airswimmer.logic;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,6 +17,8 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.microcontrollerbg.irdroid.Lirc;
+
+import de.airswimmer.gui.BaseActivity;
 
 public class Movement extends Activity {
 

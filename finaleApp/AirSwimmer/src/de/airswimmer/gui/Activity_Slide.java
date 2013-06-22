@@ -34,14 +34,14 @@ public class Activity_Slide extends BaseSlide {
 			moved_right = false;
 			moved_left = false;
 			
-			climb();
+			action.climbing();
 		
 			System.out.println("climb");
 			
 		}else if((yAxis > m_height  && yAxis < max_height) && (xAxis > max_width*0.33 && xAxis < max_width*0.66)){
 			moved_right = false;
 			moved_left = false;
-			dive();
+			action.diving();
 			
 			System.out.println("dive");
 			
@@ -50,7 +50,7 @@ public class Activity_Slide extends BaseSlide {
 			if(!moved_right){
 				moved_right = true;
 				moved_left = false;
-				moveRight();
+				action.moveRight();
 				System.out.println("right");
 				
 			}
@@ -59,31 +59,12 @@ public class Activity_Slide extends BaseSlide {
 			if(!moved_left){
 				moved_left = true;
 				moved_right = false;
-				moveLeft();
+				action.moveLeft();
 				System.out.println("left");
 				
 			}
 		}
 		prevX = xAxis;
 		prevY = yAxis;
-	}
-	@Override
-	public void moveLeft() {
-		action.moveLeft();
-	}
-
-	@Override
-	public void moveRight() {
-		action.moveRight();
-	}
-
-	@Override
-	public void dive() {
-		action.diving();		
-	}
-
-	@Override
-	public void climb() {
-		action.climbing();
 	}
 }

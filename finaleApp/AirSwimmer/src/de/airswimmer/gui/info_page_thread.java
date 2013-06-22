@@ -4,10 +4,10 @@ import android.graphics.Canvas;
 
 public class info_page_thread extends Thread {
 
-	private ViewErzeugen theView;
+	private CreateView theView;
 	private boolean isRunning = false;
 
-	public info_page_thread(ViewErzeugen theView) {
+	public info_page_thread(CreateView theView) {
 		this.theView = theView;
 	}
 

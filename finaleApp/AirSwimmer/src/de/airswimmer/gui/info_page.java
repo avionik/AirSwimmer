@@ -8,7 +8,7 @@ public class info_page extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(new ViewErzeugen(this));
+		setContentView(new CreateView(this));
 	}
 
 }

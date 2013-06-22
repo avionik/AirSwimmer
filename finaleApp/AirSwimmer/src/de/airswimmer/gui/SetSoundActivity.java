@@ -33,15 +33,14 @@ public class SetSoundActivity extends BaseActivity implements OnClickListener {
 		editor.commit();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_sound);
+		//set layout orientation
 		final SharedPreferences prefs = getSharedPreferences("AirSwimmerPrefs",
 				Context.MODE_PRIVATE); // get preferences which are stored in
 										// file AirSwimmerPrefs
 		int layout = prefs.getInt("layout", -1);
 
 		if (layout != -1) {
-			setRequestedOrientation(layout); // set screen orientation of
-												// current activity to stored
-												// value
+			setRequestedOrientation(layout); // set screen orientation of current activity to stored value
 		}
 
 		okbutton = (Button) findViewById(R.id.OKButton); // set button
