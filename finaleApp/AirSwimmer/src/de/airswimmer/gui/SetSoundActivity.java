@@ -110,6 +110,11 @@ public class SetSoundActivity extends BaseActivity implements OnClickListener {
 					bar.setProgress(i);
 					// comand send signal move_fish
 					for (int j = 0; j < 5; j++) {
+					    
+					    if (stopped == true){  //stop sending if ok-click occured while going through for-loop
+					        break;
+					    }
+					    
 						action.diving();
 
 						try {
