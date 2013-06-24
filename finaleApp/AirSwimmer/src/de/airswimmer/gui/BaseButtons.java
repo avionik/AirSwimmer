@@ -43,7 +43,7 @@ public abstract class BaseButtons extends BaseActivity implements
 			button_up.getAnimation();
 			if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-				climb();
+			    dive();
 
 				// action while pressing the button down
 				button_up.setBackgroundColor(Color.BLUE);
@@ -63,7 +63,7 @@ public abstract class BaseButtons extends BaseActivity implements
 
 			if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-				dive();
+				climb();
 
 				button_down.setBackgroundColor(Color.BLUE);
 

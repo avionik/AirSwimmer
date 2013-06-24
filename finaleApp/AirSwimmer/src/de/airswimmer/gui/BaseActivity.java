@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class BaseActivity extends Activity {
 	private AudioManager audio;
 	public int waiting_time = 5000;
 	final Handler mHandler = new Handler();
+	protected int orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE; 
 
 	
 	@Override
@@ -36,6 +38,7 @@ public class BaseActivity extends Activity {
 			setRequestedOrientation(layout); // set screen orientation of
 												// current activity to stored
 												// value
+			orientation=layout;
 		}
 		
 		audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);

@@ -7,6 +7,7 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -125,6 +126,12 @@ public class SetSoundActivity extends BaseActivity implements OnClickListener {
 					}
 
 					value = i;
+					try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 				}
 
 				runOnUiThread(new Runnable() {
@@ -202,5 +209,16 @@ public class SetSoundActivity extends BaseActivity implements OnClickListener {
 		}
 
 	}
+	
+    /**
+     * Stops thread before execute step back
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            stopped=true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }
