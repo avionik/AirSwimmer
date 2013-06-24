@@ -33,7 +33,7 @@ public class Activity_Tilt extends BaseTilt {
 
 		// Up
 		if (yAxis < 0 - delta) {
-			if (!isFirstTiltUp) {
+			if (!isFirstTiltUp&&Math.abs(xAxis)<delta) {
 				action.climbing();
 				isFirstTiltUp = true;
 			}
@@ -43,7 +43,7 @@ public class Activity_Tilt extends BaseTilt {
 
 		// Down
 		if (yAxis > 0 + delta) {
-			if (!isFirstTiltDown) {
+			if (!isFirstTiltDown&&Math.abs(xAxis)<delta) {
 				action.diving();
 				isFirstTiltDown = true;
 			}

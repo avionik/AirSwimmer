@@ -8,43 +8,27 @@ import android.widget.Button;
 
 public class Activity_Buttons_Permanent extends BaseButtons {
 
-	private boolean forwardMovement = true;
-	private Button buttonStart;
-
+	private boolean forwardMovement = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_layout_buttons_permanent);
 		super.onCreate(savedInstanceState);
-		buttonStart = (Button) findViewById(R.id.buttonStart);
-		buttonStart.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-
-				buttonStart.setText("stop");
-				while (forwardMovement) {
-					swim();
-				}
-				buttonStart.setText("start");
-
-			}
-		});
 	}
-
-	public boolean swim() {
-
-		if (forwardMovement) {
-			forwardMovement = false;
-
-		} else {
-
-			forwardMovement = true;
-			moveLeft();
-			SystemClock.sleep(waiting_time);
-			moveRight();
-
+	
+	// Change word of button
+	public void changeMoveState(View view){
+		Button button_start = (Button) view;
+		if(forwardMovement){
+			forwardMovement=false;
+			button_start.setText("Start");
+			// TODO stop forward movement
 		}
-		return false;
-
+		else {
+			forwardMovement=true;
+			button_start.setText("Stop");
+			// TODO start forward movement
+		}
 	}
 
 	@Override
@@ -71,39 +55,27 @@ public class Activity_Buttons_Permanent extends BaseButtons {
 
 	}
 
-	Runnable permanent_thread = new Runnable() {
-
-		public void run() {
-
-			// loop of right and left moves
-			do {
-				moveRight();
-				try {
-					// Thread should wait until AirSwimmer has moved to the
-					// right, once
-					Thread.sleep(waiting_time);
-				} catch (InterruptedException e) {
-					System.err
-							.println("Exception while swimming forward after right move: "
-									+ e);
-				}
-
-				moveLeft();
-
-				try {
-					// Thread should wait until AirSwimmer has moved to the
-					// left,
-					// once
-					Thread.sleep(waiting_time);
-				} catch (InterruptedException e) {
-					System.err
-							.println("Exception while swimming forward after left move: "
-									+ e);
-				}
-			} while (forwardMovement == true);
-
-		}
-
-	};
-
+	// Runnable Interface with run-method
+	// Used to realize permanent movement independent of surface
+	/*
+	 * Runnable permanent_thread = new Runnable() {
+	 * 
+	 * public void run() {
+	 * 
+	 * // loop of right and left moves do { moveRight(); try { // Thread should
+	 * wait until AirSwimmer has moved to the // right, once
+	 * Thread.sleep(waiting_time); } catch (InterruptedException e) { System.err
+	 * .println("Exception while swimming forward after right move: " + e); }
+	 * 
+	 * moveLeft();
+	 * 
+	 * try { // Thread should wait until AirSwimmer has moved to the // left, //
+	 * once Thread.sleep(waiting_time); } catch (InterruptedException e) {
+	 * System.err .println("Exception while swimming forward after left move: "
+	 * + e); } } while (forwardMovement == true);
+	 * 
+	 * }
+	 * 
+	 * };
+	 */
 }
