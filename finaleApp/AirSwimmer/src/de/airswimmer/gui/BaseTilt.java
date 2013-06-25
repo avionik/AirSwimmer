@@ -188,8 +188,7 @@ public abstract class BaseTilt extends BaseActivity implements
         super.onCreate(savedInstanceState);
         String brand = android.os.Build.BRAND;
         String device = android.os.Build.DEVICE;//TODO select right String and compare to tablet
-        String model = android.os.Build.MODEL;
-        if (brand.equalsIgnoreCase("samsung")) {//if target is device with switched axis->change them
+        if (brand.equalsIgnoreCase("samsung") && device.equals("GT-P7511")) {//if target is device with switched axis->change them
             changeAxis = true;
         }
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE); // sensor
