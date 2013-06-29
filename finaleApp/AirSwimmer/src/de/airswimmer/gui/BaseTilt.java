@@ -187,7 +187,7 @@ public abstract class BaseTilt extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String brand = android.os.Build.BRAND;
-        String device = android.os.Build.DEVICE;//TODO select right String and compare to tablet
+        String device = android.os.Build.DEVICE;
         if (brand.equalsIgnoreCase("samsung") && device.equals("GT-P7511")) {//if target is device with switched axis->change them
             changeAxis = true;
         }

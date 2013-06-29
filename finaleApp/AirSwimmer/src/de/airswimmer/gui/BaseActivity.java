@@ -81,7 +81,7 @@ public class BaseActivity extends Activity {
 	/**
 	 * Reaction to choice in menu
 	 */
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation") //deprecated functends has to be used because newer function doesn't work at target device
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
