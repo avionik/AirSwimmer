@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/frontpage_background"
+    tools:context=".SetSoundActivity" >
+
+    <SeekBar
+        android:id="@+id/SoundBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:max="15" />
+
+    <Button
+        android:id="@+id/OKButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/SoundBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:background="#B0C4DE"
+        android:text="@string/OKButton" />
+
+    <TextView
+        android:id="@+id/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SoundBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="123dp"
+        android:text="@string/RequestText"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:textColor="#f6f60e"/>
+
+    <TextView
+        android:id="@+id/Text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:text="@string/DescriptionText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f6f60e" />
+
+</RelativeLayout>

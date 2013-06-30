@@ -1,0 +1,37 @@
+#
+# this config file was automatically generated
+# using lirc-0.9.0(emulation) on Thu Apr 18 15:47:09 2013
+#
+# contributed by 
+#
+# brand:                       \\rz-home\ff9315\Eigene
+# model no. of remote control: 
+# devices being controlled by this remote:
+#
+# lirc file Rechts1hex wurde als basis genommen und fehlende codes wurden aus anderen Messungen genommen.
+# Da die Hex Werte in allen vier Messungen gleich waren ist es egal aus welcher Datei sie kommen.
+#
+# CONSTANT_LENGTH raus dafür gap runter
+begin remote
+
+  name  \\rz-home\ff9315\Eigene
+  bits           24
+  flags SPACE_ENC
+  eps            30
+  aeps          100
+  one           300   720
+  zero          300   220
+  ptrail        300
+  gap          25000
+  toggle_bit_mask 0x0
+
+      begin codes
+          DIVE                     0xC9B187
+          CLIMB                    0xC9B14B
+          TAILLEFT                 0xC9B12D
+          TAILRIGHT                0xC9B11E
+      end codes
+
+end remote
+
+

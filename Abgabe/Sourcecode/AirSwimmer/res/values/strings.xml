@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Front page -->
+    <string name="app_name">AirSwimmer</string>
+    <string name="action_settings">Settings</string>
+    <color  name="app_colour">#33FFFF</color>
+    <string name="button_buttonb">TASTEN</string>
+    <string name="button_wischen">WISCHEN</string>
+    <string name="button_kippen">KIPPEN</string>
+    
+	<!-- submenu of select_mode -->	
+ 	<string name="mode_buttons">Tasten</string> 
+ 	<string name="mode_tilt">Kippen</string> 
+ 	<string name="mode_slide">Wischen</string> 
+
+ 	<!-- control.xml menu -->
+ 	<string name="select_mode">Modus auswählen</string>
+ 	<string name="change_background">Hintergrund ändern</string>
+ 	<string name="change_move">Steuerungsart ändern</string>
+ 	<string name="back_to_start">Startseite</string>
+ 	
+ 	<!-- submenu of change-background -->
+ 	<string name="water_picture">Wasser</string> 
+ 	<string name="sky_picture">Himmel</string>
+ 	<string name="th_picture">Hochschule</string>
+ 	
+ 	<!-- submenu of change-mode -->
+    <string name="title_activity_activity__buttons">Activity_Buttons</string>
+    <string name="title_activity_activity__tilt">Activity_Tilt</string>
+    <string name="title_activity_activity__slide">Activity_Slide</string>
+    
+    <!-- submenu of change-move -->
+    <string name="title_activity_activity__buttons_permanent">Activity_Buttons_Permanent</string>
+    <string name="title_activity_activity__slide_permanent">Activity_Slide_Permanent</string>
+	<string name="title_activity_activity__tilt_permanent">Activity_Tilt_Permanent</string>
+	<string name="single">Einfach</string>
+	<string name="permanent">Permanent</string>
+	
+	<!-- start.xml menu -->
+	<string name="change_layout_orientation">Ausrichtung ändern</string>
+	<string name="OKButton">OK</string>
+	<string name="sound_calc_string">Lautstärkeregulierung</string>
+	<string name="string_info_page">Info</string>	
+	
+	<!-- string for AlertDiaolg getAux -->
+	<string name="alert_aux_title">Wähle AUX-Eingang</string>
+	<string name="aux_shortSide">Aux-Anschluss an der kurzen Seite</string>
+	<string name="aux_longSide">Aux-Anschluss an der langen Seite</string>
+	
+		<!-- string for AlertDiaolg to remind irdroid -->
+	<string name="alert_ir_title">Bitte schließen Sie, falls noch nicht geschehen, einen Infrarotsender an !</string>
+	<string name="DescriptionText">Automatische Lautstärkenregelung, bitte warten.</string>
+	<string name="RequestText">Bei Bewegung des Fisches bitte OK drücken</string>
+  
+</resources>

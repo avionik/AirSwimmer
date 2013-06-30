@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--  Menu element for changing orientation-->
+        <item android:title="@string/change_layout_orientation" android:id="@+id/change_layout_orientation">
+            <menu>
+                <group android:id="@+id/submenu_change_layout_orientation" >
+                <item
+                    android:id="@+id/portrait"
+                    android:title="@string/aux_shortSide"/>
+                	
+                <item
+                    android:id="@+id/landscape"
+                    android:title="@string/aux_longSide"/>
+                </group>
+            </menu>
+        </item>
+<!--  Menu element for Sound calculation-->
+        <item android:title="@string/sound_calc_string" android:id="@+id/sound_calc">
+        </item>
+<!--  Menu element for info page-->
+        <item android:title="@string/string_info_page" android:id="@+id/info_page">
+        </item>
+            
+</menu>
